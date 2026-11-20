@@ -1,0 +1,61 @@
+{
+  "quizId": "custom-quiz-template",
+  "title": "Sample Topic Quiz",
+  "course": "CS101 · Introduction to Computer Science",
+  "description": "Practice multiple-choice quiz with instant feedback and explanations.",
+  "sections": [
+    {
+      "id": "concept-1",
+      "code": "1",
+      "title": "1. Fundamentals & Syntax",
+      "items": [
+        {
+          "id": "q1",
+          "num": 1,
+          "question": "What is the primary role of a compiler?",
+          "options": [
+            { "key": "A", "text": "Executes machine code line by line" },
+            { "key": "B", "text": "Translates high-level source code into machine code" },
+            { "key": "C", "text": "Manages computer hardware and memory directly" },
+            { "key": "D", "text": "Serves as a text editor for programmers" }
+          ],
+          "answer": "B",
+          "explanation": "A compiler translates entire high-level source code into target machine code prior to execution."
+        },
+        {
+          "id": "q2",
+          "num": 2,
+          "question": "Which data structure uses LIFO (Last-In, First-Out)?",
+          "options": [
+            { "key": "A", "text": "Queue" },
+            { "key": "B", "text": "Linked List" },
+            { "key": "C", "text": "Stack" },
+            { "key": "D", "text": "Binary Search Tree" }
+          ],
+          "answer": "C",
+          "explanation": "A stack operates on the Last-In, First-Out principle, where the most recently pushed item is popped first."
+        }
+      ]
+    },
+    {
+      "id": "concept-2",
+      "code": "2",
+      "title": "2. Data Structures & Algorithms",
+      "items": [
+        {
+          "id": "q3",
+          "num": 3,
+          "question": "What is the average time complexity of binary search on a sorted array?",
+          "options": [
+            { "key": "A", "text": "O(1)" },
+            { "key": "B", "text": "O(log n)" },
+            { "key": "C", "text": "O(n)" },
+            { "key": "D", "text": "O(n log n)" }
+          ],
+          "answer": "B",
+          "explanation": "Binary search halves the search range with each step, yielding O(log n) time complexity."
+        }
+      ]
+    }
+  ]
+}
