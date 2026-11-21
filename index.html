@@ -80,6 +80,7 @@
 
         /* Single-Row Horizontal Arrangement */
         .header-inner {
+            position: relative;
             max-width: 820px;
             margin: 0 auto;
             padding: 7px 14px;
@@ -129,7 +130,9 @@
             align-items: center;
             gap: 6px;
             flex-shrink: 0;
-            margin-left: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .stat-pill {
@@ -170,6 +173,7 @@
             align-items: center;
             gap: 5px;
             flex-shrink: 0;
+            margin-left: auto;
         }
 
         /* Shared compact control for every actionable header item. */
@@ -803,11 +807,7 @@
                 <!-- Populated dynamically from JSON -->
             </select>
 
-            <label class="header-action" title="Load another quiz JSON file">
-                <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
-                Load JSON
-                <input type="file" id="json-file-input" accept=".json" style="display:none;">
-            </label>
+            <input type="file" id="json-file-input" accept=".json" style="display:none;">
 
             <!-- 2, 3, 4. Stat Pills: [5 / 36] [2 correct] [40%] -->
             <div class="header-stats-group">
@@ -986,6 +986,11 @@
                 opt.textContent = qCount > 0 ? `${sec.title} (${qCount} Qs)` : sec.title;
                 conceptSelect.appendChild(opt);
             });
+
+            const loadOpt = document.createElement('option');
+            loadOpt.value = '__load_json__';
+            loadOpt.textContent = '📁 Load JSON…';
+            conceptSelect.appendChild(loadOpt);
 
             conceptSelect.value = state.activeConcept;
             updateConceptTooltip();
@@ -1210,6 +1215,11 @@
 
         // Concept Dropdown change handler
         conceptSelect.addEventListener('change', (e) => {
+            if (e.target.value === '__load_json__') {
+                jsonFileInput.click();
+                conceptSelect.value = state.activeConcept;
+                return;
+            }
             state.activeConcept = e.target.value;
             updateConceptTooltip();
             applyConceptFilter();
