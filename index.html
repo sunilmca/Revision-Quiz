@@ -939,13 +939,23 @@
         });
 
         // Initialize quiz from JSON
-        function loadQuizData(data) {
+        function loadQuizData(data, append = false) {
             if (!data || !data.sections || !Array.isArray(data.sections)) {
                 alert('Invalid quiz JSON format: Missing sections array.');
                 return;
             }
 
-            state.quiz = data;
+            // Loading a file adds its sections to the current quiz. The initial
+            // built-in quiz still replaces the empty state as before.
+            if (append && state.quiz && Array.isArray(state.quiz.sections)) {
+                state.quiz = {
+                    ...state.quiz,
+                    title: state.quiz.title || data.title,
+                    sections: [...state.quiz.sections, ...data.sections]
+                };
+            } else {
+                state.quiz = data;
+            }
             state.userAnswers = {};
             state.keyMap = {};
 
@@ -1425,7 +1435,7 @@
                 try {
                     const parsed = JSON.parse(evt.target.result);
                     state.activeConcept = 'all';
-                    loadQuizData(parsed);
+                    loadQuizData(parsed, true);
                     showToast(`Loaded "${parsed.title || file.name}" successfully!`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } catch (err) {
