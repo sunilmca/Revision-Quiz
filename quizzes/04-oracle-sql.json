@@ -33,7 +33,17 @@
         }
       ],
       "answer": "C",
-      "explanation": "NULL is tested with IS NULL, not equality."
+      "explanation": "NULL is tested with IS NULL, not equality.",
+      "references": [
+        {
+          "label": "Week 7 SQL lecture",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf"
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q27",
@@ -58,7 +68,17 @@
         }
       ],
       "answer": "B",
-      "explanation": "BETWEEN includes both endpoints but does not match NULL."
+      "explanation": "BETWEEN includes both endpoints but does not match NULL.",
+      "references": [
+        {
+          "label": "Week 7 SQL lecture",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf"
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q28",
@@ -83,7 +103,13 @@
         }
       ],
       "answer": "D",
-      "explanation": "Percent matches zero or more characters; underscore matches one."
+      "explanation": "Percent matches zero or more characters; underscore matches one.",
+      "references": [
+        {
+          "label": "Week 7 SQL lecture",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf"
+        }
+      ]
     },
     {
       "id": "q29",
@@ -108,7 +134,18 @@
         }
       ],
       "answer": "A",
-      "explanation": "Match the student's FK to the sport PK."
+      "explanation": "Match the student's FK to the sport PK.",
+      "references": [
+        {
+          "label": "Week 7 joins, pp. 7–12",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 7
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q30",
@@ -133,7 +170,18 @@
         }
       ],
       "answer": "C",
-      "explanation": "Eight students have matching sports."
+      "explanation": "Eight students have matching sports.",
+      "references": [
+        {
+          "label": "Week 7 joins, pp. 7–12",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 7
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q31",
@@ -158,7 +206,18 @@
         }
       ],
       "answer": "B",
-      "explanation": "The left side is preserved, including unmatched students."
+      "explanation": "The left side is preserved, including unmatched students.",
+      "references": [
+        {
+          "label": "Week 7 joins, pp. 7–12",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 7
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q32",
@@ -183,7 +242,18 @@
         }
       ],
       "answer": "A",
-      "explanation": "The right side is preserved, including unused sports."
+      "explanation": "The right side is preserved, including unused sports.",
+      "references": [
+        {
+          "label": "Week 7 joins, pp. 7–12",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 7
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q33",
@@ -208,7 +278,18 @@
         }
       ],
       "answer": "D",
-      "explanation": "Eight matches, two student-only rows and three sport-only rows."
+      "explanation": "Eight matches, two student-only rows and three sport-only rows.",
+      "references": [
+        {
+          "label": "Week 7 joins, pp. 7–12",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 7
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q34",
@@ -233,7 +314,18 @@
         }
       ],
       "answer": "C",
-      "explanation": "The WHERE predicate rejects NULL sport names and other sports."
+      "explanation": "The WHERE predicate rejects NULL sport names and other sports.",
+      "references": [
+        {
+          "label": "Week 7 joins, pp. 7–12",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 7
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q35",
@@ -258,7 +350,13 @@
         }
       ],
       "answer": "A",
-      "explanation": "Sport 4 exists and SID 99 is unused. The other options break FK or PK rules."
+      "explanation": "Sport 4 exists and SID 99 is unused. The other options break FK or PK rules.",
+      "references": [
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        }
+      ]
     },
     {
       "id": "q36",
@@ -283,7 +381,32 @@
         }
       ],
       "answer": "B",
-      "explanation": "Both columns identify the prize, and unmatched entries must be preserved."
+      "explanation": "Both columns identify the prize, and unmatched entries must be preserved.",
+      "references": [
+        {
+          "label": "Horse.sql",
+          "file": "reference/Oracle APEX/Horse.sql"
+        },
+        {
+          "label": "Week 7 LEFT JOIN, p. 10",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 10
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Week 7 SQL lecture",
+      "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf"
+    },
+    {
+      "label": "Week7_example.sql",
+      "file": "reference/Oracle APEX/Week7_example.sql"
+    },
+    {
+      "label": "Horse.sql",
+      "file": "reference/Oracle APEX/Horse.sql"
     }
   ]
 }

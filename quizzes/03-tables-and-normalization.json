@@ -27,7 +27,14 @@
         }
       ],
       "answer": "D",
-      "explanation": "Different rows now disagree about the same fact."
+      "explanation": "Different rows now disagree about the same fact.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ]
     },
     {
       "id": "q17",
@@ -52,7 +59,14 @@
         }
       ],
       "answer": "A",
-      "explanation": "An independent fact cannot be added by itself."
+      "explanation": "An independent fact cannot be added by itself.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ]
     },
     {
       "id": "q18",
@@ -77,7 +91,14 @@
         }
       ],
       "answer": "C",
-      "explanation": "Deleting one fact unintentionally removes another."
+      "explanation": "Deleting one fact unintentionally removes another.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ]
     },
     {
       "id": "q19",
@@ -102,7 +123,13 @@
         }
       ],
       "answer": "B",
-      "explanation": "Separate the repeating values into individual rows."
+      "explanation": "Separate the repeating values into individual rows.",
+      "references": [
+        {
+          "label": "Week 4 normalization lecture",
+          "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf"
+        }
+      ]
     },
     {
       "type": "scenario",
@@ -133,7 +160,18 @@
         }
       ],
       "answer": "D",
-      "explanation": "The dependency runs from ID to description, not necessarily the reverse."
+      "explanation": "The dependency runs from ID to description, not necessarily the reverse.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        },
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
     },
     {
       "id": "q21",
@@ -158,7 +196,18 @@
         }
       ],
       "answer": "C",
-      "explanation": "Grade requires the whole key; SName needs only SID."
+      "explanation": "Grade requires the whole key; SName needs only SID.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        },
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
     },
     {
       "id": "q22",
@@ -183,7 +232,13 @@
         }
       ],
       "answer": "A",
-      "explanation": "Values are atomic, but partial dependencies prevent 2NF."
+      "explanation": "Values are atomic, but partial dependencies prevent 2NF.",
+      "references": [
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
     },
     {
       "id": "q23",
@@ -208,7 +263,18 @@
         }
       ],
       "answer": "B",
-      "explanation": "Store facts with their determinants and preserve Grade at the pair level."
+      "explanation": "Store facts with their determinants and preserve Grade at the pair level.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        },
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
     },
     {
       "id": "q24",
@@ -233,7 +299,13 @@
         }
       ],
       "answer": "D",
-      "explanation": "EmpID determines DeptName indirectly via DeptID."
+      "explanation": "EmpID determines DeptName indirectly via DeptID.",
+      "references": [
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
     },
     {
       "id": "q25",
@@ -258,7 +330,28 @@
         }
       ],
       "answer": "A",
-      "explanation": "DeptID links to a single stored department name."
+      "explanation": "DeptID links to a single stored department name.",
+      "references": [
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Week 4 normalization lecture",
+      "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf"
+    },
+    {
+      "label": "Week 5 normalization lecture",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+    },
+    {
+      "label": "Anomalies practical, p. 2",
+      "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+      "page": 2
     }
   ]
 }

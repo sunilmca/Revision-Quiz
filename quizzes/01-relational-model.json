@@ -29,7 +29,14 @@
       "answer": "B",
       "explanation": "A tuple contains one record's attribute values.",
       "explanationImage": "img/relational-model-tuple.svg",
-      "explanationImageAlt": "A STUDENT relation with one highlighted row labelled Tuple: one record's attribute values."
+      "explanationImageAlt": "A STUDENT relation with one highlighted row labelled Tuple: one record's attribute values.",
+      "references": [
+        {
+          "label": "Week 2 related reading, p. 27",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 27
+        }
+      ]
     },
     {
       "id": "q2",
@@ -104,7 +111,14 @@
         }
       ],
       "answer": "C",
-      "explanation": "Relational SELECT filters rows; SQL uses WHERE for this."
+      "explanation": "Relational SELECT filters rows; SQL uses WHERE for this.",
+      "references": [
+        {
+          "label": "Week 7 SQL operators, p. 6",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 6
+        }
+      ]
     },
     {
       "id": "q5",
@@ -129,7 +143,14 @@
         }
       ],
       "answer": "B",
-      "explanation": "Projection selects attributes."
+      "explanation": "Projection selects attributes.",
+      "references": [
+        {
+          "label": "Week 7 SQL operators, p. 6",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 6
+        }
+      ]
     },
     {
       "id": "q6",
@@ -154,7 +175,25 @@
         }
       ],
       "answer": "D",
-      "explanation": "Only 200 is removed from A."
+      "explanation": "Only 200 is removed from A.",
+      "references": [
+        {
+          "label": "Week 7 SQL operators, p. 6",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 6
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Week 2 lecture",
+      "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf"
+    },
+    {
+      "label": "Week 7 SQL operators, p. 6",
+      "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+      "page": 6
     }
   ]
 }

@@ -27,7 +27,14 @@
         }
       ],
       "answer": "C",
-      "explanation": "It has parts, but only one address per employee."
+      "explanation": "It has parts, but only one address per employee.",
+      "references": [
+        {
+          "label": "Week 3 attributes and keys, pp. 6–11",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 6
+        }
+      ]
     },
     {
       "id": "q8",
@@ -52,7 +59,14 @@
         }
       ],
       "answer": "A",
-      "explanation": "It is calculated from other attributes."
+      "explanation": "It is calculated from other attributes.",
+      "references": [
+        {
+          "label": "Week 3 attributes and keys, pp. 6–11",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 6
+        }
+      ]
     },
     {
       "id": "q9",
@@ -77,7 +91,14 @@
         }
       ],
       "answer": "D",
-      "explanation": "A candidate key not selected as PK is an alternate key."
+      "explanation": "A candidate key not selected as PK is an alternate key.",
+      "references": [
+        {
+          "label": "Week 3 attributes and keys, pp. 6–11",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 6
+        }
+      ]
     },
     {
       "id": "q10",
@@ -102,7 +123,14 @@
         }
       ],
       "answer": "B",
-      "explanation": "Read each direction independently."
+      "explanation": "Read each direction independently.",
+      "references": [
+        {
+          "label": "Week 3 ERD practical, pp. 3–4",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 3
+        }
+      ]
     },
     {
       "id": "q11",
@@ -127,7 +155,14 @@
         }
       ],
       "answer": "C",
-      "explanation": "The FK goes on the many side and references the title."
+      "explanation": "The FK goes on the many side and references the title.",
+      "references": [
+        {
+          "label": "Week 4 ERD practical, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
+        }
+      ]
     },
     {
       "id": "q12",
@@ -152,7 +187,14 @@
         }
       ],
       "answer": "A",
-      "explanation": "Quantity describes an item on a particular order."
+      "explanation": "Quantity describes an item on a particular order.",
+      "references": [
+        {
+          "label": "Week 4 ERD practical, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
+        }
+      ]
     },
     {
       "id": "q13",
@@ -177,7 +219,14 @@
         }
       ],
       "answer": "D",
-      "explanation": "The combination, not each component, must be unique."
+      "explanation": "The combination, not each component, must be unique.",
+      "references": [
+        {
+          "label": "Week 3 ERD practical, pp. 3–4",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 3
+        }
+      ]
     },
     {
       "id": "q14",
@@ -202,7 +251,14 @@
         }
       ],
       "answer": "C",
-      "explanation": "NOT NULL requires a value; the FK checks its existence."
+      "explanation": "NOT NULL requires a value; the FK checks its existence.",
+      "references": [
+        {
+          "label": "Week 4 ERD practical, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
+        }
+      ]
     },
     {
       "id": "q15",
@@ -227,7 +283,31 @@
         }
       ],
       "answer": "B",
-      "explanation": "The circle denotes zero minimum; the fork means many maximum."
+      "explanation": "The circle denotes zero minimum; the fork means many maximum.",
+      "references": [
+        {
+          "label": "Week 3 ERD practical, pp. 3–4",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 3
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Week 3 ER modelling, p. 4",
+      "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+      "page": 4
+    },
+    {
+      "label": "Week 3 ERD practical, pp. 3–4",
+      "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+      "page": 3
+    },
+    {
+      "label": "Week 4 ERD practical, p. 1",
+      "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+      "page": 1
     }
   ]
 }

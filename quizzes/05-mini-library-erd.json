@@ -21,5 +21,17 @@
     ],
     "activeLoanLimits": "A member may have at most three active loans; a copy may have at most one active loan. A NULL ReturnDate identifies an active loan here. These limits apply to active loans, not to lifetime history. Ordinary foreign keys check references, not active-loan counts.",
     "references": "Course references: Weeks 2–5 lectures and practicals; Week 7 SQL Joins and Data Filtering, p. 1 and pp. 7–12; Week7_example.sql; Horse.sql."
-  }
+  },
+  "references": [
+    {
+      "label": "Week 4 ERD practical, p. 1",
+      "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+      "page": 1
+    },
+    {
+      "label": "Week 3 ER modelling, p. 4",
+      "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+      "page": 4
+    }
+  ]
 }
