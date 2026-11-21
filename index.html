@@ -28,6 +28,49 @@
             --wrong-text: #7f1d1d;
         }
 
+        [data-theme="dark"] {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-body: #cbd5e1;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --border-hover: #475569;
+            --primary-light: #172554;
+            --correct-bg: #052e16;
+            --correct-border: #166534;
+            --correct-text: #bbf7d0;
+            --wrong-bg: #450a0a;
+            --wrong-border: #991b1b;
+            --wrong-text: #fecaca;
+        }
+
+        [data-theme="dark"] .sticky-header,
+        [data-theme="dark"] .more-menu,
+        [data-theme="dark"] .question-card,
+        [data-theme="dark"] .results-card { background: #1e293b; }
+        [data-theme="dark"] .concept-dropdown,
+        [data-theme="dark"] .btn-more,
+        [data-theme="dark"] .header-action { background: #1e293b; color: var(--text-main); }
+        [data-theme="dark"] .option-row { background: #1e293b; }
+        [data-theme="dark"] .option-row.is-dimmed { background: #172033; }
+        [data-theme="dark"] .option-row { background: #1e293b !important; color: #cbd5e1; }
+        [data-theme="dark"] .option-row:hover:not(.is-correct-selected):not(.is-wrong-selected):not(.is-correct-target):not(.is-dimmed) { background: #243247 !important; border-color: #475569; }
+        [data-theme="dark"] .option-text { color: #cbd5e1 !important; }
+        [data-theme="dark"] .option-key { background: #334155 !important; color: #e2e8f0 !important; }
+        [data-theme="dark"] .stat-pill.stat-total { background: #1e293b; color: #e2e8f0; }
+        [data-theme="dark"] .more-menu { background: #1e293b; }
+        [data-theme="dark"] .scenario-box,
+        [data-theme="dark"] .question-context { background: #172033; border-color: #334155; color: #cbd5e1; }
+        [data-theme="dark"] .scenario-box strong,
+        [data-theme="dark"] .question-context__table th { color: #f8fafc; }
+        [data-theme="dark"] .scenario-box code,
+        [data-theme="dark"] .question-context__table td { background: #334155; color: #e2e8f0; }
+        [data-theme="dark"] .erd-box { background: #1e293b; color: #cbd5e1; }
+        [data-theme="dark"] .erd-details { background: #172033; border-color: #334155; }
+        [data-theme="dark"] .erd-details summary:hover { background: #243247; }
+        [data-theme="dark"] .erd-content { border-top-color: #334155; color: #cbd5e1; }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -119,9 +162,12 @@
         }
 
         .header-action__icon {
-            width: 14px;
-            height: 14px;
-            flex: 0 0 14px;
+            display: block;
+            width: 11px;
+            height: 11px;
+            flex: 0 0 11px;
+            overflow: visible;
+            vertical-align: middle;
         }
 
         /* Compact progress summary */
@@ -221,6 +267,30 @@
             border-color: var(--primary-hover);
             color: #ffffff;
         }
+
+        .more-menu-wrap { position: relative; flex-shrink: 0; }
+        .btn-more { width: 30px; height: 30px; padding: 0; border: 1px solid var(--border); border-radius: 7px; background: #fff; color: var(--text-muted); cursor: pointer; font-size: 1.25rem; line-height: 1; }
+        .btn-more:hover, .btn-more.active { background: #f1f5f9; color: var(--text-main); }
+        .more-menu { position: absolute; top: 36px; right: 0; z-index: 120; width: 310px; max-height: 70vh; overflow-y: auto; padding: 10px; border: 1px solid var(--border); border-radius: 8px; background: #fff; box-shadow: 0 8px 22px rgba(15,23,42,.16); }
+        .more-menu h3 { margin: 0 0 7px; font-size: .8rem; color: var(--text-main); }
+        .resource-group { margin: 0 0 8px; }
+        .resource-group strong { display: block; margin-bottom: 2px; font-size: .72rem; color: var(--text-muted); }
+        .resource-group a { display: block; padding: 3px 0; color: var(--primary); font-size: .75rem; text-decoration: none; white-space: normal; }
+        .resource-group a:hover { text-decoration: underline; }
+        .theme-toggle { display: flex; align-items: center; gap: 7px; margin: 0 0 10px; padding-bottom: 8px; border-bottom: 1px solid var(--border); color: var(--text-body); font-size: .75rem; cursor: pointer; }
+        .theme-icon-button { width: 30px; height: 30px; padding: 0; border: 1px solid var(--border); border-radius: 7px; background: #fff; color: var(--text-muted); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+        .theme-icon-button:hover { background: #f1f5f9; color: var(--text-main); }
+        .theme-icon-button svg { width: 16px; height: 16px; }
+        [data-theme="dark"] .header-action:not(.header-action--primary),
+        [data-theme="dark"] .btn-more,
+        [data-theme="dark"] .theme-icon-button { background: #1e293b !important; color: #e2e8f0 !important; border-color: #475569 !important; }
+        [data-theme="dark"] .header-action:not(.header-action--primary):hover,
+        [data-theme="dark"] .btn-more:hover,
+        [data-theme="dark"] .btn-more.active { background: #334155 !important; color: #ffffff !important; }
+        [data-theme="dark"] .theme-icon-button:hover,
+        [data-theme="dark"] .theme-icon-button:focus-visible { background: #334155 !important; color: #ffffff !important; border-color: #64748b !important; }
+        [data-theme="dark"] .theme-icon-button:hover svg,
+        [data-theme="dark"] .theme-icon-button:focus-visible svg { stroke: #ffffff !important; fill: none !important; opacity: 1 !important; }
 
         /* Buttons */
         .btn {
@@ -917,6 +987,19 @@
                 </button>
             </div>
 
+            <button type="button" class="theme-icon-button" id="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme"></button>
+
+            <div class="more-menu-wrap">
+                <button type="button" class="btn-more" id="btn-more-menu" aria-label="More options" aria-expanded="false" title="More options">⋮</button>
+                <div class="more-menu" id="more-menu" hidden>
+                    <h3>Resources</h3>
+                    <div class="resource-group"><strong>Week 2 · Relational model</strong><a href="reference/Oracle%20APEX/Week%202%20-%20Data%20Model%20%26%20Relational%20Database%20Model%207%20Oct%202026%20StuVer.pdf" target="_blank" rel="noopener">Lecture PDF</a><a href="reference/Oracle%20APEX/W2%20Practical%20Anomalies%20Sep26.pdf" target="_blank" rel="noopener">Anomalies practical</a></div>
+                    <div class="resource-group"><strong>Week 3 · ER modelling</strong><a href="reference/Oracle%20APEX/Week%203%20-%20Entity%20Relationship%20Modelling%2014%20Oct%202026.pdf" target="_blank" rel="noopener">Lecture PDF</a><a href="reference/Oracle%20APEX/WEEK%203%20ERD%20Sep26.pdf" target="_blank" rel="noopener">ERD practical</a></div>
+                    <div class="resource-group"><strong>Week 4–5 · Normalization and ERD</strong><a href="reference/Oracle%20APEX/Week%204%20Practical%20ERD%20pt2%20Oxt26.pdf" target="_blank" rel="noopener">Mini Library / Café practical</a><a href="reference/Oracle%20APEX/Week%204%20-%20Normalization%20of%20Database%20Table%2021%20Oct%2026.pdf" target="_blank" rel="noopener">Week 4 normalization</a><a href="reference/Oracle%20APEX/Week%205%20-%20Normalization%20of%20Database%20Table%20%2028%20Oct%2026.pdf" target="_blank" rel="noopener">Week 5 normalization</a></div>
+                    <div class="resource-group"><strong>Week 7 · SQL</strong><a href="reference/Oracle%20APEX/Week%207%20-%20SQL%20Joins%20and%20Data%20Filtering%2011Nov26.pdf" target="_blank" rel="noopener">SQL joins and filtering PDF</a><a href="reference/Oracle%20APEX/Week7_example.sql" target="_blank" rel="noopener">Week7_example.sql</a><a href="reference/Oracle%20APEX/Horse.sql" target="_blank" rel="noopener">Horse.sql</a></div>
+                </div>
+            </div>
+
         </div>
     </header>
 
@@ -976,6 +1059,38 @@
         const btnScrollTop = document.getElementById('btn-scroll-top');
         const resultsCard = document.getElementById('quiz-results-card');
         const toastBanner = document.getElementById('toast-banner');
+        const btnMoreMenu = document.getElementById('btn-more-menu');
+        const moreMenu = document.getElementById('more-menu');
+        const themeToggle = document.getElementById('theme-toggle');
+
+        function setTheme(isDark) {
+            document.documentElement.dataset.theme = isDark ? 'dark' : 'light';
+            themeToggle.innerHTML = isDark
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>'
+                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.5 6.5 0 0 0 21 12.8Z"/></svg>';
+            themeToggle.title = isDark ? 'Switch to light theme' : 'Switch to dark theme';
+            themeToggle.setAttribute('aria-label', themeToggle.title);
+            localStorage.setItem('revision-quiz-theme', isDark ? 'dark' : 'light');
+        }
+
+        setTheme(localStorage.getItem('revision-quiz-theme') === 'dark');
+        themeToggle.addEventListener('click', () => setTheme(document.documentElement.dataset.theme !== 'dark'));
+
+        btnMoreMenu.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const isOpen = !moreMenu.hidden;
+            moreMenu.hidden = isOpen;
+            btnMoreMenu.classList.toggle('active', !isOpen);
+            btnMoreMenu.setAttribute('aria-expanded', String(!isOpen));
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!event.target.closest('.more-menu-wrap')) {
+                moreMenu.hidden = true;
+                btnMoreMenu.classList.remove('active');
+                btnMoreMenu.setAttribute('aria-expanded', 'false');
+            }
+        });
 
         function referenceLinks(references, prefix = 'Review source') {
             return (references || []).map(reference => {
