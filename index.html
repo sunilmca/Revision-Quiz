@@ -117,6 +117,12 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
         }
 
+        .header-action__icon {
+            width: 14px;
+            height: 14px;
+            flex: 0 0 14px;
+        }
+
         /* Compact progress summary */
         .header-stats-group {
             display: flex;
@@ -166,86 +172,50 @@
             flex-shrink: 0;
         }
 
-        .header-actions .btn {
-            min-height: 30px;
-            padding: 4px 8px;
-            border-radius: 7px;
-        }
-
-        /* 7. Vertical 3-Dots More Menu */
-        .more-menu-wrap {
-            position: relative;
+        /* Shared compact control for every actionable header item. */
+        .header-action {
             display: inline-flex;
-            flex-shrink: 0;
-        }
-
-        .btn-more-dots {
-            display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
-            border-radius: 7px;
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.15s ease;
-            padding: 0;
-        }
-
-        .btn-more-dots:hover,
-        .btn-more-dots.active {
-            background: #f1f5f9;
-            color: var(--text-main);
-            border-color: var(--border);
-        }
-
-        .more-dropdown-menu {
-            position: absolute;
-            right: 0;
-            top: 100%;
-            margin-top: 5px;
+            gap: 5px;
+            min-height: 30px;
+            padding: 4px 9px;
+            border: 1px solid #d7dee8;
+            border-radius: 8px;
             background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 7px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-            min-width: 155px;
-            padding: 4px 0;
-            z-index: 200;
-            animation: menuFadeIn 0.15s ease-out;
-        }
-
-        @keyframes menuFadeIn {
-            from { opacity: 0; transform: translateY(-4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            padding: 7px 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-body);
-            background: none;
-            border: none;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.75rem;
+            font-weight: 650;
+            line-height: 1;
             cursor: pointer;
-            text-align: left;
-            transition: background 0.12s;
-            user-select: none;
             white-space: nowrap;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .menu-item:hover {
-            background: #f1f5f9;
+        .header-action:hover {
+            background: #f8fafc;
+            border-color: #b9c5d5;
             color: var(--text-main);
         }
 
-        .file-menu-label {
-            margin: 0;
+        .header-action:focus-visible {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+        }
+
+        .header-action--primary {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+        }
+
+        .header-action--primary:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+            color: #ffffff;
         }
 
         /* Buttons */
@@ -778,7 +748,8 @@
             .header-actions {
                 gap: 3px;
             }
-            .header-actions .btn {
+            .header-action {
+                min-height: 28px;
                 padding: 3px 6px;
                 font-size: 0.7rem;
             }
@@ -808,6 +779,12 @@
                 <!-- Populated dynamically from JSON -->
             </select>
 
+            <label class="header-action" title="Load another quiz JSON file">
+                <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
+                Load JSON
+                <input type="file" id="json-file-input" accept=".json" style="display:none;">
+            </label>
+
             <!-- 2, 3, 4. Stat Pills: [5 / 36] [2 correct] [40%] -->
             <div class="header-stats-group">
                 <span class="stat-pill stat-total" id="hud-answered" title="Questions Answered">0 / 36</span>
@@ -816,31 +793,16 @@
             </div>
 
             <div class="header-actions" aria-label="Quiz actions">
-                <button type="button" class="btn btn-primary" id="btn-jump-next" title="Go to the next unanswered question">
+                <button type="button" class="header-action header-action--primary" id="btn-jump-next" title="Go to the next unanswered question">
+                    <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     Next
                 </button>
-                <button type="button" class="btn btn-ghost" id="btn-restart" title="Restart quiz">
+                <button type="button" class="header-action" id="btn-restart" title="Restart quiz">
+                    <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 11a8 8 0 1 0 2 5.3M20 4v7h-7"/></svg>
                     Restart
                 </button>
             </div>
 
-            <!-- 7. More Menu in Vertical 3 Dots (⋮) -->
-            <div class="more-menu-wrap" id="more-menu-wrap">
-                <button type="button" class="btn-more-dots" id="btn-more-menu" title="More options" aria-label="More options" aria-haspopup="true" aria-expanded="false">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <circle cx="12" cy="5" r="2.2"/>
-                        <circle cx="12" cy="12" r="2.2"/>
-                        <circle cx="12" cy="19" r="2.2"/>
-                    </svg>
-                </button>
-                <div class="more-dropdown-menu" id="more-dropdown-menu" style="display: none;">
-                    <label class="menu-item file-menu-label" id="menu-btn-load-json">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
-                        Load JSON
-                        <input type="file" id="json-file-input" accept=".json" style="display:none;">
-                    </label>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -891,9 +853,6 @@
         const hudAccuracy = document.getElementById('hud-accuracy');
         const hudProgressFill = document.getElementById('hud-progress-fill');
         const scoreLegacy = document.getElementById('score');
-        const btnMoreMenu = document.getElementById('btn-more-menu');
-        const moreDropdownMenu = document.getElementById('more-dropdown-menu');
-        const moreMenuWrap = document.getElementById('more-menu-wrap');
         const btnJumpNext = document.getElementById('btn-jump-next');
         const btnRestart = document.getElementById('btn-restart');
         const jsonFileInput = document.getElementById('json-file-input');
@@ -910,30 +869,8 @@
             setTimeout(() => toastBanner.classList.remove('show'), 3000);
         }
 
-        // More Menu Dropdown Toggle
-        btnMoreMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = moreDropdownMenu.style.display === 'block';
-            moreDropdownMenu.style.display = isOpen ? 'none' : 'block';
-            btnMoreMenu.classList.toggle('active', !isOpen);
-            btnMoreMenu.setAttribute('aria-expanded', !isOpen);
-        });
-
-        function closeMoreMenu() {
-            moreDropdownMenu.style.display = 'none';
-            btnMoreMenu.classList.remove('active');
-            btnMoreMenu.setAttribute('aria-expanded', 'false');
-        }
-
-        document.addEventListener('click', (e) => {
-            if (!moreMenuWrap.contains(e.target)) {
-                closeMoreMenu();
-            }
-        });
-
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeMoreMenu();
                 resetModal.style.display = 'none';
             }
         });
@@ -1426,7 +1363,6 @@
 
         // File Input: Load any custom JSON file from computer
         jsonFileInput.addEventListener('change', (e) => {
-            closeMoreMenu();
             const file = e.target.files[0];
             if (!file) return;
 
