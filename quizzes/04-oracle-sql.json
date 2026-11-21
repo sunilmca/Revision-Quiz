@@ -1,0 +1,289 @@
+{
+  "id": "sec-4",
+  "code": "4",
+  "title": "4. Oracle SQL filtering, joins and keys",
+  "description": "Data filtering (IS NULL, BETWEEN, LIKE), table aliases, INNER / LEFT / RIGHT / FULL OUTER JOIN row analysis, and composite key matching.",
+  "items": [
+    {
+      "type": "scenario",
+      "id": "scenario-sport",
+      "title": "Reference Scenario for Q26–35",
+      "content": "SPORT(sportNO PK, sportNAME) has 1 swimming, 2 badminton, 3 esport, 4 spelunking, 5 pool, 6 fencing. STUDENT_SPORTENROLL(SID PK, SNAME, sportNO nullable FK) has two students in sport 1, three in sport 2 (Zack, Arthur, Hisham), three in sport 3 (including SID 23), and two with NULL (Matthew, Hafizah). SID 99 is unused. Assume joins use se.sportNO = sp.sportNO unless asked otherwise."
+    },
+    {
+      "id": "q26",
+      "num": 26,
+      "question": "Which condition finds students without a sport?",
+      "options": [
+        {
+          "key": "A",
+          "text": "sportNO = NULL"
+        },
+        {
+          "key": "B",
+          "text": "sportNO &lt;&gt; NULL"
+        },
+        {
+          "key": "C",
+          "text": "sportNO IS NULL"
+        },
+        {
+          "key": "D",
+          "text": "sportNO = 0"
+        }
+      ],
+      "answer": "C",
+      "explanation": "NULL is tested with IS NULL, not equality."
+    },
+    {
+      "id": "q27",
+      "num": 27,
+      "question": "Which students satisfy sportNO BETWEEN 2 AND 3?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only badminton"
+        },
+        {
+          "key": "B",
+          "text": "All six in badminton and esport"
+        },
+        {
+          "key": "C",
+          "text": "Neither endpoint"
+        },
+        {
+          "key": "D",
+          "text": "The six plus the two unassigned students"
+        }
+      ],
+      "answer": "B",
+      "explanation": "BETWEEN includes both endpoints but does not match NULL."
+    },
+    {
+      "id": "q28",
+      "num": 28,
+      "question": "Which condition finds sport names starting with lowercase s?",
+      "options": [
+        {
+          "key": "A",
+          "text": "LIKE &#x27;%s&#x27;"
+        },
+        {
+          "key": "B",
+          "text": "= &#x27;s%&#x27;"
+        },
+        {
+          "key": "C",
+          "text": "LIKE &#x27;s_&#x27;"
+        },
+        {
+          "key": "D",
+          "text": "LIKE &#x27;s%&#x27;"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Percent matches zero or more characters; underscore matches one."
+    },
+    {
+      "id": "q29",
+      "num": 29,
+      "question": "Which ON condition correctly links student alias se to sport alias sp?",
+      "options": [
+        {
+          "key": "A",
+          "text": "se.sportNO = sp.sportNO"
+        },
+        {
+          "key": "B",
+          "text": "se.SID = sp.sportNO"
+        },
+        {
+          "key": "C",
+          "text": "se.sportNO = se.sportNO"
+        },
+        {
+          "key": "D",
+          "text": "se.SID = se.SID"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Match the student's FK to the sport PK."
+    },
+    {
+      "id": "q30",
+      "num": 30,
+      "question": "How many rows does INNER JOIN return?",
+      "options": [
+        {
+          "key": "A",
+          "text": "6"
+        },
+        {
+          "key": "B",
+          "text": "10"
+        },
+        {
+          "key": "C",
+          "text": "8"
+        },
+        {
+          "key": "D",
+          "text": "13"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Eight students have matching sports."
+    },
+    {
+      "id": "q31",
+      "num": 31,
+      "question": "What does a LEFT JOIN with students on the left return?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Eight assigned students"
+        },
+        {
+          "key": "B",
+          "text": "All ten students, with NULL sport names for two"
+        },
+        {
+          "key": "C",
+          "text": "Eight assigned students plus three unused sports"
+        },
+        {
+          "key": "D",
+          "text": "One row per sport"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The left side is preserved, including unmatched students."
+    },
+    {
+      "id": "q32",
+      "num": 32,
+      "question": "With students on the left, which keeps all sports but not unassigned students?",
+      "options": [
+        {
+          "key": "A",
+          "text": "RIGHT JOIN"
+        },
+        {
+          "key": "B",
+          "text": "LEFT JOIN"
+        },
+        {
+          "key": "C",
+          "text": "INNER JOIN"
+        },
+        {
+          "key": "D",
+          "text": "FULL OUTER JOIN"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The right side is preserved, including unused sports."
+    },
+    {
+      "id": "q33",
+      "num": 33,
+      "question": "How many rows does FULL OUTER JOIN return?",
+      "options": [
+        {
+          "key": "A",
+          "text": "8"
+        },
+        {
+          "key": "B",
+          "text": "10"
+        },
+        {
+          "key": "C",
+          "text": "11"
+        },
+        {
+          "key": "D",
+          "text": "13"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Eight matches, two student-only rows and three sport-only rows."
+    },
+    {
+      "id": "q34",
+      "num": 34,
+      "question": "After a student-to-sport LEFT JOIN, what survives WHERE sp.sportNAME = &#x27;badminton&#x27;?",
+      "options": [
+        {
+          "key": "A",
+          "text": "All ten students"
+        },
+        {
+          "key": "B",
+          "text": "Eight students"
+        },
+        {
+          "key": "C",
+          "text": "Zack, Arthur and Hisham only"
+        },
+        {
+          "key": "D",
+          "text": "Those three plus the two unassigned students"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The WHERE predicate rejects NULL sport names and other sports."
+    },
+    {
+      "id": "q35",
+      "num": 35,
+      "question": "Which new (SID, sportNO) can be inserted?",
+      "options": [
+        {
+          "key": "A",
+          "text": "99, 4"
+        },
+        {
+          "key": "B",
+          "text": "99, 99"
+        },
+        {
+          "key": "C",
+          "text": "23, 2"
+        },
+        {
+          "key": "D",
+          "text": "NULL, 2"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Sport 4 exists and SID 99 is unused. The other options break FK or PK rules."
+    },
+    {
+      "id": "q36",
+      "num": 36,
+      "question": "Horse.sql: Which condition and join keep every ENTRY1 row while looking up its prize in PRIZE, keyed by (event_id, place)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "INNER JOIN on both columns"
+        },
+        {
+          "key": "B",
+          "text": "LEFT JOIN on both columns"
+        },
+        {
+          "key": "C",
+          "text": "LEFT JOIN on event_id only"
+        },
+        {
+          "key": "D",
+          "text": "LEFT JOIN on place only"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Both columns identify the prize, and unmatched entries must be preserved."
+    }
+  ]
+}

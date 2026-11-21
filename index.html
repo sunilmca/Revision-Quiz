@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Revision Quiz</title>
-    <!-- Preloaded default quiz data for immediate zero-CORS offline execution -->
+    <!-- Offline fallback data for direct file:// execution -->
     <script src="quiz_data.js"></script>
     <style>
         :root {
@@ -1460,18 +1460,40 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // App Initializer: Load from DEFAULT_QUIZ_DATA or fetch quiz_data.json
-        function initApp() {
-            if (window.DEFAULT_QUIZ_DATA) {
-                loadQuizData(window.DEFAULT_QUIZ_DATA);
-            } else {
-                fetch('quiz_data.json')
-                    .then(res => res.json())
-                    .then(data => loadQuizData(data))
-                    .catch(err => {
-                        console.warn('Could not fetch quiz_data.json, waiting for user file load:', err);
-                        document.title = 'Revision Quiz';
-                    });
+        async function fetchJson(path) {
+            const response = await fetch(path);
+            if (!response.ok) {
+                throw new Error(`Could not load ${path}: ${response.status}`);
+            }
+            return response.json();
+        }
+
+        async function loadQuizFromManifest() {
+            const manifest = await fetchJson('quiz-manifest.json');
+            if (!Array.isArray(manifest.sections)) {
+                throw new Error('Invalid quiz manifest: missing sections array.');
+            }
+
+            const sections = await Promise.all(manifest.sections.map(async ({ file }) => {
+                if (!file) throw new Error('Invalid quiz manifest: section file is missing.');
+                return fetchJson(file);
+            }));
+
+            return { ...manifest, sections };
+        }
+
+        // Prefer the separate JSON files when served over HTTP(S). Browsers block
+        // fetches from file://, so direct local opening uses the bundled fallback.
+        async function initApp() {
+            try {
+                loadQuizData(await loadQuizFromManifest());
+            } catch (err) {
+                console.warn('Could not load the quiz manifest; using bundled fallback:', err);
+                if (window.DEFAULT_QUIZ_DATA) {
+                    loadQuizData(window.DEFAULT_QUIZ_DATA);
+                } else {
+                    document.title = 'Revision Quiz';
+                }
             }
         }
 

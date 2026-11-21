@@ -1,11 +1,11 @@
 /**
- * SEG1201 Quiz Data
- * This file allows index.html to load data immediately even when opened directly as a local file (file://).
- * You can also edit quiz_data.json or load any custom JSON quiz file using the "Load JSON" button in the app.
+ * Generated offline fallback. Do not edit directly.
+ * Edit quiz-manifest.json and files in quizzes/, then run:
+ * pwsh -File .\scripts\build-offline-fallback.ps1
  */
 window.DEFAULT_QUIZ_DATA = {
   "quizId": "seg1201-quiz-01",
-  "title": "Quiz-01",
+  "title": "Revision Quiz",
   "course": "Database Systems",
   "description": "Choose one answer. Your first choice is scored immediately with instant red/green visual feedback, the correct answer revealed, and an in-depth rationale.",
   "sections": [
