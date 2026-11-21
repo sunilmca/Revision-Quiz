@@ -12,7 +12,6 @@
     },
     {
       "id": "q26",
-      "num": 26,
       "question": "Which condition finds students without a sport?",
       "options": [
         {
@@ -47,7 +46,6 @@
     },
     {
       "id": "q27",
-      "num": 27,
       "question": "Which students satisfy sportNO BETWEEN 2 AND 3?",
       "options": [
         {
@@ -82,7 +80,6 @@
     },
     {
       "id": "q28",
-      "num": 28,
       "question": "Which condition finds sport names starting with lowercase s?",
       "options": [
         {
@@ -113,7 +110,6 @@
     },
     {
       "id": "q29",
-      "num": 29,
       "question": "Which ON condition correctly links student alias se to sport alias sp?",
       "options": [
         {
@@ -149,7 +145,6 @@
     },
     {
       "id": "q30",
-      "num": 30,
       "question": "How many rows does INNER JOIN return?",
       "options": [
         {
@@ -185,7 +180,6 @@
     },
     {
       "id": "q31",
-      "num": 31,
       "question": "What does a LEFT JOIN with students on the left return?",
       "options": [
         {
@@ -221,7 +215,6 @@
     },
     {
       "id": "q32",
-      "num": 32,
       "question": "With students on the left, which keeps all sports but not unassigned students?",
       "options": [
         {
@@ -257,7 +250,6 @@
     },
     {
       "id": "q33",
-      "num": 33,
       "question": "How many rows does FULL OUTER JOIN return?",
       "options": [
         {
@@ -293,7 +285,6 @@
     },
     {
       "id": "q34",
-      "num": 34,
       "question": "After a student-to-sport LEFT JOIN, what survives WHERE sp.sportNAME = &#x27;badminton&#x27;?",
       "options": [
         {
@@ -329,7 +320,6 @@
     },
     {
       "id": "q35",
-      "num": 35,
       "question": "Which new (SID, sportNO) can be inserted?",
       "options": [
         {
@@ -360,7 +350,6 @@
     },
     {
       "id": "q36",
-      "num": 36,
       "question": "Horse.sql: Which condition and join keep every ENTRY1 row while looking up its prize in PRIZE, keyed by (event_id, place)?",
       "options": [
         {

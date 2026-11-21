@@ -2,11 +2,10 @@
   "id": "sec-1",
   "code": "1",
   "title": "1. Relational database model",
-  "description": "Tuples, relation properties, degree and cardinality, business rules, and fundamental relational algebra operators.",
+  "description": "Tuples, relation properties, degree and cardinality, business rules, and fundamental relational algebra operators. Meaning of NULL values.",
   "items": [
     {
       "id": "q1",
-      "num": 1,
       "question": "What is a tuple?",
       "options": [
         {
@@ -27,7 +26,7 @@
         }
       ],
       "answer": "B",
-      "explanation": "A tuple contains one record's attribute values.",
+      "explanation": "A tuple is one row in a relation. For example, (100, 'Matthew') gives the SID and SName values for one student. Week 2 uses the term on page 27 but does not define it there.",
       "explanationImage": "img/relational-model-tuple.svg",
       "explanationImageAlt": "A STUDENT relation with one highlighted row labelled Tuple: one record's attribute values.",
       "referenceLabel": "Related reading",
@@ -41,8 +40,7 @@
     },
     {
       "id": "q2",
-      "num": 2,
-      "question": "A relation has 12 rows and 4 columns. What are its degree and cardinality?",
+      "question": "A relation has 12 rows and 4 columns. What are its degree and cardinality, respectively?",
       "options": [
         {
           "key": "A",
@@ -62,16 +60,23 @@
         }
       ],
       "answer": "D",
-      "explanation": "Degree counts attributes; cardinality counts tuples."
+      "explanation": "Degree counts columns (4); cardinality counts rows (12). These are standard relational-model terms; the linked slide provides background on tables, not these definitions.",
+      "referenceLabel": "Related reading",
+      "references": [
+        {
+          "label": "Week 2: Relational databases, p. 22",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 22
+        }
+      ]
     },
     {
       "id": "q3",
-      "num": 3,
       "question": "Which is a business rule?",
       "options": [
         {
           "key": "A",
-          "text": "Each order belongs to one user"
+          "text": "Each order must belong to exactly one user."
         },
         {
           "key": "B",
@@ -87,11 +92,22 @@
         }
       ],
       "answer": "A",
-      "explanation": "The rule constrains valid associations in the data."
+      "explanation": "A business rule constrains valid data. For example, order 101 must identify one user; an order with no user would violate this rule.",
+      "references": [
+        {
+          "label": "Week 2: Business rules, p. 10",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 10
+        },
+        {
+          "label": "Week 3 practical: Bookstore business rules, p. 3",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 3
+        }
+      ]
     },
     {
       "id": "q4",
-      "num": 4,
       "question": "Which relational algebra operator filters rows?",
       "options": [
         {
@@ -112,10 +128,10 @@
         }
       ],
       "answer": "C",
-      "explanation": "Relational SELECT filters rows; SQL uses WHERE for this.",
+      "explanation": "Relational-algebra SELECT keeps rows that satisfy a condition. For example, selecting SID = 100 keeps only rows for that student. In SQL, WHERE performs this filtering.",
       "references": [
         {
-          "label": "Week 7 SQL operators, p. 6",
+          "label": "Week 7: Relational set operators, p. 6",
           "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
           "page": 6
         }
@@ -123,8 +139,7 @@
     },
     {
       "id": "q5",
-      "num": 5,
-      "question": "Which operator extracts only SID and SName?",
+      "question": "In relational algebra, which operator keeps only the SID and SName columns of STUDENT?",
       "options": [
         {
           "key": "A",
@@ -144,10 +159,10 @@
         }
       ],
       "answer": "B",
-      "explanation": "Projection selects attributes.",
+      "explanation": "PROJECT keeps the named attributes. For example, projecting SID and SName from STUDENT(SID, SName, Phone) leaves out Phone.",
       "references": [
         {
-          "label": "Week 7 SQL operators, p. 6",
+          "label": "Week 7: Relational set operators, p. 6",
           "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
           "page": 6
         }
@@ -155,8 +170,7 @@
     },
     {
       "id": "q6",
-      "num": 6,
-      "question": "A contains 100, 200, 300; B contains 200, 400. Which returns 100 and 300?",
+      "question": "Two compatible one-column relations contain student IDs: A = {100, 200, 300} and B = {200, 400}. Which relational-algebra expression returns {100, 300}?",
       "options": [
         {
           "key": "A",
@@ -176,12 +190,70 @@
         }
       ],
       "answer": "D",
-      "explanation": "Only 200 is removed from A.",
+      "explanation": "A DIFFERENCE B keeps rows in A but not in B. The shared ID 200 is removed; 400 was never in A.",
       "references": [
         {
-          "label": "Week 7 SQL operators, p. 6",
+          "label": "Week 7: Relational set operators, p. 6",
           "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
           "page": 6
+        }
+      ]
+    },
+    {
+      "id": "q37",
+      "question": "NULL values: What can you conclude from the NULL in John’s Phone No. column?",
+      "context": {
+        "type": "table",
+        "title": "Reference table for NULL values",
+        "columns": [
+          "Name",
+          "Place",
+          "Phone No."
+        ],
+        "rows": [
+          [
+            "Tom",
+            "USA",
+            "20394568"
+          ],
+          [
+            "John",
+            "UAE",
+            "NULL"
+          ],
+          [
+            "Andy",
+            "NULL",
+            "65482313"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "key": "A",
+          "text": "John’s phone number is zero."
+        },
+        {
+          "key": "B",
+          "text": "John has a phone number but chose not to share it."
+        },
+        {
+          "key": "C",
+          "text": "John does not have a phone number."
+        },
+        {
+          "key": "D",
+          "text": "No phone number is recorded for John, and the table does not tell us why."
+        }
+      ],
+      "answer": "D",
+      "explanation": "NULL represents a missing value, not zero. John’s number could be unknown, deliberately withheld, or not applicable. For example, a number not yet entered and a number withheld for privacy can both appear as NULL.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Importance of NULL Value, p. 27",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 27
         }
       ]
     }
@@ -195,6 +267,11 @@
       "label": "Week 7 SQL operators, p. 6",
       "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
       "page": 6
+    },
+    {
+      "label": "Week 2: Importance of NULL Value, p. 27",
+      "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+      "page": 27
     }
   ]
 }

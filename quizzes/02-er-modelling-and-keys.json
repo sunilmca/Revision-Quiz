@@ -6,7 +6,6 @@
   "items": [
     {
       "id": "q7",
-      "num": 7,
       "question": "An employee has one address split into street and postcode. How is it classified?",
       "options": [
         {
@@ -38,7 +37,6 @@
     },
     {
       "id": "q8",
-      "num": 8,
       "question": "Quantity times unit price gives LineTotal. What kind of attribute is it?",
       "options": [
         {
@@ -70,7 +68,6 @@
     },
     {
       "id": "q9",
-      "num": 9,
       "question": "UserID and Email are each required and independently unique. UserID is the PK. What is Email?",
       "options": [
         {
@@ -102,7 +99,6 @@
     },
     {
       "id": "q10",
-      "num": 10,
       "question": "A user may place orders; each order must belong to exactly one user. How many orders per user, and users per order?",
       "options": [
         {
@@ -134,7 +130,6 @@
     },
     {
       "id": "q11",
-      "num": 11,
       "question": "Each physical copy belongs to one book title. Where does the FK go?",
       "options": [
         {
@@ -166,7 +161,6 @@
     },
     {
       "id": "q12",
-      "num": 12,
       "question": "Orders contain menu items; items appear in many orders. Where does quantity ordered go?",
       "options": [
         {
@@ -198,7 +192,6 @@
     },
     {
       "id": "q13",
-      "num": 13,
       "question": "ORDER_ITEMS has PK (OrderID, BookID). Existing pairs: (101,12), (101,15). Which pair violates the PK?",
       "options": [
         {
@@ -230,7 +223,6 @@
     },
     {
       "id": "q14",
-      "num": 14,
       "question": "What ensures every loan references an existing copy?",
       "options": [
         {
@@ -262,7 +254,6 @@
     },
     {
       "id": "q15",
-      "num": 15,
       "question": "A circle and crow’s foot at the ORDER end of a User–Order relationship mean what?",
       "options": [
         {

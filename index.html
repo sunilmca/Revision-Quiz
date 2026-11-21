@@ -342,6 +342,44 @@
             font-size: 0.85em;
         }
 
+        .question-context {
+            margin: 0 0 10px;
+            padding: 8px 10px;
+            border: 1px solid #cbd5e1;
+            border-left: 3px solid #64748b;
+            border-radius: 6px;
+            background: #f8fafc;
+            color: #334155;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .question-context__title {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .question-context__table {
+            border-collapse: separate;
+            border-spacing: 4px;
+            font-size: 0.78rem;
+        }
+
+        .question-context__table th {
+            color: #334155;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .question-context__table td {
+            padding: 1px 4px;
+            border-radius: 3px;
+            background: #e2e8f0;
+            color: #334155;
+        }
+
         /* Question Card */
         .question-card {
             background: var(--card-bg);
@@ -1073,6 +1111,7 @@
         // Render Quiz HTML from JSON
         function renderQuiz() {
             quizContent.innerHTML = '';
+            let displayQuestionNumber = 0;
 
             state.quiz.sections.forEach(sec => {
                 const secEl = document.createElement('section');
@@ -1118,7 +1157,7 @@
                             scEl.innerHTML = `<strong>${item.title}:</strong> ${formatCodeTokens(item.content)}`;
                             secEl.appendChild(scEl);
                         } else if (item.question) {
-                            const fsEl = renderQuestionCard(item, sec.id);
+                            const fsEl = renderQuestionCard(item, sec.id, ++displayQuestionNumber);
                             secEl.appendChild(fsEl);
                         }
                     });
@@ -1145,7 +1184,7 @@
         }
 
         // Render Question Card
-        function renderQuestionCard(q, sectionId) {
+        function renderQuestionCard(q, sectionId, displayQuestionNumber) {
             const fs = document.createElement('fieldset');
             fs.className = 'question-card';
             fs.id = q.id;
@@ -1190,7 +1229,8 @@
             });
 
             fs.innerHTML = `
-                <legend class="question-prompt"><span class="q-num">${q.num}.</span> ${q.question}</legend>
+                <legend class="question-prompt"><span class="q-num">${displayQuestionNumber}.</span> ${q.question}</legend>
+                ${renderQuestionContext(q.context)}
                 <div class="options-container" role="radiogroup">
                     ${optionsHtml}
                 </div>
@@ -1200,6 +1240,25 @@
             `;
 
             return fs;
+        }
+
+        function renderQuestionContext(context) {
+            if (!context?.type || !context?.title) return '';
+
+            if (context.type === 'table' && Array.isArray(context.columns) && Array.isArray(context.rows)) {
+                const headings = context.columns.map(column => `<th scope="col">${escapeHtml(column)}</th>`).join('');
+                const rows = context.rows.map(row => {
+                    const cells = row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('');
+                    return `<tr>${cells}</tr>`;
+                }).join('');
+                return `<aside class="question-context"><strong class="question-context__title">${escapeHtml(context.title)}</strong><table class="question-context__table"><thead><tr>${headings}</tr></thead><tbody>${rows}</tbody></table></aside>`;
+            }
+
+            if (context.type === 'text' && context.content) {
+                return `<aside class="question-context"><strong class="question-context__title">${escapeHtml(context.title)}</strong>${escapeHtml(context.content)}</aside>`;
+            }
+
+            return '';
         }
 
         function escapeHtml(value) {
@@ -1235,7 +1294,7 @@
             const summary = isCorrect
                 ? `<strong>Correct.</strong>`
                 : `<strong>Incorrect.</strong> Correct answer: <strong>${correctVal}. ${correctText}</strong>.`;
-            const sourceLinks = referenceLinks(references, referenceLabel || 'Review source');
+            const sourceLinks = referenceLinks(references, 'Related reading');
             const details = (explanation ? `<span class="feedback-explanation"><strong>Explanation:</strong> ${explanation}</span>` : '')
                 + (sourceLinks ? `<div class="question-review-links">${sourceLinks}</div>` : '')
                 + renderExplanationImage(explanationImage, explanationImageAlt);

@@ -12,6 +12,22 @@ Each topic is now maintained as its own source file in [quizzes](quizzes/):
 
 [quiz-manifest.json](quiz-manifest.json) controls the quiz metadata and the order in which those topics appear in the selector. Edit the relevant topic JSON file to add or revise its questions.
 
+Question numbers are generated from the question order across the topic files. Do not add a `num` field: insert a question wherever it belongs and the displayed serial numbers update automatically.
+
+Use an optional `context` block when a question needs its own table or supporting text. This keeps the material attached to the exact question rather than adding a separate HTML scenario:
+
+```json
+"context": {
+  "type": "table",
+  "title": "Reference table for NULL values",
+  "columns": ["Name", "Place", "Phone No."],
+  "rows": [
+    ["Tom", "USA", "20394568"],
+    ["John", "UAE", "NULL"]
+  ]
+}
+```
+
 When hosted (for example, on GitHub Pages), the app loads these individual JSON files. The existing `quiz_data.js` is retained only as an offline fallback for opening `index.html` directly from the file system.
 
 Each topic and question can also include optional PDF or source-code links using `references`:

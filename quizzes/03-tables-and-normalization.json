@@ -6,7 +6,6 @@
   "items": [
     {
       "id": "q16",
-      "num": 16,
       "question": "A student&#x27;s address is repeated across enrolments. Only one row is changed. What results?",
       "options": [
         {
@@ -38,7 +37,6 @@
     },
     {
       "id": "q17",
-      "num": 17,
       "question": "A subject cannot be added until a student enrols. What is this?",
       "options": [
         {
@@ -70,7 +68,6 @@
     },
     {
       "id": "q18",
-      "num": 18,
       "question": "Deleting the last enrolment erases the only record of the subject’s credit value. What is this?",
       "options": [
         {
@@ -102,7 +99,6 @@
     },
     {
       "id": "q19",
-      "num": 19,
       "question": "Several subject codes are stored in a single cell in a 0NF table. Which change addresses this for 1NF?",
       "options": [
         {
@@ -139,7 +135,6 @@
     },
     {
       "id": "q20",
-      "num": 20,
       "question": "What does SubjectID → SubjectDescription mean?",
       "options": [
         {
@@ -175,7 +170,6 @@
     },
     {
       "id": "q21",
-      "num": 21,
       "question": "Which is a full dependency on the composite key?",
       "options": [
         {
@@ -211,7 +205,6 @@
     },
     {
       "id": "q22",
-      "num": 22,
       "question": "What is ENROLMENT’s highest normal form?",
       "options": [
         {
@@ -242,7 +235,6 @@
     },
     {
       "id": "q23",
-      "num": 23,
       "question": "Which decomposition preserves the details and removes the partial dependencies?",
       "options": [
         {
@@ -278,7 +270,6 @@
     },
     {
       "id": "q24",
-      "num": 24,
       "question": "EMPLOYEE has only candidate key EmpID. EmpID → DeptID and DeptID → DeptName. What prevents 3NF?",
       "options": [
         {
@@ -309,7 +300,6 @@
     },
     {
       "id": "q25",
-      "num": 25,
       "question": "Which design fixes Q24 while retaining the department link?",
       "options": [
         {
