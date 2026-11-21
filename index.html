@@ -70,6 +70,11 @@
         [data-theme="dark"] .erd-details { background: #172033; border-color: #334155; }
         [data-theme="dark"] .erd-details summary:hover { background: #243247; }
         [data-theme="dark"] .erd-content { border-top-color: #334155; color: #cbd5e1; }
+        [data-theme="dark"] .results-card { border-color: #475569; }
+        [data-theme="dark"] .results-stat { background: #243247; color: #e2e8f0; border-color: #475569; }
+        [data-theme="dark"] .results-stat-score { color: #f8fafc; }
+        [data-theme="dark"] .btn-ghost { color: #e2e8f0; border-color: #64748b; }
+        [data-theme="dark"] .btn-ghost:hover { background: #334155; color: #ffffff; }
 
         * {
             box-sizing: border-box;
@@ -1000,11 +1005,11 @@
 
             <div class="header-actions" aria-label="Quiz actions">
                 <button type="button" class="header-action header-action--primary" id="btn-jump-next" title="Go to the next unanswered question">
-                    <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                    <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
                     <span class="header-action__label">Next</span>
                 </button>
                 <button type="button" class="header-action" id="btn-restart" title="Restart quiz">
-                    <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 11a8 8 0 1 0 2 5.3M20 4v7h-7"/></svg>
+                    <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
                     <span class="header-action__label">Restart</span>
                 </button>
             </div>
