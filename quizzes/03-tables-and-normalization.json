@@ -2,7 +2,7 @@
   "id": "sec-3",
   "code": "3",
   "title": "3. Database tables and normalization",
-  "description": "Modification anomalies (insertion, deletion, update), 1NF/2NF/3NF dependencies, candidate keys, and lossless decomposition.",
+  "description": "Insertion, update and deletion anomalies; 1NF, 2NF and 3NF using the lecture’s player-inventory example.",
   "items": [
     {
       "id": "q16",
@@ -26,14 +26,15 @@
         }
       ],
       "answer": "D",
-      "explanation": "Different rows now disagree about the same fact.",
+      "explanation": "Alex’s move from Lumut to Sunway must be recorded in all three rows. Updating just one leaves conflicting addresses.",
       "references": [
         {
           "label": "Anomalies practical, p. 2",
           "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
           "page": 2
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q17",
@@ -57,14 +58,15 @@
         }
       ],
       "answer": "A",
-      "explanation": "An independent fact cannot be added by itself.",
+      "explanation": "The practical’s combined table has no independent place to record a new subject and its credits before anyone enrols.",
       "references": [
         {
           "label": "Anomalies practical, p. 2",
           "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
           "page": 2
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q18",
@@ -88,124 +90,115 @@
         }
       ],
       "answer": "C",
-      "explanation": "Deleting one fact unintentionally removes another.",
+      "explanation": "Adam’s row was the only record of the Computer subject’s credit value. Deleting the enrolment deletes that fact too.",
       "references": [
         {
           "label": "Anomalies practical, p. 2",
           "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
           "page": 2
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q19",
-      "question": "Several subject codes are stored in a single cell in a 0NF table. Which change addresses this for 1NF?",
+      "question": "How does the Week 5 player-inventory example remove repeating items for 1NF?",
       "options": [
         {
           "key": "A",
-          "text": "Use a comma-separated string"
+          "text": "Store an item list in one cell"
         },
         {
           "key": "B",
-          "text": "One row per student–subject pair, with a key"
+          "text": "Use a separate row for each player–item pair"
         },
         {
           "key": "C",
-          "text": "Add Subject1, Subject2, Subject3"
+          "text": "Add a numbered column for every item"
         },
         {
           "key": "D",
-          "text": "Sort the codes"
+          "text": "Sort the values inside each cell"
         }
       ],
       "answer": "B",
-      "explanation": "Separate the repeating values into individual rows.",
+      "explanation": "The slide puts Adam91’s arrows and rings in separate rows, with a single item and quantity in each row.",
       "references": [
         {
-          "label": "Week 4 normalization lecture",
-          "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf"
+          "label": "Week 5 normalization, p. 17",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 17
         }
-      ]
-    },
-    {
-      "type": "scenario",
-      "id": "scenario-enrolment",
-      "title": "Reference Scenario for Q20–23",
-      "content": "ENROLMENT(SID, SubjectID, SName, SubjectDescription, Grade) contains atomic values. Its only candidate key is (SID, SubjectID). Assume SID → SName, SubjectID → SubjectDescription, and (SID, SubjectID) → Grade. Neither key component alone determines Grade."
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q20",
-      "question": "What does SubjectID → SubjectDescription mean?",
+      "question": "In the player inventory example, which attribute alone determines Player_rating?",
       "options": [
         {
           "key": "A",
-          "text": "Description uniquely identifies ID"
+          "text": "Item"
         },
         {
           "key": "B",
-          "text": "Description varies by student"
+          "text": "Quantity"
         },
         {
           "key": "C",
-          "text": "Descriptions must be sorted"
+          "text": "Player_rating and Item"
         },
         {
           "key": "D",
-          "text": "Same ID implies same description"
+          "text": "Player_Id"
         }
       ],
       "answer": "D",
-      "explanation": "The dependency runs from ID to description, not necessarily the reverse.",
+      "explanation": "Player_rating is determined by Player_Id alone, which is only one part of the composite key.",
       "references": [
         {
-          "label": "Anomalies practical, p. 2",
-          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
-          "page": 2
-        },
-        {
-          "label": "Week 5 normalization lecture",
-          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+          "label": "Week 5 normalization, p. 24",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 24
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q21",
-      "question": "Which is a full dependency on the composite key?",
+      "question": "Which dependency uses the entire player-inventory primary key to determine Quantity?",
       "options": [
         {
           "key": "A",
-          "text": "SID → SName"
+          "text": "Player_Id → Quantity"
         },
         {
           "key": "B",
-          "text": "SubjectID → SubjectDescription"
+          "text": "Item → Quantity"
         },
         {
           "key": "C",
-          "text": "(SID, SubjectID) → Grade"
+          "text": " (Player_Id, Item) → Quantity"
         },
         {
           "key": "D",
-          "text": "(SID, SubjectID) → SName"
+          "text": "Player_rating → Quantity"
         }
       ],
       "answer": "C",
-      "explanation": "Grade requires the whole key; SName needs only SID.",
+      "explanation": "Quantity depends on both the player and item: Adam91 has 2 arrows but 4 rings, and another player may have a different quantity of arrows.",
       "references": [
         {
-          "label": "Anomalies practical, p. 2",
-          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
-          "page": 2
-        },
-        {
-          "label": "Week 5 normalization lecture",
-          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+          "label": "Week 5 normalization, p. 24",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 24
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q22",
-      "question": "What is ENROLMENT’s highest normal form?",
+      "question": "The inventory table has single values in its cells and primary key (Player_Id, Item). Player_rating depends only on Player_Id. What is its highest normal form?",
       "options": [
         {
           "key": "A",
@@ -225,56 +218,55 @@
         }
       ],
       "answer": "A",
-      "explanation": "Values are atomic, but partial dependencies prevent 2NF.",
+      "explanation": "The table has separate, single-valued cells, but Player_rating depends on only part of the key. This prevents 2NF.",
       "references": [
         {
-          "label": "Week 5 normalization lecture",
-          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+          "label": "Week 5 normalization, p. 24",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 24
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q23",
-      "question": "Which decomposition preserves the details and removes the partial dependencies?",
+      "question": "Which design does the slide use to remove the partial dependency?",
       "options": [
         {
           "key": "A",
-          "text": "STUDENT with Grade; SUBJECT"
+          "text": "Player(Player_Id, Quantity) and Inventory(Item, Player_rating)"
         },
         {
           "key": "B",
-          "text": "STUDENT and SUBJECT with their own descriptions; ENROLMENT with both IDs and Grade"
+          "text": "Player(Player_Id, Player_rating) and Inventory(Player_Id, Item, Quantity)"
         },
         {
           "key": "C",
-          "text": "STUDENT; SUBJECT with Grade"
+          "text": "Player(Player_Id, Item, Player_rating) only"
         },
         {
           "key": "D",
-          "text": "ENROLMENT with IDs and Grade only"
+          "text": "Inventory(Player_Id, Item, Quantity) only"
         }
       ],
       "answer": "B",
-      "explanation": "Store facts with their determinants and preserve Grade at the pair level.",
+      "explanation": "Player_rating moves to the Player table because it depends only on Player_Id. Quantity stays with the player–item pair.",
       "references": [
         {
-          "label": "Anomalies practical, p. 2",
-          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
-          "page": 2
-        },
-        {
-          "label": "Week 5 normalization lecture",
-          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+          "label": "Week 5 normalization, p. 25",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 25
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q24",
-      "question": "EMPLOYEE has only candidate key EmpID. EmpID → DeptID and DeptID → DeptName. What prevents 3NF?",
+      "question": "What kind of dependency does the slide show in Player_Id → Player_Skill_level → Player_rating?",
       "options": [
         {
           "key": "A",
-          "text": "Atomic value"
+          "text": "Full dependency on a composite key"
         },
         {
           "key": "B",
@@ -290,58 +282,79 @@
         }
       ],
       "answer": "D",
-      "explanation": "EmpID determines DeptName indirectly via DeptID.",
+      "explanation": "Player_Id determines Player_Skill_level, which determines Player_rating. The rating therefore depends on Player_Id indirectly.",
       "references": [
         {
-          "label": "Week 5 normalization lecture",
-          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+          "label": "Week 5 normalization, p. 29",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 29
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     },
     {
       "id": "q25",
-      "question": "Which design fixes Q24 while retaining the department link?",
+      "question": "Which design does the slide use to remove the transitive dependency?",
       "options": [
         {
           "key": "A",
-          "text": "EMPLOYEE(EmpID, EmpName, DeptID) and DEPARTMENT(DeptID, DeptName)"
+          "text": "Player(Player_Id, Player_Skill_level) and Skill_Level(Player_Skill_level, Player_rating)"
         },
         {
           "key": "B",
-          "text": "EMPLOYEE(EmpID, EmpName, DeptName) only"
+          "text": "Player(Player_Id, Player_rating) only"
         },
         {
           "key": "C",
-          "text": "Remove DeptID from EMPLOYEE and keep DEPARTMENT separately"
+          "text": "Player(Player_Id) and Skill_Level(Player_Skill_level, Player_rating) with no link"
         },
         {
           "key": "D",
-          "text": "Keep the original and make DeptName unique"
+          "text": "Keep all three attributes together in Player"
         }
       ],
       "answer": "A",
-      "explanation": "DeptID links to a single stored department name.",
+      "explanation": "The player keeps their skill level. The rating is stored with that skill level in a separate table.",
       "references": [
         {
-          "label": "Week 5 normalization lecture",
-          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+          "label": "Week 5 normalization, p. 30",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 30
         }
-      ]
+      ],
+      "referenceLabel": "Review source"
     }
   ],
   "references": [
     {
-      "label": "Week 4 normalization lecture",
-      "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf"
-    },
-    {
-      "label": "Week 5 normalization lecture",
-      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
-    },
-    {
       "label": "Anomalies practical, p. 2",
       "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
       "page": 2
+    },
+    {
+      "label": "Week 5 normalization, p. 17",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 17
+    },
+    {
+      "label": "Week 5 normalization, p. 24",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 24
+    },
+    {
+      "label": "Week 5 normalization, p. 25",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 25
+    },
+    {
+      "label": "Week 5 normalization, p. 29",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 29
+    },
+    {
+      "label": "Week 5 normalization, p. 30",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 30
     }
   ]
 }

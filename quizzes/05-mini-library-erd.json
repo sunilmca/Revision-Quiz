@@ -7,7 +7,7 @@
   "brief": [
     "Draw a crow’s-foot ERD without answer choices. Include attributes, primary and foreign keys, relationship verbs, and minimum and maximum participation at both ends.",
     "Every member has a unique Member ID and may have zero or many loans. Each loan belongs to exactly one member. Every book title has a unique Book ID and one or more physical copies. Each copy has its own Copy ID and belongs to exactly one title. Every loan refers to one physical copy. A copy may be loaned many times over its lifetime. Assume a new copy may have no loan history. Record borrowed, due and return dates; return date is empty until the copy is returned.",
-    "Below your diagram, state the two active-loan limits. Explain whether ordinary foreign keys alone enforce them."
+    "Below the ERD, write the borrowing limits stated in BR7, BR9 and BR10."
   ],
   "solution": {
     "title": "Reveal model ERD",
@@ -19,8 +19,8 @@
       "BOOK_COPY: CopyID (PK), BookID (FK, required).",
       "LOAN: LoanID (PK; added for this model), MemberID and CopyID (FKs, required), BorrowDate, DueDate, ReturnDate (nullable)."
     ],
-    "activeLoanLimits": "A member may have at most three active loans; a copy may have at most one active loan. A NULL ReturnDate identifies an active loan here. These limits apply to active loans, not to lifetime history. Ordinary foreign keys check references, not active-loan counts.",
-    "references": "Course references: Weeks 2–5 lectures and practicals; Week 7 SQL Joins and Data Filtering, p. 1 and pp. 7–12; Week7_example.sql; Horse.sql."
+    "activeLoanLimits": "A copy may have at most one active loan and cannot be borrowed while already on loan. A member may borrow at most three copies at once. ReturnDate stays empty until the copy is returned.",
+    "references": "Week 4 Practical ERD, p. 1: Mini Library business rules BR1–BR10. Week 3 ER modelling, p. 4: crow’s-foot notation. The practical gives the rules, not a completed diagram; LoanID is a model choice."
   },
   "references": [
     {

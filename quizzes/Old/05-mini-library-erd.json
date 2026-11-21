@@ -1,0 +1,37 @@
+{
+  "id": "sec-5",
+  "code": "5",
+  "title": "5. Draw the Mini Library ERD",
+  "type": "practical-exercise",
+  "description": "Adapted from Week 4 Practical, page 1. Complete this crow’s-foot modeling exercise, then reveal the reference solution below.",
+  "brief": [
+    "Draw a crow’s-foot ERD without answer choices. Include attributes, primary and foreign keys, relationship verbs, and minimum and maximum participation at both ends.",
+    "Every member has a unique Member ID and may have zero or many loans. Each loan belongs to exactly one member. Every book title has a unique Book ID and one or more physical copies. Each copy has its own Copy ID and belongs to exactly one title. Every loan refers to one physical copy. A copy may be loaned many times over its lifetime. Assume a new copy may have no loan history. Record borrowed, due and return dates; return date is empty until the copy is returned.",
+    "Below your diagram, state the two active-loan limits. Explain whether ordinary foreign keys alone enforce them."
+  ],
+  "solution": {
+    "title": "Reveal model ERD",
+    "diagram": "MEMBER       ||────────o{  LOAN       records\nBOOK_TITLE   ||────────|{  BOOK_COPY  has\nBOOK_COPY    ||────────o{  LOAN       appears in",
+    "legend": "|| exactly one; o{ zero or many; |{ one or many. Read the marks at the opposite end from the entity you start with.",
+    "entities": [
+      "MEMBER: MemberID (PK).",
+      "BOOK_TITLE: BookID (PK).",
+      "BOOK_COPY: CopyID (PK), BookID (FK, required).",
+      "LOAN: LoanID (PK; added for this model), MemberID and CopyID (FKs, required), BorrowDate, DueDate, ReturnDate (nullable)."
+    ],
+    "activeLoanLimits": "A member may have at most three active loans; a copy may have at most one active loan. A NULL ReturnDate identifies an active loan here. These limits apply to active loans, not to lifetime history. Ordinary foreign keys check references, not active-loan counts.",
+    "references": "Course references: Weeks 2–5 lectures and practicals; Week 7 SQL Joins and Data Filtering, p. 1 and pp. 7–12; Week7_example.sql; Horse.sql."
+  },
+  "references": [
+    {
+      "label": "Week 4 ERD practical, p. 1",
+      "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+      "page": 1
+    },
+    {
+      "label": "Week 3 ER modelling, p. 4",
+      "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+      "page": 4
+    }
+  ]
+}
