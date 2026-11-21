@@ -939,44 +939,17 @@
         const resultsCard = document.getElementById('quiz-results-card');
         const toastBanner = document.getElementById('toast-banner');
 
-        const referenceBase = 'reference/Oracle%20APEX/';
-        const refs = {
-            week2: ['Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf', 'Week 2 lecture'],
-            week2p27: ['Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf#page=27', 'Week 2 related reading, p. 27'],
-            week3: ['Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf#page=4', 'Week 3 ER modelling, p. 4'],
-            week3p6: ['Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf#page=6', 'Week 3 attributes and keys, pp. 6–11'],
-            week3erd: ['WEEK 3 ERD Sep26.pdf#page=3', 'Week 3 ERD practical, pp. 3–4'],
-            week4erd: ['Week 4 Practical ERD pt2 Oxt26.pdf#page=1', 'Week 4 ERD practical, p. 1'],
-            week4norm: ['Week 4 - Normalization of Database Table 21 Oct 26.pdf', 'Week 4 normalization lecture'],
-            week5: ['Week 5 - Normalization of Database Table  28 Oct 26.pdf', 'Week 5 normalization lecture'],
-            anomalies: ['W2 Practical Anomalies Sep26.pdf#page=2', 'Anomalies practical, p. 2'],
-            week7: ['Week 7 - SQL Joins and Data Filtering 11Nov26.pdf', 'Week 7 SQL lecture'],
-            week7p6: ['Week 7 - SQL Joins and Data Filtering 11Nov26.pdf#page=6', 'Week 7 SQL operators, p. 6'],
-            week7p7: ['Week 7 - SQL Joins and Data Filtering 11Nov26.pdf#page=7', 'Week 7 joins, pp. 7–12'],
-            week7p10: ['Week 7 - SQL Joins and Data Filtering 11Nov26.pdf#page=10', 'Week 7 LEFT JOIN, p. 10'],
-            exampleSql: ['Week7_example.sql', 'Week7_example.sql'],
-            horseSql: ['Horse.sql', 'Horse.sql']
-        };
-        const sectionRefs = {
-            'sec-1': ['week2', 'week7p6'],
-            'sec-2': ['week3', 'week3erd', 'week4erd'],
-            'sec-3': ['week4norm', 'week5', 'anomalies'],
-            'sec-4': ['week7', 'exampleSql', 'horseSql'],
-            'sec-5': ['week4erd', 'week3']
-        };
-        const questionRefs = {
-            q1: ['week2p27'], q4: ['week7p6'], q5: ['week7p6'], q6: ['week7p6'],
-            q7: ['week3p6'], q8: ['week3p6'], q9: ['week3p6'], q10: ['week3erd'], q11: ['week4erd'], q12: ['week4erd'], q13: ['week3erd'], q14: ['week4erd'], q15: ['week3erd'],
-            q16: ['anomalies'], q17: ['anomalies'], q18: ['anomalies'], q19: ['week4norm'], q20: ['anomalies', 'week5'], q21: ['anomalies', 'week5'], q22: ['week5'], q23: ['anomalies', 'week5'], q24: ['week5'], q25: ['week5'],
-            q26: ['week7', 'exampleSql'], q27: ['week7', 'exampleSql'], q28: ['week7'], q29: ['week7p7', 'exampleSql'], q30: ['week7p7', 'exampleSql'], q31: ['week7p7', 'exampleSql'], q32: ['week7p7', 'exampleSql'], q33: ['week7p7', 'exampleSql'], q34: ['week7p7', 'exampleSql'], q35: ['exampleSql'], q36: ['horseSql', 'week7p10']
-        };
-
-        function referenceLinks(keys, label = 'Review source') {
-            return (keys || []).map(key => {
-                const [file, text] = refs[key];
-                const [path, hash] = file.split('#');
-                const href = `${referenceBase}${encodeURIComponent(path)}${hash ? `#${hash}` : ''}`;
-                return `<a class="review-link" href="${href}" target="_blank" rel="noopener">${label}: ${text}</a>`;
+        function referenceLinks(references, prefix = 'Review source') {
+            return (references || []).map(reference => {
+                if (!reference?.file || !reference?.label) return '';
+                try {
+                    const url = new URL(reference.file, document.baseURI);
+                    if (!['http:', 'https:', 'file:'].includes(url.protocol)) return '';
+                    if (reference.page) url.hash = `page=${reference.page}`;
+                    return `<a class="review-link" href="${escapeHtml(url.href)}" target="_blank" rel="noopener">${escapeHtml(prefix)}: ${escapeHtml(reference.label)}</a>`;
+                } catch {
+                    return '';
+                }
             }).join(' ');
         }
 
@@ -1023,6 +996,8 @@
                                 explanation: item.explanation || '',
                                 explanationImage: item.explanationImage || '',
                                 explanationImageAlt: item.explanationImageAlt || '',
+                                references: item.references || [],
+                                referenceLabel: item.referenceLabel || 'Review source',
                                 sectionId: sec.id
                             };
                         }
@@ -1122,7 +1097,7 @@
                 sectionReview.className = 'section-review-links';
                 // Keep one concise section-level review link; question feedback
                 // carries the more specific secondary references.
-                sectionReview.innerHTML = referenceLinks(sectionRefs[sec.id]?.slice(0, 1), 'Review this topic');
+                sectionReview.innerHTML = referenceLinks(sec.references?.slice(0, 1), 'Review this topic');
                 secEl.appendChild(sectionReview);
 
                 // Section Scenario if at top of section
@@ -1220,7 +1195,7 @@
                     ${optionsHtml}
                 </div>
                 <div class="feedback ${existing ? (existing.isCorrect ? 'feedback-correct' : 'feedback-incorrect') : ''}" aria-live="polite">
-                            ${existing ? renderFeedbackContent(existing.isCorrect, existing.correctVal, existing.correctText, existing.explanation, existing.explanationImage, existing.explanationImageAlt, q.id) : ''}
+                            ${existing ? renderFeedbackContent(existing.isCorrect, existing.correctVal, existing.correctText, existing.explanation, existing.explanationImage, existing.explanationImageAlt, existing.references, existing.referenceLabel) : ''}
                 </div>
             `;
 
@@ -1256,11 +1231,11 @@
             return `<div class="explanation-image-wrap"><img class="explanation-image" src="${escapeHtml(src)}" alt="${escapeHtml(imageAlt)}" loading="lazy"></div>`;
         }
 
-        function renderFeedbackContent(isCorrect, correctVal, correctText, explanation, explanationImage, explanationImageAlt, questionId) {
+        function renderFeedbackContent(isCorrect, correctVal, correctText, explanation, explanationImage, explanationImageAlt, references, referenceLabel) {
             const summary = isCorrect
                 ? `<strong>Correct.</strong>`
                 : `<strong>Incorrect.</strong> Correct answer: <strong>${correctVal}. ${correctText}</strong>.`;
-            const sourceLinks = referenceLinks(questionRefs[questionId], questionId === 'q1' ? 'Related reading' : 'Review source');
+            const sourceLinks = referenceLinks(references, referenceLabel || 'Review source');
             const details = (explanation ? `<span class="feedback-explanation"><strong>Explanation:</strong> ${explanation}</span>` : '')
                 + (sourceLinks ? `<div class="question-review-links">${sourceLinks}</div>` : '')
                 + renderExplanationImage(explanationImage, explanationImageAlt);
@@ -1354,7 +1329,9 @@
                 isCorrect,
                 explanation: keyInfo.explanation,
                 explanationImage: keyInfo.explanationImage,
-                explanationImageAlt: keyInfo.explanationImageAlt
+                explanationImageAlt: keyInfo.explanationImageAlt,
+                references: keyInfo.references,
+                referenceLabel: keyInfo.referenceLabel
             };
 
             // Style Fieldset
@@ -1388,7 +1365,7 @@
             const feedbackEl = fieldset.querySelector('.feedback');
             if (feedbackEl) {
                 feedbackEl.className = `feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`;
-                feedbackEl.innerHTML = renderFeedbackContent(isCorrect, correctVal, correctText, keyInfo.explanation, keyInfo.explanationImage, keyInfo.explanationImageAlt, qId);
+                feedbackEl.innerHTML = renderFeedbackContent(isCorrect, correctVal, correctText, keyInfo.explanation, keyInfo.explanationImage, keyInfo.explanationImageAlt, keyInfo.references, keyInfo.referenceLabel);
             }
 
             updateHUD();

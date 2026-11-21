@@ -40,7 +40,15 @@ window.DEFAULT_QUIZ_DATA = {
           "answer": "B",
           "explanation": "A tuple contains one record's attribute values.",
           "explanationImage": "img/relational-model-tuple.svg",
-          "explanationImageAlt": "A STUDENT relation with one highlighted row labelled Tuple: one record's attribute values."
+          "explanationImageAlt": "A STUDENT relation with one highlighted row labelled Tuple: one record's attribute values.",
+          "referenceLabel": "Related reading",
+          "references": [
+            {
+              "label": "Week 2 related reading, p. 27",
+              "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+              "page": 27
+            }
+          ]
         },
         {
           "id": "q2",
@@ -115,7 +123,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "Relational SELECT filters rows; SQL uses WHERE for this."
+          "explanation": "Relational SELECT filters rows; SQL uses WHERE for this.",
+          "references": [
+            {
+              "label": "Week 7 SQL operators, p. 6",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 6
+            }
+          ]
         },
         {
           "id": "q5",
@@ -140,7 +155,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "B",
-          "explanation": "Projection selects attributes."
+          "explanation": "Projection selects attributes.",
+          "references": [
+            {
+              "label": "Week 7 SQL operators, p. 6",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 6
+            }
+          ]
         },
         {
           "id": "q6",
@@ -165,7 +187,25 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "D",
-          "explanation": "Only 200 is removed from A."
+          "explanation": "Only 200 is removed from A.",
+          "references": [
+            {
+              "label": "Week 7 SQL operators, p. 6",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 6
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "label": "Week 2 lecture",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf"
+        },
+        {
+          "label": "Week 7 SQL operators, p. 6",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 6
         }
       ]
     },
@@ -198,7 +238,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "It has parts, but only one address per employee."
+          "explanation": "It has parts, but only one address per employee.",
+          "references": [
+            {
+              "label": "Week 3 attributes and keys, pp. 6–11",
+              "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+              "page": 6
+            }
+          ]
         },
         {
           "id": "q8",
@@ -223,7 +270,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "It is calculated from other attributes."
+          "explanation": "It is calculated from other attributes.",
+          "references": [
+            {
+              "label": "Week 3 attributes and keys, pp. 6–11",
+              "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+              "page": 6
+            }
+          ]
         },
         {
           "id": "q9",
@@ -248,7 +302,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "D",
-          "explanation": "A candidate key not selected as PK is an alternate key."
+          "explanation": "A candidate key not selected as PK is an alternate key.",
+          "references": [
+            {
+              "label": "Week 3 attributes and keys, pp. 6–11",
+              "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+              "page": 6
+            }
+          ]
         },
         {
           "id": "q10",
@@ -273,7 +334,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "B",
-          "explanation": "Read each direction independently."
+          "explanation": "Read each direction independently.",
+          "references": [
+            {
+              "label": "Week 3 ERD practical, pp. 3–4",
+              "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+              "page": 3
+            }
+          ]
         },
         {
           "id": "q11",
@@ -298,7 +366,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "The FK goes on the many side and references the title."
+          "explanation": "The FK goes on the many side and references the title.",
+          "references": [
+            {
+              "label": "Week 4 ERD practical, p. 1",
+              "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+              "page": 1
+            }
+          ]
         },
         {
           "id": "q12",
@@ -323,7 +398,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "Quantity describes an item on a particular order."
+          "explanation": "Quantity describes an item on a particular order.",
+          "references": [
+            {
+              "label": "Week 4 ERD practical, p. 1",
+              "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+              "page": 1
+            }
+          ]
         },
         {
           "id": "q13",
@@ -348,7 +430,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "D",
-          "explanation": "The combination, not each component, must be unique."
+          "explanation": "The combination, not each component, must be unique.",
+          "references": [
+            {
+              "label": "Week 3 ERD practical, pp. 3–4",
+              "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+              "page": 3
+            }
+          ]
         },
         {
           "id": "q14",
@@ -373,7 +462,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "NOT NULL requires a value; the FK checks its existence."
+          "explanation": "NOT NULL requires a value; the FK checks its existence.",
+          "references": [
+            {
+              "label": "Week 4 ERD practical, p. 1",
+              "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+              "page": 1
+            }
+          ]
         },
         {
           "id": "q15",
@@ -398,7 +494,31 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "B",
-          "explanation": "The circle denotes zero minimum; the fork means many maximum."
+          "explanation": "The circle denotes zero minimum; the fork means many maximum.",
+          "references": [
+            {
+              "label": "Week 3 ERD practical, pp. 3–4",
+              "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+              "page": 3
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "label": "Week 3 ER modelling, p. 4",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 4
+        },
+        {
+          "label": "Week 3 ERD practical, pp. 3–4",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 3
+        },
+        {
+          "label": "Week 4 ERD practical, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
         }
       ]
     },
@@ -431,7 +551,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "D",
-          "explanation": "Different rows now disagree about the same fact."
+          "explanation": "Different rows now disagree about the same fact.",
+          "references": [
+            {
+              "label": "Anomalies practical, p. 2",
+              "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+              "page": 2
+            }
+          ]
         },
         {
           "id": "q17",
@@ -456,7 +583,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "An independent fact cannot be added by itself."
+          "explanation": "An independent fact cannot be added by itself.",
+          "references": [
+            {
+              "label": "Anomalies practical, p. 2",
+              "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+              "page": 2
+            }
+          ]
         },
         {
           "id": "q18",
@@ -481,7 +615,14 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "Deleting one fact unintentionally removes another."
+          "explanation": "Deleting one fact unintentionally removes another.",
+          "references": [
+            {
+              "label": "Anomalies practical, p. 2",
+              "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+              "page": 2
+            }
+          ]
         },
         {
           "id": "q19",
@@ -506,7 +647,13 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "B",
-          "explanation": "Separate the repeating values into individual rows."
+          "explanation": "Separate the repeating values into individual rows.",
+          "references": [
+            {
+              "label": "Week 4 normalization lecture",
+              "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf"
+            }
+          ]
         },
         {
           "type": "scenario",
@@ -537,7 +684,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "D",
-          "explanation": "The dependency runs from ID to description, not necessarily the reverse."
+          "explanation": "The dependency runs from ID to description, not necessarily the reverse.",
+          "references": [
+            {
+              "label": "Anomalies practical, p. 2",
+              "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+              "page": 2
+            },
+            {
+              "label": "Week 5 normalization lecture",
+              "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+            }
+          ]
         },
         {
           "id": "q21",
@@ -562,7 +720,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "Grade requires the whole key; SName needs only SID."
+          "explanation": "Grade requires the whole key; SName needs only SID.",
+          "references": [
+            {
+              "label": "Anomalies practical, p. 2",
+              "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+              "page": 2
+            },
+            {
+              "label": "Week 5 normalization lecture",
+              "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+            }
+          ]
         },
         {
           "id": "q22",
@@ -587,7 +756,13 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "Values are atomic, but partial dependencies prevent 2NF."
+          "explanation": "Values are atomic, but partial dependencies prevent 2NF.",
+          "references": [
+            {
+              "label": "Week 5 normalization lecture",
+              "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+            }
+          ]
         },
         {
           "id": "q23",
@@ -612,7 +787,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "B",
-          "explanation": "Store facts with their determinants and preserve Grade at the pair level."
+          "explanation": "Store facts with their determinants and preserve Grade at the pair level.",
+          "references": [
+            {
+              "label": "Anomalies practical, p. 2",
+              "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+              "page": 2
+            },
+            {
+              "label": "Week 5 normalization lecture",
+              "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+            }
+          ]
         },
         {
           "id": "q24",
@@ -637,7 +823,13 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "D",
-          "explanation": "EmpID determines DeptName indirectly via DeptID."
+          "explanation": "EmpID determines DeptName indirectly via DeptID.",
+          "references": [
+            {
+              "label": "Week 5 normalization lecture",
+              "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+            }
+          ]
         },
         {
           "id": "q25",
@@ -662,7 +854,28 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "DeptID links to a single stored department name."
+          "explanation": "DeptID links to a single stored department name.",
+          "references": [
+            {
+              "label": "Week 5 normalization lecture",
+              "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "label": "Week 4 normalization lecture",
+          "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf"
+        },
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        },
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
         }
       ]
     },
@@ -701,7 +914,17 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "NULL is tested with IS NULL, not equality."
+          "explanation": "NULL is tested with IS NULL, not equality.",
+          "references": [
+            {
+              "label": "Week 7 SQL lecture",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf"
+            },
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q27",
@@ -726,7 +949,17 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "B",
-          "explanation": "BETWEEN includes both endpoints but does not match NULL."
+          "explanation": "BETWEEN includes both endpoints but does not match NULL.",
+          "references": [
+            {
+              "label": "Week 7 SQL lecture",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf"
+            },
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q28",
@@ -751,7 +984,13 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "D",
-          "explanation": "Percent matches zero or more characters; underscore matches one."
+          "explanation": "Percent matches zero or more characters; underscore matches one.",
+          "references": [
+            {
+              "label": "Week 7 SQL lecture",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf"
+            }
+          ]
         },
         {
           "id": "q29",
@@ -776,7 +1015,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "Match the student's FK to the sport PK."
+          "explanation": "Match the student's FK to the sport PK.",
+          "references": [
+            {
+              "label": "Week 7 joins, pp. 7–12",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 7
+            },
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q30",
@@ -801,7 +1051,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "Eight students have matching sports."
+          "explanation": "Eight students have matching sports.",
+          "references": [
+            {
+              "label": "Week 7 joins, pp. 7–12",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 7
+            },
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q31",
@@ -826,7 +1087,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "B",
-          "explanation": "The left side is preserved, including unmatched students."
+          "explanation": "The left side is preserved, including unmatched students.",
+          "references": [
+            {
+              "label": "Week 7 joins, pp. 7–12",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 7
+            },
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q32",
@@ -851,7 +1123,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "The right side is preserved, including unused sports."
+          "explanation": "The right side is preserved, including unused sports.",
+          "references": [
+            {
+              "label": "Week 7 joins, pp. 7–12",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 7
+            },
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q33",
@@ -876,7 +1159,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "D",
-          "explanation": "Eight matches, two student-only rows and three sport-only rows."
+          "explanation": "Eight matches, two student-only rows and three sport-only rows.",
+          "references": [
+            {
+              "label": "Week 7 joins, pp. 7–12",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 7
+            },
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q34",
@@ -901,7 +1195,18 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "C",
-          "explanation": "The WHERE predicate rejects NULL sport names and other sports."
+          "explanation": "The WHERE predicate rejects NULL sport names and other sports.",
+          "references": [
+            {
+              "label": "Week 7 joins, pp. 7–12",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 7
+            },
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q35",
@@ -926,7 +1231,13 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "Sport 4 exists and SID 99 is unused. The other options break FK or PK rules."
+          "explanation": "Sport 4 exists and SID 99 is unused. The other options break FK or PK rules.",
+          "references": [
+            {
+              "label": "Week7_example.sql",
+              "file": "reference/Oracle APEX/Week7_example.sql"
+            }
+          ]
         },
         {
           "id": "q36",
@@ -951,7 +1262,32 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "B",
-          "explanation": "Both columns identify the prize, and unmatched entries must be preserved."
+          "explanation": "Both columns identify the prize, and unmatched entries must be preserved.",
+          "references": [
+            {
+              "label": "Horse.sql",
+              "file": "reference/Oracle APEX/Horse.sql"
+            },
+            {
+              "label": "Week 7 LEFT JOIN, p. 10",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 10
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "label": "Week 7 SQL lecture",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf"
+        },
+        {
+          "label": "Week7_example.sql",
+          "file": "reference/Oracle APEX/Week7_example.sql"
+        },
+        {
+          "label": "Horse.sql",
+          "file": "reference/Oracle APEX/Horse.sql"
         }
       ]
     },
@@ -978,7 +1314,19 @@ window.DEFAULT_QUIZ_DATA = {
         ],
         "activeLoanLimits": "A member may have at most three active loans; a copy may have at most one active loan. A NULL ReturnDate identifies an active loan here. These limits apply to active loans, not to lifetime history. Ordinary foreign keys check references, not active-loan counts.",
         "references": "Course references: Weeks 2–5 lectures and practicals; Week 7 SQL Joins and Data Filtering, p. 1 and pp. 7–12; Week7_example.sql; Horse.sql."
-      }
+      },
+      "references": [
+        {
+          "label": "Week 4 ERD practical, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
+        },
+        {
+          "label": "Week 3 ER modelling, p. 4",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 4
+        }
+      ]
     }
   ]
 };

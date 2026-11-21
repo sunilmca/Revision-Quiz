@@ -30,6 +30,7 @@
       "explanation": "A tuple contains one record's attribute values.",
       "explanationImage": "img/relational-model-tuple.svg",
       "explanationImageAlt": "A STUDENT relation with one highlighted row labelled Tuple: one record's attribute values.",
+      "referenceLabel": "Related reading",
       "references": [
         {
           "label": "Week 2 related reading, p. 27",

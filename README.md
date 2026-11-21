@@ -14,6 +14,20 @@ Each topic is now maintained as its own source file in [quizzes](quizzes/):
 
 When hosted (for example, on GitHub Pages), the app loads these individual JSON files. The existing `quiz_data.js` is retained only as an offline fallback for opening `index.html` directly from the file system.
 
+Each topic and question can also include optional PDF or source-code links using `references`:
+
+```json
+"references": [
+  {
+    "label": "Week 2 related reading, p. 27",
+    "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+    "page": 27
+  }
+]
+```
+
+`page` is optional. The app appends it as a PDF page anchor when present.
+
 After changing a topic file, rebuild that offline fallback only if you plan to open `index.html` directly:
 
 ```powershell
