@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "q1",
-      "question": "Why does a designer create a data model before building a database?",
+      "question": "Before creating tables for a new database, why would the designer draw a data model?",
       "options": [
         {
           "key": "A",
@@ -38,7 +38,7 @@
     },
     {
       "id": "q2",
-      "question": "In the lecture’s library book example, which is an attribute?",
+      "question": "Which option is an attribute of Library Book in the table?",
       "options": [
         {
           "key": "A",
@@ -66,11 +66,32 @@
           "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
           "page": 7
         }
-      ]
+      ],
+      "context": {
+        "type": "table",
+        "title": "Library Book — illustrative rows using the slide’s attributes",
+        "columns": [
+          "ISBN number",
+          "Author",
+          "Category"
+        ],
+        "rows": [
+          [
+            "9780133970777",
+            "Elmasri and Navathe",
+            "Databases"
+          ],
+          [
+            "9780132350884",
+            "Robert C. Martin",
+            "Programming"
+          ]
+        ]
+      }
     },
     {
       "id": "q3",
-      "question": "Which relationship requires a junction table in the lecture’s examples?",
+      "question": "Each book can belong to several categories, and each category can contain several books. What relationship does the table represent?",
       "options": [
         {
           "key": "A",
@@ -90,7 +111,7 @@
         }
       ],
       "answer": "A",
-      "explanation": "A pupil can attend multiple lessons and a lesson can have multiple pupils. A junction table records those associations.",
+      "explanation": "B01 occurs in two categories, and Computing contains two books. A junction table records one pairing per row in this many-to-many relationship.",
       "referenceLabel": "Review source",
       "references": [
         {
@@ -98,11 +119,33 @@
           "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
           "page": 8
         }
-      ]
+      ],
+      "context": {
+        "type": "table",
+        "title": "Book–Category junction table — illustrative rows",
+        "columns": [
+          "Book ID",
+          "Category"
+        ],
+        "rows": [
+          [
+            "B01",
+            "Computing"
+          ],
+          [
+            "B01",
+            "Education"
+          ],
+          [
+            "B02",
+            "Computing"
+          ]
+        ]
+      }
     },
     {
       "id": "q4",
-      "question": "Which rule illustrates a data integrity constraint?",
+      "question": "A business is defining rules for its customer invoices. Which proposed rule protects data integrity rather than changing how invoices are displayed?",
       "options": [
         {
           "key": "A",
@@ -134,7 +177,7 @@
     },
     {
       "id": "q5",
-      "question": "Which booking rule is stated in the travel agency example?",
+      "question": "A travel agency records customers, bookings, agents and packages. Which booking restriction matches the lecture’s business rules?",
       "options": [
         {
           "key": "A",
@@ -166,7 +209,7 @@
     },
     {
       "id": "q6",
-      "question": "Which model shows entities and their relationships at a high level?",
+      "question": "A designer wants to show the main entities and their broad relationships without deciding how the database will store them. Which model is appropriate?",
       "options": [
         {
           "key": "A",
@@ -416,7 +459,7 @@
     },
     {
       "id": "q44",
-      "question": "What do relational set operators manipulate?",
+      "question": "In the relational model, what do relational set operators manipulate?",
       "options": [
         {
           "key": "A",

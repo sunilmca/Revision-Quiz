@@ -34,11 +34,16 @@
           "page": 9
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Join inputs",
+        "content": "student_enroll se (SID, SNAME, sportNO); sport sp (sportNO, sportNAME). Students are assigned sports by sport number."
+      }
     },
     {
       "id": "q30",
-      "question": "How many rows are shown in the Week 7 INNER JOIN result?",
+      "question": "How many rows does an INNER JOIN on student_enroll.sportNO = sport.sportNO return, without any additional filters?",
       "options": [
         {
           "key": "A",
@@ -66,11 +71,57 @@
           "page": 9
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Student assignments summarised from the Week 7 example",
+        "columns": [
+          "Student sportNO",
+          "Sport name",
+          "Students"
+        ],
+        "rows": [
+          [
+            "1",
+            "swimming",
+            "2"
+          ],
+          [
+            "2",
+            "badminton",
+            "3"
+          ],
+          [
+            "3",
+            "esport",
+            "3"
+          ],
+          [
+            "4",
+            "spelunking",
+            "0"
+          ],
+          [
+            "5",
+            "pool",
+            "0"
+          ],
+          [
+            "6",
+            "fencing",
+            "0"
+          ],
+          [
+            "NULL",
+            "No matching sport",
+            "2"
+          ]
+        ]
+      }
     },
     {
       "id": "q31",
-      "question": "In the Week 7 student–sport example, what does LEFT JOIN with students on the left return?",
+      "question": "What does student_enroll LEFT JOIN sport on sportNO return before any additional filtering?",
       "options": [
         {
           "key": "A",
@@ -98,11 +149,57 @@
           "page": 10
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Student assignments summarised from the Week 7 example",
+        "columns": [
+          "Student sportNO",
+          "Sport name",
+          "Students"
+        ],
+        "rows": [
+          [
+            "1",
+            "swimming",
+            "2"
+          ],
+          [
+            "2",
+            "badminton",
+            "3"
+          ],
+          [
+            "3",
+            "esport",
+            "3"
+          ],
+          [
+            "4",
+            "spelunking",
+            "0"
+          ],
+          [
+            "5",
+            "pool",
+            "0"
+          ],
+          [
+            "6",
+            "fencing",
+            "0"
+          ],
+          [
+            "NULL",
+            "No matching sport",
+            "2"
+          ]
+        ]
+      }
     },
     {
       "id": "q32",
-      "question": "In the Week 7 example, students are on the left and sports are on the right. Which join keeps all sports but excludes students without a match?",
+      "question": "Which join on sportNO keeps all sports, including sports with no students, but drops unassigned students when student_enroll is on the left?",
       "options": [
         {
           "key": "A",
@@ -130,7 +227,53 @@
           "page": 11
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Student assignments summarised from the Week 7 example",
+        "columns": [
+          "Student sportNO",
+          "Sport name",
+          "Students"
+        ],
+        "rows": [
+          [
+            "1",
+            "swimming",
+            "2"
+          ],
+          [
+            "2",
+            "badminton",
+            "3"
+          ],
+          [
+            "3",
+            "esport",
+            "3"
+          ],
+          [
+            "4",
+            "spelunking",
+            "0"
+          ],
+          [
+            "5",
+            "pool",
+            "0"
+          ],
+          [
+            "6",
+            "fencing",
+            "0"
+          ],
+          [
+            "NULL",
+            "No matching sport",
+            "2"
+          ]
+        ]
+      }
     },
     {
       "id": "q33",
@@ -166,7 +309,7 @@
     },
     {
       "id": "q36",
-      "question": "What does SELECT * FROM products return in the slide example?",
+      "question": "What does this query retrieve?",
       "options": [
         {
           "key": "A",
@@ -194,11 +337,16 @@
           "page": 14
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Query from the slide",
+        "content": "SELECT * FROM products;"
+      }
     },
     {
       "id": "q34",
-      "question": "Which filter selects products priced below 2.00, as in the lecture?",
+      "question": "The products table has a price column. Which filter retrieves rows priced strictly below 2.00?",
       "options": [
         {
           "key": "A",
@@ -230,7 +378,7 @@
     },
     {
       "id": "q27",
-      "question": "Which operator does the lecture use for a range filter that includes both endpoints?",
+      "question": "Which SQL operator can replace prod_price >= 50 AND prod_price <= 100?",
       "options": [
         {
           "key": "A",
@@ -258,31 +406,36 @@
           "page": 20
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Range filter from the slide",
+        "content": "The product table has a prod_price column. The range starts at 50 and ends at 100, including both limits."
+      }
     },
     {
       "id": "q28",
-      "question": "Which operator is used in the lecture’s string-pattern filter?",
+      "question": "Which WHERE condition matches the product name SMALL WIDGET exactly, using the syntax shown on the slide?",
       "options": [
         {
           "key": "A",
-          "text": "BETWEEN"
+          "text": "prod_name <> 'SMALL WIDGET'"
         },
         {
           "key": "B",
-          "text": "IN"
+          "text": "prod_name = SMALL WIDGET"
         },
         {
           "key": "C",
-          "text": "="
+          "text": "prod_name IS NULL"
         },
         {
           "key": "D",
-          "text": "LIKE"
+          "text": "prod_name = 'SMALL WIDGET'"
         }
       ],
       "answer": "D",
-      "explanation": "LIKE is used for string-pattern matching rather than exact equality or a numeric range.",
+      "explanation": "The slide uses = for an exact text match and encloses the text literal SMALL WIDGET in single quotes.",
       "references": [
         {
           "label": "Week 7 SQL, p. 24",
@@ -290,7 +443,23 @@
           "page": 24
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Product row shown in the lecture result",
+        "columns": [
+          "PROD_NAME",
+          "PROD_PRICE",
+          "PROD_COLOR"
+        ],
+        "rows": [
+          [
+            "SMALL WIDGET",
+            "99.9",
+            "RED"
+          ]
+        ]
+      }
     }
   ],
   "references": [

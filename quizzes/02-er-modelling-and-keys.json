@@ -38,7 +38,7 @@
     },
     {
       "id": "q7",
-      "question": "How does the slide classify an address broken down into street name, postcode and city?",
+      "question": "An Address is broken into street name, postcode and city. What type of attribute is Address?",
       "options": [
         {
           "key": "A",
@@ -102,7 +102,7 @@
     },
     {
       "id": "q10",
-      "question": "In the bookstore example, what are the allowed counts for orders per user and users per order, respectively?",
+      "question": "A bookstore user may have no orders or place several orders; every order has exactly one user. What are the allowed counts for orders per user and users per order, respectively?",
       "options": [
         {
           "key": "A",
@@ -134,7 +134,7 @@
     },
     {
       "id": "q15",
-      "question": "A circle and crow’s foot at the ORDER end of a User–Order relationship mean what?",
+      "question": "What do the circle and crow’s foot at the ORDERS end mean?",
       "options": [
         {
           "key": "A",
@@ -162,11 +162,16 @@
           "page": 3
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Bookstore ERD excerpt (text notation)",
+        "content": "USER ||────o{ ORDERS"
+      }
     },
     {
       "id": "q13",
-      "question": "Which columns must be unique together in the bookstore’s ORDER_ITEMS table?",
+      "question": "Which two columns form the composite primary key in the bookstore example?",
       "options": [
         {
           "key": "A",
@@ -194,7 +199,12 @@
           "page": 4
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Bookstore order-item details",
+        "content": "ORDER_ITEMS(Order_ID, Book_ID, Quantity, Price). Each row records one book on an order."
+      }
     },
     {
       "id": "q11",
@@ -230,7 +240,7 @@
     },
     {
       "id": "q14",
-      "question": "In the Mini Library, what does each loan record refer to?",
+      "question": "A library title may have multiple physical copies, each identified by its own Copy ID. What does one loan record track in the Mini Library rules?",
       "options": [
         {
           "key": "A",
@@ -262,7 +272,7 @@
     },
     {
       "id": "q12",
-      "question": "Orders contain menu items; items appear in many orders. Where does quantity ordered go?",
+      "question": "In the Mini Café, an order can list several menu items and the same item can appear on different orders. The café records the quantity ordered for each item on each order. Where does that quantity belong?",
       "options": [
         {
           "key": "A",

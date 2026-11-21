@@ -17,7 +17,7 @@ window.DEFAULT_QUIZ_DATA = {
       "items": [
         {
           "id": "q1",
-          "question": "Why does a designer create a data model before building a database?",
+          "question": "Before creating tables for a new database, why would the designer draw a data model?",
           "options": [
             {
               "key": "A",
@@ -49,7 +49,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q2",
-          "question": "In the lecture’s library book example, which is an attribute?",
+          "question": "Which option is an attribute of Library Book in the table?",
           "options": [
             {
               "key": "A",
@@ -77,11 +77,32 @@ window.DEFAULT_QUIZ_DATA = {
               "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
               "page": 7
             }
-          ]
+          ],
+          "context": {
+            "type": "table",
+            "title": "Library Book — illustrative rows using the slide’s attributes",
+            "columns": [
+              "ISBN number",
+              "Author",
+              "Category"
+            ],
+            "rows": [
+              [
+                "9780133970777",
+                "Elmasri and Navathe",
+                "Databases"
+              ],
+              [
+                "9780132350884",
+                "Robert C. Martin",
+                "Programming"
+              ]
+            ]
+          }
         },
         {
           "id": "q3",
-          "question": "Which relationship requires a junction table in the lecture’s examples?",
+          "question": "Each book can belong to several categories, and each category can contain several books. What relationship does the table represent?",
           "options": [
             {
               "key": "A",
@@ -101,7 +122,7 @@ window.DEFAULT_QUIZ_DATA = {
             }
           ],
           "answer": "A",
-          "explanation": "A pupil can attend multiple lessons and a lesson can have multiple pupils. A junction table records those associations.",
+          "explanation": "B01 occurs in two categories, and Computing contains two books. A junction table records one pairing per row in this many-to-many relationship.",
           "referenceLabel": "Review source",
           "references": [
             {
@@ -109,11 +130,33 @@ window.DEFAULT_QUIZ_DATA = {
               "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
               "page": 8
             }
-          ]
+          ],
+          "context": {
+            "type": "table",
+            "title": "Book–Category junction table — illustrative rows",
+            "columns": [
+              "Book ID",
+              "Category"
+            ],
+            "rows": [
+              [
+                "B01",
+                "Computing"
+              ],
+              [
+                "B01",
+                "Education"
+              ],
+              [
+                "B02",
+                "Computing"
+              ]
+            ]
+          }
         },
         {
           "id": "q4",
-          "question": "Which rule illustrates a data integrity constraint?",
+          "question": "A business is defining rules for its customer invoices. Which proposed rule protects data integrity rather than changing how invoices are displayed?",
           "options": [
             {
               "key": "A",
@@ -145,7 +188,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q5",
-          "question": "Which booking rule is stated in the travel agency example?",
+          "question": "A travel agency records customers, bookings, agents and packages. Which booking restriction matches the lecture’s business rules?",
           "options": [
             {
               "key": "A",
@@ -177,7 +220,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q6",
-          "question": "Which model shows entities and their relationships at a high level?",
+          "question": "A designer wants to show the main entities and their broad relationships without deciding how the database will store them. Which model is appropriate?",
           "options": [
             {
               "key": "A",
@@ -427,7 +470,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q44",
-          "question": "What do relational set operators manipulate?",
+          "question": "In the relational model, what do relational set operators manipulate?",
           "options": [
             {
               "key": "A",
@@ -505,7 +548,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q7",
-          "question": "How does the slide classify an address broken down into street name, postcode and city?",
+          "question": "An Address is broken into street name, postcode and city. What type of attribute is Address?",
           "options": [
             {
               "key": "A",
@@ -569,7 +612,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q10",
-          "question": "In the bookstore example, what are the allowed counts for orders per user and users per order, respectively?",
+          "question": "A bookstore user may have no orders or place several orders; every order has exactly one user. What are the allowed counts for orders per user and users per order, respectively?",
           "options": [
             {
               "key": "A",
@@ -601,7 +644,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q15",
-          "question": "A circle and crow’s foot at the ORDER end of a User–Order relationship mean what?",
+          "question": "What do the circle and crow’s foot at the ORDERS end mean?",
           "options": [
             {
               "key": "A",
@@ -629,11 +672,16 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 3
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "text",
+            "title": "Bookstore ERD excerpt (text notation)",
+            "content": "USER ||────o{ ORDERS"
+          }
         },
         {
           "id": "q13",
-          "question": "Which columns must be unique together in the bookstore’s ORDER_ITEMS table?",
+          "question": "Which two columns form the composite primary key in the bookstore example?",
           "options": [
             {
               "key": "A",
@@ -661,7 +709,12 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 4
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "text",
+            "title": "Bookstore order-item details",
+            "content": "ORDER_ITEMS(Order_ID, Book_ID, Quantity, Price). Each row records one book on an order."
+          }
         },
         {
           "id": "q11",
@@ -697,7 +750,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q14",
-          "question": "In the Mini Library, what does each loan record refer to?",
+          "question": "A library title may have multiple physical copies, each identified by its own Copy ID. What does one loan record track in the Mini Library rules?",
           "options": [
             {
               "key": "A",
@@ -729,7 +782,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q12",
-          "question": "Orders contain menu items; items appear in many orders. Where does quantity ordered go?",
+          "question": "In the Mini Café, an order can list several menu items and the same item can appear on different orders. The café records the quantity ordered for each item on each order. Where does that quantity belong?",
           "options": [
             {
               "key": "A",
@@ -801,7 +854,7 @@ window.DEFAULT_QUIZ_DATA = {
       "items": [
         {
           "id": "q16",
-          "question": "A student&#x27;s address is repeated across enrolments. Only one row is changed. What results?",
+          "question": "Alex moves to Sunway but only his Physics row is updated. What anomaly does this create?",
           "options": [
             {
               "key": "A",
@@ -829,11 +882,52 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 2
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Combined student–subject table — excerpt from the practical",
+            "columns": [
+              "SID",
+              "SName",
+              "SAddress",
+              "SubjectOpted",
+              "CreditValue"
+            ],
+            "rows": [
+              [
+                "401",
+                "Adam",
+                "Ipoh",
+                "Computer",
+                "3"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Physics",
+                "4"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Maths",
+                "3"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Biology",
+                "4"
+              ]
+            ]
+          }
         },
         {
           "id": "q17",
-          "question": "A subject cannot be added until a student enrols. What is this?",
+          "question": "The only way to record a new subject and its credit value in this design is to record a student enrolment. What anomaly is this?",
           "options": [
             {
               "key": "A",
@@ -861,11 +955,52 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 2
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Combined student–subject table — excerpt from the practical",
+            "columns": [
+              "SID",
+              "SName",
+              "SAddress",
+              "SubjectOpted",
+              "CreditValue"
+            ],
+            "rows": [
+              [
+                "401",
+                "Adam",
+                "Ipoh",
+                "Computer",
+                "3"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Physics",
+                "4"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Maths",
+                "3"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Biology",
+                "4"
+              ]
+            ]
+          }
         },
         {
           "id": "q18",
-          "question": "Deleting the last enrolment erases the only record of the subject’s credit value. What is this?",
+          "question": "Adam is the only student taking Computer. Deleting his enrolment also deletes the only record of its credit value. What anomaly is this?",
           "options": [
             {
               "key": "A",
@@ -893,11 +1028,52 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 2
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Combined student–subject table — excerpt from the practical",
+            "columns": [
+              "SID",
+              "SName",
+              "SAddress",
+              "SubjectOpted",
+              "CreditValue"
+            ],
+            "rows": [
+              [
+                "401",
+                "Adam",
+                "Ipoh",
+                "Computer",
+                "3"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Physics",
+                "4"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Maths",
+                "3"
+              ],
+              [
+                "402",
+                "Alex",
+                "Lumut",
+                "Biology",
+                "4"
+              ]
+            ]
+          }
         },
         {
           "id": "q19",
-          "question": "How does the Week 5 player-inventory example remove repeating items for 1NF?",
+          "question": "How does the lecture represent these inventory items in 1NF?",
           "options": [
             {
               "key": "A",
@@ -925,7 +1101,12 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 17
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "text",
+            "title": "Before 1NF — repeating inventory items",
+            "content": "Adam91 has 2 arrows and 4 rings. Suppose both item–quantity pairs are listed together in one player record."
+          }
         },
         {
           "id": "q20",
@@ -957,11 +1138,41 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 24
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Player inventory excerpt — PK (Player_Id, Item)",
+            "columns": [
+              "Player_Id",
+              "Item",
+              "Quantity",
+              "Player_rating"
+            ],
+            "rows": [
+              [
+                "Adam91",
+                "arrow",
+                "2",
+                "Intermediate"
+              ],
+              [
+                "Adam91",
+                "ring",
+                "4",
+                "Intermediate"
+              ],
+              [
+                "Famini_hensem",
+                "arrow",
+                "5",
+                "Advanced"
+              ]
+            ]
+          }
         },
         {
           "id": "q21",
-          "question": "Which dependency uses the entire player-inventory primary key to determine Quantity?",
+          "question": "Each row records a quantity for one player and one item. Which dependency uses the entire primary key to determine Quantity?",
           "options": [
             {
               "key": "A",
@@ -989,7 +1200,37 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 24
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Player inventory excerpt — PK (Player_Id, Item)",
+            "columns": [
+              "Player_Id",
+              "Item",
+              "Quantity",
+              "Player_rating"
+            ],
+            "rows": [
+              [
+                "Adam91",
+                "arrow",
+                "2",
+                "Intermediate"
+              ],
+              [
+                "Adam91",
+                "ring",
+                "4",
+                "Intermediate"
+              ],
+              [
+                "Famini_hensem",
+                "arrow",
+                "5",
+                "Advanced"
+              ]
+            ]
+          }
         },
         {
           "id": "q22",
@@ -1021,11 +1262,41 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 24
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Player inventory excerpt — PK (Player_Id, Item)",
+            "columns": [
+              "Player_Id",
+              "Item",
+              "Quantity",
+              "Player_rating"
+            ],
+            "rows": [
+              [
+                "Adam91",
+                "arrow",
+                "2",
+                "Intermediate"
+              ],
+              [
+                "Adam91",
+                "ring",
+                "4",
+                "Intermediate"
+              ],
+              [
+                "Famini_hensem",
+                "arrow",
+                "5",
+                "Advanced"
+              ]
+            ]
+          }
         },
         {
           "id": "q23",
-          "question": "Which design does the slide use to remove the partial dependency?",
+          "question": "Player_rating depends only on Player_Id, but Quantity depends on the entire key. Which design removes the partial dependency without losing either fact?",
           "options": [
             {
               "key": "A",
@@ -1053,11 +1324,41 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 25
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Player inventory excerpt — PK (Player_Id, Item)",
+            "columns": [
+              "Player_Id",
+              "Item",
+              "Quantity",
+              "Player_rating"
+            ],
+            "rows": [
+              [
+                "Adam91",
+                "arrow",
+                "2",
+                "Intermediate"
+              ],
+              [
+                "Adam91",
+                "ring",
+                "4",
+                "Intermediate"
+              ],
+              [
+                "Famini_hensem",
+                "arrow",
+                "5",
+                "Advanced"
+              ]
+            ]
+          }
         },
         {
           "id": "q24",
-          "question": "What kind of dependency does the slide show in Player_Id → Player_Skill_level → Player_rating?",
+          "question": "Player_Id determines Player_Skill_level, which determines Player_rating. What kind of dependency links Player_Id to Player_rating through Player_Skill_level?",
           "options": [
             {
               "key": "A",
@@ -1085,11 +1386,37 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 29
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Player table before decomposition",
+            "columns": [
+              "Player_Id",
+              "Player_Skill_level",
+              "Player_rating"
+            ],
+            "rows": [
+              [
+                "Adam91",
+                "4",
+                "Intermediate"
+              ],
+              [
+                "Jinny1921",
+                "3",
+                "Beginner"
+              ],
+              [
+                "Famini_hensem",
+                "8",
+                "Advanced"
+              ]
+            ]
+          }
         },
         {
           "id": "q25",
-          "question": "Which design does the slide use to remove the transitive dependency?",
+          "question": "Each player has one skill level, and each skill level determines the rating. Which design removes that transitive dependency while retaining the link?",
           "options": [
             {
               "key": "A",
@@ -1117,7 +1444,33 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 30
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Player table before decomposition",
+            "columns": [
+              "Player_Id",
+              "Player_Skill_level",
+              "Player_rating"
+            ],
+            "rows": [
+              [
+                "Adam91",
+                "4",
+                "Intermediate"
+              ],
+              [
+                "Jinny1921",
+                "3",
+                "Beginner"
+              ],
+              [
+                "Famini_hensem",
+                "8",
+                "Advanced"
+              ]
+            ]
+          }
         }
       ],
       "references": [
@@ -1189,11 +1542,16 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 9
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "text",
+            "title": "Join inputs",
+            "content": "student_enroll se (SID, SNAME, sportNO); sport sp (sportNO, sportNAME). Students are assigned sports by sport number."
+          }
         },
         {
           "id": "q30",
-          "question": "How many rows are shown in the Week 7 INNER JOIN result?",
+          "question": "How many rows does an INNER JOIN on student_enroll.sportNO = sport.sportNO return, without any additional filters?",
           "options": [
             {
               "key": "A",
@@ -1221,11 +1579,57 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 9
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Student assignments summarised from the Week 7 example",
+            "columns": [
+              "Student sportNO",
+              "Sport name",
+              "Students"
+            ],
+            "rows": [
+              [
+                "1",
+                "swimming",
+                "2"
+              ],
+              [
+                "2",
+                "badminton",
+                "3"
+              ],
+              [
+                "3",
+                "esport",
+                "3"
+              ],
+              [
+                "4",
+                "spelunking",
+                "0"
+              ],
+              [
+                "5",
+                "pool",
+                "0"
+              ],
+              [
+                "6",
+                "fencing",
+                "0"
+              ],
+              [
+                "NULL",
+                "No matching sport",
+                "2"
+              ]
+            ]
+          }
         },
         {
           "id": "q31",
-          "question": "In the Week 7 student–sport example, what does LEFT JOIN with students on the left return?",
+          "question": "What does student_enroll LEFT JOIN sport on sportNO return before any additional filtering?",
           "options": [
             {
               "key": "A",
@@ -1253,11 +1657,57 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 10
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Student assignments summarised from the Week 7 example",
+            "columns": [
+              "Student sportNO",
+              "Sport name",
+              "Students"
+            ],
+            "rows": [
+              [
+                "1",
+                "swimming",
+                "2"
+              ],
+              [
+                "2",
+                "badminton",
+                "3"
+              ],
+              [
+                "3",
+                "esport",
+                "3"
+              ],
+              [
+                "4",
+                "spelunking",
+                "0"
+              ],
+              [
+                "5",
+                "pool",
+                "0"
+              ],
+              [
+                "6",
+                "fencing",
+                "0"
+              ],
+              [
+                "NULL",
+                "No matching sport",
+                "2"
+              ]
+            ]
+          }
         },
         {
           "id": "q32",
-          "question": "In the Week 7 example, students are on the left and sports are on the right. Which join keeps all sports but excludes students without a match?",
+          "question": "Which join on sportNO keeps all sports, including sports with no students, but drops unassigned students when student_enroll is on the left?",
           "options": [
             {
               "key": "A",
@@ -1285,7 +1735,53 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 11
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Student assignments summarised from the Week 7 example",
+            "columns": [
+              "Student sportNO",
+              "Sport name",
+              "Students"
+            ],
+            "rows": [
+              [
+                "1",
+                "swimming",
+                "2"
+              ],
+              [
+                "2",
+                "badminton",
+                "3"
+              ],
+              [
+                "3",
+                "esport",
+                "3"
+              ],
+              [
+                "4",
+                "spelunking",
+                "0"
+              ],
+              [
+                "5",
+                "pool",
+                "0"
+              ],
+              [
+                "6",
+                "fencing",
+                "0"
+              ],
+              [
+                "NULL",
+                "No matching sport",
+                "2"
+              ]
+            ]
+          }
         },
         {
           "id": "q33",
@@ -1321,7 +1817,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q36",
-          "question": "What does SELECT * FROM products return in the slide example?",
+          "question": "What does this query retrieve?",
           "options": [
             {
               "key": "A",
@@ -1349,11 +1845,16 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 14
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "text",
+            "title": "Query from the slide",
+            "content": "SELECT * FROM products;"
+          }
         },
         {
           "id": "q34",
-          "question": "Which filter selects products priced below 2.00, as in the lecture?",
+          "question": "The products table has a price column. Which filter retrieves rows priced strictly below 2.00?",
           "options": [
             {
               "key": "A",
@@ -1385,7 +1886,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q27",
-          "question": "Which operator does the lecture use for a range filter that includes both endpoints?",
+          "question": "Which SQL operator can replace prod_price >= 50 AND prod_price <= 100?",
           "options": [
             {
               "key": "A",
@@ -1413,31 +1914,36 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 20
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "text",
+            "title": "Range filter from the slide",
+            "content": "The product table has a prod_price column. The range starts at 50 and ends at 100, including both limits."
+          }
         },
         {
           "id": "q28",
-          "question": "Which operator is used in the lecture’s string-pattern filter?",
+          "question": "Which WHERE condition matches the product name SMALL WIDGET exactly, using the syntax shown on the slide?",
           "options": [
             {
               "key": "A",
-              "text": "BETWEEN"
+              "text": "prod_name <> 'SMALL WIDGET'"
             },
             {
               "key": "B",
-              "text": "IN"
+              "text": "prod_name = SMALL WIDGET"
             },
             {
               "key": "C",
-              "text": "="
+              "text": "prod_name IS NULL"
             },
             {
               "key": "D",
-              "text": "LIKE"
+              "text": "prod_name = 'SMALL WIDGET'"
             }
           ],
           "answer": "D",
-          "explanation": "LIKE is used for string-pattern matching rather than exact equality or a numeric range.",
+          "explanation": "The slide uses = for an exact text match and encloses the text literal SMALL WIDGET in single quotes.",
           "references": [
             {
               "label": "Week 7 SQL, p. 24",
@@ -1445,7 +1951,23 @@ window.DEFAULT_QUIZ_DATA = {
               "page": 24
             }
           ],
-          "referenceLabel": "Review source"
+          "referenceLabel": "Review source",
+          "context": {
+            "type": "table",
+            "title": "Product row shown in the lecture result",
+            "columns": [
+              "PROD_NAME",
+              "PROD_PRICE",
+              "PROD_COLOR"
+            ],
+            "rows": [
+              [
+                "SMALL WIDGET",
+                "99.9",
+                "RED"
+              ]
+            ]
+          }
         }
       ],
       "references": [

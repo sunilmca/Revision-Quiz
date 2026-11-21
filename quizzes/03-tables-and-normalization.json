@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "q16",
-      "question": "A student&#x27;s address is repeated across enrolments. Only one row is changed. What results?",
+      "question": "Alex moves to Sunway but only his Physics row is updated. What anomaly does this create?",
       "options": [
         {
           "key": "A",
@@ -34,11 +34,52 @@
           "page": 2
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Combined student–subject table — excerpt from the practical",
+        "columns": [
+          "SID",
+          "SName",
+          "SAddress",
+          "SubjectOpted",
+          "CreditValue"
+        ],
+        "rows": [
+          [
+            "401",
+            "Adam",
+            "Ipoh",
+            "Computer",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Physics",
+            "4"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Maths",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Biology",
+            "4"
+          ]
+        ]
+      }
     },
     {
       "id": "q17",
-      "question": "A subject cannot be added until a student enrols. What is this?",
+      "question": "The only way to record a new subject and its credit value in this design is to record a student enrolment. What anomaly is this?",
       "options": [
         {
           "key": "A",
@@ -66,11 +107,52 @@
           "page": 2
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Combined student–subject table — excerpt from the practical",
+        "columns": [
+          "SID",
+          "SName",
+          "SAddress",
+          "SubjectOpted",
+          "CreditValue"
+        ],
+        "rows": [
+          [
+            "401",
+            "Adam",
+            "Ipoh",
+            "Computer",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Physics",
+            "4"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Maths",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Biology",
+            "4"
+          ]
+        ]
+      }
     },
     {
       "id": "q18",
-      "question": "Deleting the last enrolment erases the only record of the subject’s credit value. What is this?",
+      "question": "Adam is the only student taking Computer. Deleting his enrolment also deletes the only record of its credit value. What anomaly is this?",
       "options": [
         {
           "key": "A",
@@ -98,11 +180,52 @@
           "page": 2
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Combined student–subject table — excerpt from the practical",
+        "columns": [
+          "SID",
+          "SName",
+          "SAddress",
+          "SubjectOpted",
+          "CreditValue"
+        ],
+        "rows": [
+          [
+            "401",
+            "Adam",
+            "Ipoh",
+            "Computer",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Physics",
+            "4"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Maths",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Biology",
+            "4"
+          ]
+        ]
+      }
     },
     {
       "id": "q19",
-      "question": "How does the Week 5 player-inventory example remove repeating items for 1NF?",
+      "question": "How does the lecture represent these inventory items in 1NF?",
       "options": [
         {
           "key": "A",
@@ -130,7 +253,12 @@
           "page": 17
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Before 1NF — repeating inventory items",
+        "content": "Adam91 has 2 arrows and 4 rings. Suppose both item–quantity pairs are listed together in one player record."
+      }
     },
     {
       "id": "q20",
@@ -162,11 +290,41 @@
           "page": 24
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player inventory excerpt — PK (Player_Id, Item)",
+        "columns": [
+          "Player_Id",
+          "Item",
+          "Quantity",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "arrow",
+            "2",
+            "Intermediate"
+          ],
+          [
+            "Adam91",
+            "ring",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Famini_hensem",
+            "arrow",
+            "5",
+            "Advanced"
+          ]
+        ]
+      }
     },
     {
       "id": "q21",
-      "question": "Which dependency uses the entire player-inventory primary key to determine Quantity?",
+      "question": "Each row records a quantity for one player and one item. Which dependency uses the entire primary key to determine Quantity?",
       "options": [
         {
           "key": "A",
@@ -194,7 +352,37 @@
           "page": 24
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player inventory excerpt — PK (Player_Id, Item)",
+        "columns": [
+          "Player_Id",
+          "Item",
+          "Quantity",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "arrow",
+            "2",
+            "Intermediate"
+          ],
+          [
+            "Adam91",
+            "ring",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Famini_hensem",
+            "arrow",
+            "5",
+            "Advanced"
+          ]
+        ]
+      }
     },
     {
       "id": "q22",
@@ -226,11 +414,41 @@
           "page": 24
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player inventory excerpt — PK (Player_Id, Item)",
+        "columns": [
+          "Player_Id",
+          "Item",
+          "Quantity",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "arrow",
+            "2",
+            "Intermediate"
+          ],
+          [
+            "Adam91",
+            "ring",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Famini_hensem",
+            "arrow",
+            "5",
+            "Advanced"
+          ]
+        ]
+      }
     },
     {
       "id": "q23",
-      "question": "Which design does the slide use to remove the partial dependency?",
+      "question": "Player_rating depends only on Player_Id, but Quantity depends on the entire key. Which design removes the partial dependency without losing either fact?",
       "options": [
         {
           "key": "A",
@@ -258,11 +476,41 @@
           "page": 25
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player inventory excerpt — PK (Player_Id, Item)",
+        "columns": [
+          "Player_Id",
+          "Item",
+          "Quantity",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "arrow",
+            "2",
+            "Intermediate"
+          ],
+          [
+            "Adam91",
+            "ring",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Famini_hensem",
+            "arrow",
+            "5",
+            "Advanced"
+          ]
+        ]
+      }
     },
     {
       "id": "q24",
-      "question": "What kind of dependency does the slide show in Player_Id → Player_Skill_level → Player_rating?",
+      "question": "Player_Id determines Player_Skill_level, which determines Player_rating. What kind of dependency links Player_Id to Player_rating through Player_Skill_level?",
       "options": [
         {
           "key": "A",
@@ -290,11 +538,37 @@
           "page": 29
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player table before decomposition",
+        "columns": [
+          "Player_Id",
+          "Player_Skill_level",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Jinny1921",
+            "3",
+            "Beginner"
+          ],
+          [
+            "Famini_hensem",
+            "8",
+            "Advanced"
+          ]
+        ]
+      }
     },
     {
       "id": "q25",
-      "question": "Which design does the slide use to remove the transitive dependency?",
+      "question": "Each player has one skill level, and each skill level determines the rating. Which design removes that transitive dependency while retaining the link?",
       "options": [
         {
           "key": "A",
@@ -322,7 +596,33 @@
           "page": 30
         }
       ],
-      "referenceLabel": "Review source"
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player table before decomposition",
+        "columns": [
+          "Player_Id",
+          "Player_Skill_level",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Jinny1921",
+            "3",
+            "Beginner"
+          ],
+          [
+            "Famini_hensem",
+            "8",
+            "Advanced"
+          ]
+        ]
+      }
     }
   ],
   "references": [

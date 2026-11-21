@@ -1366,8 +1366,8 @@
             });
 
             fs.innerHTML = `
-                <legend class="question-prompt"><span class="q-num">${displayQuestionNumber}.</span> ${q.question}</legend>
                 ${renderQuestionContext(q.context)}
+                <legend class="question-prompt"><span class="q-num">${displayQuestionNumber}.</span> ${q.question}</legend>
                 <div class="options-container" role="radiogroup">
                     ${optionsHtml}
                 </div>
