@@ -524,6 +524,15 @@
             line-height: 1.4;
         }
 
+        .feedback-summary,
+        .feedback-explanation {
+            display: block;
+        }
+
+        .feedback-explanation {
+            margin-top: 2px;
+        }
+
         .feedback-correct {
             background: var(--correct-bg);
             border: 1px solid var(--correct-border);
@@ -1144,9 +1153,11 @@
         }
 
         function renderFeedbackContent(isCorrect, correctVal, correctText, explanation, explanationImage, explanationImageAlt) {
-            const message = isCorrect
-                ? `<strong>Correct.</strong> ${explanation}`
-                : `<strong>Incorrect.</strong> Correct answer: <strong>${correctVal}. ${correctText}</strong>. ${explanation}`;
+            const summary = isCorrect
+                ? `<strong>Correct.</strong>`
+                : `<strong>Incorrect.</strong> Correct answer: <strong>${correctVal}. ${correctText}</strong>.`;
+            const message = `<span class="feedback-summary">${summary}</span>`
+                + (explanation ? `<span class="feedback-explanation"><strong>Explanation:</strong> ${explanation}</span>` : '');
 
             return `${message}${renderExplanationImage(explanationImage, explanationImageAlt)}`;
         }
