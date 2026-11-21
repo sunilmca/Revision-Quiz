@@ -1,0 +1,13 @@
+{
+  "quizId": "seg1201-quiz-01",
+  "title": "Revision Quiz",
+  "course": "Database Systems",
+  "description": "Choose one answer. Your first choice is scored immediately with instant red/green visual feedback, the correct answer revealed, and an in-depth rationale.",
+  "sections": [
+    { "file": "quizzes/01-relational-model.json" },
+    { "file": "quizzes/02-er-modelling-and-keys.json" },
+    { "file": "quizzes/03-tables-and-normalization.json" },
+    { "file": "quizzes/04-oracle-sql.json" },
+    { "file": "quizzes/05-mini-library-erd.json" }
+  ]
+}

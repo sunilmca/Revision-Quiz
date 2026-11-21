@@ -1,0 +1,347 @@
+{
+  "id": "sec-3",
+  "code": "3",
+  "title": "3. Database tables and normalization",
+  "description": "Modification anomalies (insertion, deletion, update), 1NF/2NF/3NF dependencies, candidate keys, and lossless decomposition.",
+  "items": [
+    {
+      "id": "q16",
+      "question": "A student&#x27;s address is repeated across enrolments. Only one row is changed. What results?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Insertion anomaly"
+        },
+        {
+          "key": "B",
+          "text": "Deletion anomaly"
+        },
+        {
+          "key": "C",
+          "text": "Entity integrity violation"
+        },
+        {
+          "key": "D",
+          "text": "Update anomaly"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Different rows now disagree about the same fact.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "question": "A subject cannot be added until a student enrols. What is this?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Insertion anomaly"
+        },
+        {
+          "key": "B",
+          "text": "Update anomaly"
+        },
+        {
+          "key": "C",
+          "text": "Deletion anomaly"
+        },
+        {
+          "key": "D",
+          "text": "Transitive dependency"
+        }
+      ],
+      "answer": "A",
+      "explanation": "An independent fact cannot be added by itself.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "question": "Deleting the last enrolment erases the only record of the subject’s credit value. What is this?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Insertion anomaly"
+        },
+        {
+          "key": "B",
+          "text": "Update anomaly"
+        },
+        {
+          "key": "C",
+          "text": "Deletion anomaly"
+        },
+        {
+          "key": "D",
+          "text": "Sorting problem"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Deleting one fact unintentionally removes another.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "q19",
+      "question": "Several subject codes are stored in a single cell in a 0NF table. Which change addresses this for 1NF?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Use a comma-separated string"
+        },
+        {
+          "key": "B",
+          "text": "One row per student–subject pair, with a key"
+        },
+        {
+          "key": "C",
+          "text": "Add Subject1, Subject2, Subject3"
+        },
+        {
+          "key": "D",
+          "text": "Sort the codes"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Separate the repeating values into individual rows.",
+      "references": [
+        {
+          "label": "Week 4 normalization lecture",
+          "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf"
+        }
+      ]
+    },
+    {
+      "type": "scenario",
+      "id": "scenario-enrolment",
+      "title": "Reference Scenario for Q20–23",
+      "content": "ENROLMENT(SID, SubjectID, SName, SubjectDescription, Grade) contains atomic values. Its only candidate key is (SID, SubjectID). Assume SID → SName, SubjectID → SubjectDescription, and (SID, SubjectID) → Grade. Neither key component alone determines Grade."
+    },
+    {
+      "id": "q20",
+      "question": "What does SubjectID → SubjectDescription mean?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Description uniquely identifies ID"
+        },
+        {
+          "key": "B",
+          "text": "Description varies by student"
+        },
+        {
+          "key": "C",
+          "text": "Descriptions must be sorted"
+        },
+        {
+          "key": "D",
+          "text": "Same ID implies same description"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The dependency runs from ID to description, not necessarily the reverse.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        },
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
+    },
+    {
+      "id": "q21",
+      "question": "Which is a full dependency on the composite key?",
+      "options": [
+        {
+          "key": "A",
+          "text": "SID → SName"
+        },
+        {
+          "key": "B",
+          "text": "SubjectID → SubjectDescription"
+        },
+        {
+          "key": "C",
+          "text": "(SID, SubjectID) → Grade"
+        },
+        {
+          "key": "D",
+          "text": "(SID, SubjectID) → SName"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Grade requires the whole key; SName needs only SID.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        },
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
+    },
+    {
+      "id": "q22",
+      "question": "What is ENROLMENT’s highest normal form?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1NF"
+        },
+        {
+          "key": "B",
+          "text": "2NF"
+        },
+        {
+          "key": "C",
+          "text": "3NF"
+        },
+        {
+          "key": "D",
+          "text": "0NF"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Values are atomic, but partial dependencies prevent 2NF.",
+      "references": [
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
+    },
+    {
+      "id": "q23",
+      "question": "Which decomposition preserves the details and removes the partial dependencies?",
+      "options": [
+        {
+          "key": "A",
+          "text": "STUDENT with Grade; SUBJECT"
+        },
+        {
+          "key": "B",
+          "text": "STUDENT and SUBJECT with their own descriptions; ENROLMENT with both IDs and Grade"
+        },
+        {
+          "key": "C",
+          "text": "STUDENT; SUBJECT with Grade"
+        },
+        {
+          "key": "D",
+          "text": "ENROLMENT with IDs and Grade only"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Store facts with their determinants and preserve Grade at the pair level.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        },
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
+    },
+    {
+      "id": "q24",
+      "question": "EMPLOYEE has only candidate key EmpID. EmpID → DeptID and DeptID → DeptName. What prevents 3NF?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Atomic value"
+        },
+        {
+          "key": "B",
+          "text": "Repeating group"
+        },
+        {
+          "key": "C",
+          "text": "Partial dependency"
+        },
+        {
+          "key": "D",
+          "text": "Transitive dependency"
+        }
+      ],
+      "answer": "D",
+      "explanation": "EmpID determines DeptName indirectly via DeptID.",
+      "references": [
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
+    },
+    {
+      "id": "q25",
+      "question": "Which design fixes Q24 while retaining the department link?",
+      "options": [
+        {
+          "key": "A",
+          "text": "EMPLOYEE(EmpID, EmpName, DeptID) and DEPARTMENT(DeptID, DeptName)"
+        },
+        {
+          "key": "B",
+          "text": "EMPLOYEE(EmpID, EmpName, DeptName) only"
+        },
+        {
+          "key": "C",
+          "text": "Remove DeptID from EMPLOYEE and keep DEPARTMENT separately"
+        },
+        {
+          "key": "D",
+          "text": "Keep the original and make DeptName unique"
+        }
+      ],
+      "answer": "A",
+      "explanation": "DeptID links to a single stored department name.",
+      "references": [
+        {
+          "label": "Week 5 normalization lecture",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Week 4 normalization lecture",
+      "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf"
+    },
+    {
+      "label": "Week 5 normalization lecture",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf"
+    },
+    {
+      "label": "Anomalies practical, p. 2",
+      "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+      "page": 2
+    }
+  ]
+}

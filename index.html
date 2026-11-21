@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Revision Quiz</title>
-    <!-- Preloaded default quiz data for immediate zero-CORS offline execution -->
+    <!-- Offline fallback data for direct file:// execution -->
     <script src="quiz_data.js"></script>
     <style>
         :root {
@@ -80,6 +80,7 @@
 
         /* Single-Row Horizontal Arrangement */
         .header-inner {
+            position: relative;
             max-width: 820px;
             margin: 0 auto;
             padding: 7px 14px;
@@ -117,13 +118,21 @@
             box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
         }
 
+        .header-action__icon {
+            width: 14px;
+            height: 14px;
+            flex: 0 0 14px;
+        }
+
         /* Compact progress summary */
         .header-stats-group {
             display: flex;
             align-items: center;
             gap: 6px;
             flex-shrink: 0;
-            margin-left: auto;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .stat-pill {
@@ -164,88 +173,53 @@
             align-items: center;
             gap: 5px;
             flex-shrink: 0;
+            margin-left: auto;
         }
 
-        .header-actions .btn {
-            min-height: 30px;
-            padding: 4px 8px;
-            border-radius: 7px;
-        }
-
-        /* 7. Vertical 3-Dots More Menu */
-        .more-menu-wrap {
-            position: relative;
+        /* Shared compact control for every actionable header item. */
+        .header-action {
             display: inline-flex;
-            flex-shrink: 0;
-        }
-
-        .btn-more-dots {
-            display: flex;
             align-items: center;
             justify-content: center;
-            width: 30px;
-            height: 30px;
-            border-radius: 7px;
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: all 0.15s ease;
-            padding: 0;
-        }
-
-        .btn-more-dots:hover,
-        .btn-more-dots.active {
-            background: #f1f5f9;
-            color: var(--text-main);
-            border-color: var(--border);
-        }
-
-        .more-dropdown-menu {
-            position: absolute;
-            right: 0;
-            top: 100%;
-            margin-top: 5px;
+            gap: 5px;
+            min-height: 30px;
+            padding: 4px 9px;
+            border: 1px solid #d7dee8;
+            border-radius: 8px;
             background: #ffffff;
-            border: 1px solid #cbd5e1;
-            border-radius: 7px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
-            min-width: 155px;
-            padding: 4px 0;
-            z-index: 200;
-            animation: menuFadeIn 0.15s ease-out;
-        }
-
-        @keyframes menuFadeIn {
-            from { opacity: 0; transform: translateY(-4px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .menu-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-            padding: 7px 12px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--text-body);
-            background: none;
-            border: none;
+            color: var(--text-muted);
+            font: inherit;
+            font-size: 0.75rem;
+            font-weight: 650;
+            line-height: 1;
             cursor: pointer;
-            text-align: left;
-            transition: background 0.12s;
-            user-select: none;
             white-space: nowrap;
+            transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
         }
 
-        .menu-item:hover {
-            background: #f1f5f9;
+        .header-action:hover {
+            background: #f8fafc;
+            border-color: #b9c5d5;
             color: var(--text-main);
         }
 
-        .file-menu-label {
-            margin: 0;
+        .header-action:focus-visible {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+        }
+
+        .header-action--primary {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+        }
+
+        .header-action--primary:hover {
+            background: var(--primary-hover);
+            border-color: var(--primary-hover);
+            color: #ffffff;
         }
 
         /* Buttons */
@@ -366,6 +340,44 @@
             padding: 1px 4px;
             border-radius: 3px;
             font-size: 0.85em;
+        }
+
+        .question-context {
+            margin: 0 0 10px;
+            padding: 8px 10px;
+            border: 1px solid #cbd5e1;
+            border-left: 3px solid #64748b;
+            border-radius: 6px;
+            background: #f8fafc;
+            color: #334155;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .question-context__title {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-main);
+            font-weight: 700;
+        }
+
+        .question-context__table {
+            border-collapse: separate;
+            border-spacing: 4px;
+            font-size: 0.78rem;
+        }
+
+        .question-context__table th {
+            color: #334155;
+            font-weight: 700;
+            text-align: left;
+        }
+
+        .question-context__table td {
+            padding: 1px 4px;
+            border-radius: 3px;
+            background: #e2e8f0;
+            color: #334155;
         }
 
         /* Question Card */
@@ -554,6 +566,42 @@
             line-height: 1.4;
         }
 
+        .feedback-summary,
+        .feedback-explanation {
+            display: block;
+        }
+
+        .feedback-explanation {
+            margin-top: 2px;
+        }
+
+        .section-review-links,
+        .question-review-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 10px;
+            font-size: 0.75rem;
+        }
+
+        .section-review-links {
+            margin: -2px 0 10px;
+        }
+
+        .question-review-links {
+            margin-top: 6px;
+            padding-top: 5px;
+            border-top: 1px solid rgba(148, 163, 184, 0.35);
+        }
+
+        .review-link {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .review-link:hover {
+            text-decoration: underline;
+        }
+
         .feedback-correct {
             background: var(--correct-bg);
             border: 1px solid var(--correct-border);
@@ -568,6 +616,46 @@
 
         .feedback strong {
             font-weight: 700;
+        }
+
+        .feedback-summary {
+            display: block;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .feedback-summary::after {
+            content: '＋';
+            float: right;
+            font-size: 1rem;
+            line-height: 1;
+        }
+
+        .feedback.is-expanded .feedback-summary::after {
+            content: '−';
+        }
+
+        .feedback-details {
+            display: none;
+        }
+
+        .feedback.is-expanded .feedback-details {
+            display: block;
+        }
+
+        .explanation-image-wrap {
+            margin-top: 10px;
+        }
+
+        .explanation-image {
+            display: block;
+            width: 100%;
+            max-width: 560px;
+            max-height: 360px;
+            object-fit: contain;
+            border: 1px solid currentColor;
+            border-radius: 7px;
+            background: #ffffff;
         }
 
         /* Section E - Concise ERD */
@@ -778,7 +866,8 @@
             .header-actions {
                 gap: 3px;
             }
-            .header-actions .btn {
+            .header-action {
+                min-height: 28px;
                 padding: 3px 6px;
                 font-size: 0.7rem;
             }
@@ -808,6 +897,8 @@
                 <!-- Populated dynamically from JSON -->
             </select>
 
+            <input type="file" id="json-file-input" accept=".json" style="display:none;">
+
             <!-- 2, 3, 4. Stat Pills: [5 / 36] [2 correct] [40%] -->
             <div class="header-stats-group">
                 <span class="stat-pill stat-total" id="hud-answered" title="Questions Answered">0 / 36</span>
@@ -816,31 +907,16 @@
             </div>
 
             <div class="header-actions" aria-label="Quiz actions">
-                <button type="button" class="btn btn-primary" id="btn-jump-next" title="Go to the next unanswered question">
+                <button type="button" class="header-action header-action--primary" id="btn-jump-next" title="Go to the next unanswered question">
+                    <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
                     Next
                 </button>
-                <button type="button" class="btn btn-ghost" id="btn-restart" title="Restart quiz">
+                <button type="button" class="header-action" id="btn-restart" title="Restart quiz">
+                    <svg class="header-action__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 11a8 8 0 1 0 2 5.3M20 4v7h-7"/></svg>
                     Restart
                 </button>
             </div>
 
-            <!-- 7. More Menu in Vertical 3 Dots (⋮) -->
-            <div class="more-menu-wrap" id="more-menu-wrap">
-                <button type="button" class="btn-more-dots" id="btn-more-menu" title="More options" aria-label="More options" aria-haspopup="true" aria-expanded="false">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <circle cx="12" cy="5" r="2.2"/>
-                        <circle cx="12" cy="12" r="2.2"/>
-                        <circle cx="12" cy="19" r="2.2"/>
-                    </svg>
-                </button>
-                <div class="more-dropdown-menu" id="more-dropdown-menu" style="display: none;">
-                    <label class="menu-item file-menu-label" id="menu-btn-load-json">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
-                        Load JSON
-                        <input type="file" id="json-file-input" accept=".json" style="display:none;">
-                    </label>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -878,9 +954,9 @@
         // State management
         const state = {
             quiz: null,
-            userAnswers: {},     // { questionId: { chosen: "A", isCorrect: true, correctVal: "B", explanation: "..." } }
+            userAnswers: {},     // { questionId: { chosen, isCorrect, correctVal, explanation, explanationImage } }
             activeConcept: "all", // "all" or section.id
-            keyMap: {}           // { questionId: { answer: "B", explanation: "...", sectionId: "..." } }
+            keyMap: {}           // { questionId: { answer, explanation, explanationImage, explanationImageAlt, sectionId } }
         };
 
         // DOM elements
@@ -891,9 +967,6 @@
         const hudAccuracy = document.getElementById('hud-accuracy');
         const hudProgressFill = document.getElementById('hud-progress-fill');
         const scoreLegacy = document.getElementById('score');
-        const btnMoreMenu = document.getElementById('btn-more-menu');
-        const moreDropdownMenu = document.getElementById('more-dropdown-menu');
-        const moreMenuWrap = document.getElementById('more-menu-wrap');
         const btnJumpNext = document.getElementById('btn-jump-next');
         const btnRestart = document.getElementById('btn-restart');
         const jsonFileInput = document.getElementById('json-file-input');
@@ -904,48 +977,50 @@
         const resultsCard = document.getElementById('quiz-results-card');
         const toastBanner = document.getElementById('toast-banner');
 
+        function referenceLinks(references, prefix = 'Review source') {
+            return (references || []).map(reference => {
+                if (!reference?.file || !reference?.label) return '';
+                try {
+                    const url = new URL(reference.file, document.baseURI);
+                    if (!['http:', 'https:', 'file:'].includes(url.protocol)) return '';
+                    if (reference.page) url.hash = `page=${reference.page}`;
+                    return `<a class="review-link" href="${escapeHtml(url.href)}" target="_blank" rel="noopener">${escapeHtml(prefix)}: ${escapeHtml(reference.label)}</a>`;
+                } catch {
+                    return '';
+                }
+            }).join(' ');
+        }
+
         function showToast(message) {
             toastBanner.textContent = message;
             toastBanner.classList.add('show');
             setTimeout(() => toastBanner.classList.remove('show'), 3000);
         }
 
-        // More Menu Dropdown Toggle
-        btnMoreMenu.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const isOpen = moreDropdownMenu.style.display === 'block';
-            moreDropdownMenu.style.display = isOpen ? 'none' : 'block';
-            btnMoreMenu.classList.toggle('active', !isOpen);
-            btnMoreMenu.setAttribute('aria-expanded', !isOpen);
-        });
-
-        function closeMoreMenu() {
-            moreDropdownMenu.style.display = 'none';
-            btnMoreMenu.classList.remove('active');
-            btnMoreMenu.setAttribute('aria-expanded', 'false');
-        }
-
-        document.addEventListener('click', (e) => {
-            if (!moreMenuWrap.contains(e.target)) {
-                closeMoreMenu();
-            }
-        });
-
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
-                closeMoreMenu();
                 resetModal.style.display = 'none';
             }
         });
 
         // Initialize quiz from JSON
-        function loadQuizData(data) {
+        function loadQuizData(data, append = false) {
             if (!data || !data.sections || !Array.isArray(data.sections)) {
                 alert('Invalid quiz JSON format: Missing sections array.');
                 return;
             }
 
-            state.quiz = data;
+            // Loading a file adds its sections to the current quiz. The initial
+            // built-in quiz still replaces the empty state as before.
+            if (append && state.quiz && Array.isArray(state.quiz.sections)) {
+                state.quiz = {
+                    ...state.quiz,
+                    title: state.quiz.title || data.title,
+                    sections: [...state.quiz.sections, ...data.sections]
+                };
+            } else {
+                state.quiz = data;
+            }
             state.userAnswers = {};
             state.keyMap = {};
 
@@ -957,6 +1032,10 @@
                             state.keyMap[item.id] = {
                                 answer: item.answer,
                                 explanation: item.explanation || '',
+                                explanationImage: item.explanationImage || '',
+                                explanationImageAlt: item.explanationImageAlt || '',
+                                references: item.references || [],
+                                referenceLabel: item.referenceLabel || 'Review source',
                                 sectionId: sec.id
                             };
                         }
@@ -1014,6 +1093,11 @@
                 conceptSelect.appendChild(opt);
             });
 
+            const loadOpt = document.createElement('option');
+            loadOpt.value = '__load_json__';
+            loadOpt.textContent = '📁 Load JSON…';
+            conceptSelect.appendChild(loadOpt);
+
             conceptSelect.value = state.activeConcept;
             updateConceptTooltip();
         }
@@ -1027,6 +1111,7 @@
         // Render Quiz HTML from JSON
         function renderQuiz() {
             quizContent.innerHTML = '';
+            let displayQuestionNumber = 0;
 
             state.quiz.sections.forEach(sec => {
                 const secEl = document.createElement('section');
@@ -1047,6 +1132,12 @@
                     <span class="section-count">${qCount > 0 ? `${qCount} Questions` : 'Practical'}</span>
                 `;
                 secEl.appendChild(headEl);
+                const sectionReview = document.createElement('div');
+                sectionReview.className = 'section-review-links';
+                // Keep one concise section-level review link; question feedback
+                // carries the more specific secondary references.
+                sectionReview.innerHTML = referenceLinks(sec.references?.slice(0, 1), 'Review this topic');
+                secEl.appendChild(sectionReview);
 
                 // Section Scenario if at top of section
                 if (sec.scenario && !sec.items?.some(it => it.type === 'scenario')) {
@@ -1066,7 +1157,7 @@
                             scEl.innerHTML = `<strong>${item.title}:</strong> ${formatCodeTokens(item.content)}`;
                             secEl.appendChild(scEl);
                         } else if (item.question) {
-                            const fsEl = renderQuestionCard(item, sec.id);
+                            const fsEl = renderQuestionCard(item, sec.id, ++displayQuestionNumber);
                             secEl.appendChild(fsEl);
                         }
                     });
@@ -1093,7 +1184,7 @@
         }
 
         // Render Question Card
-        function renderQuestionCard(q, sectionId) {
+        function renderQuestionCard(q, sectionId, displayQuestionNumber) {
             const fs = document.createElement('fieldset');
             fs.className = 'question-card';
             fs.id = q.id;
@@ -1138,24 +1229,76 @@
             });
 
             fs.innerHTML = `
-                <legend class="question-prompt"><span class="q-num">${q.num}.</span> ${q.question}</legend>
+                <legend class="question-prompt"><span class="q-num">${displayQuestionNumber}.</span> ${q.question}</legend>
+                ${renderQuestionContext(q.context)}
                 <div class="options-container" role="radiogroup">
                     ${optionsHtml}
                 </div>
                 <div class="feedback ${existing ? (existing.isCorrect ? 'feedback-correct' : 'feedback-incorrect') : ''}" aria-live="polite">
-                    ${existing ? renderFeedbackContent(existing.isCorrect, existing.correctVal, existing.correctText, existing.explanation) : ''}
+                            ${existing ? renderFeedbackContent(existing.isCorrect, existing.correctVal, existing.correctText, existing.explanation, existing.explanationImage, existing.explanationImageAlt, existing.references, existing.referenceLabel) : ''}
                 </div>
             `;
 
             return fs;
         }
 
-        function renderFeedbackContent(isCorrect, correctVal, correctText, explanation) {
-            if (isCorrect) {
-                return `<strong>Correct.</strong> ${explanation}`;
-            } else {
-                return `<strong>Incorrect.</strong> Correct answer: <strong>${correctVal}. ${correctText}</strong>. ${explanation}`;
+        function renderQuestionContext(context) {
+            if (!context?.type || !context?.title) return '';
+
+            if (context.type === 'table' && Array.isArray(context.columns) && Array.isArray(context.rows)) {
+                const headings = context.columns.map(column => `<th scope="col">${escapeHtml(column)}</th>`).join('');
+                const rows = context.rows.map(row => {
+                    const cells = row.map(cell => `<td>${escapeHtml(cell)}</td>`).join('');
+                    return `<tr>${cells}</tr>`;
+                }).join('');
+                return `<aside class="question-context"><strong class="question-context__title">${escapeHtml(context.title)}</strong><table class="question-context__table"><thead><tr>${headings}</tr></thead><tbody>${rows}</tbody></table></aside>`;
             }
+
+            if (context.type === 'text' && context.content) {
+                return `<aside class="question-context"><strong class="question-context__title">${escapeHtml(context.title)}</strong>${escapeHtml(context.content)}</aside>`;
+            }
+
+            return '';
+        }
+
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>'"]/g, char => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            })[char]);
+        }
+
+        function getSafeExplanationImageSrc(source) {
+            if (typeof source !== 'string' || !source.trim()) return '';
+
+            try {
+                const url = new URL(source.trim(), document.baseURI);
+                return ['http:', 'https:', 'file:'].includes(url.protocol) ? url.href : '';
+            } catch {
+                return '';
+            }
+        }
+
+        function renderExplanationImage(source, alt) {
+            const src = getSafeExplanationImageSrc(source);
+            if (!src) return '';
+
+            const imageAlt = alt || 'Explanation illustration';
+            return `<div class="explanation-image-wrap"><img class="explanation-image" src="${escapeHtml(src)}" alt="${escapeHtml(imageAlt)}" loading="lazy"></div>`;
+        }
+
+        function renderFeedbackContent(isCorrect, correctVal, correctText, explanation, explanationImage, explanationImageAlt, references, referenceLabel) {
+            const summary = isCorrect
+                ? `<strong>Correct.</strong>`
+                : `<strong>Incorrect.</strong> Correct answer: <strong>${correctVal}. ${correctText}</strong>.`;
+            const sourceLinks = referenceLinks(references, 'Related reading');
+            const details = (explanation ? `<span class="feedback-explanation"><strong>Explanation:</strong> ${explanation}</span>` : '')
+                + (sourceLinks ? `<div class="question-review-links">${sourceLinks}</div>` : '')
+                + renderExplanationImage(explanationImage, explanationImageAlt);
+            return `<span class="feedback-summary" role="button" tabindex="0" aria-expanded="false">${summary}</span><div class="feedback-details">${details}</div>`;
         }
 
         // Render Practical Exercise (Section E)
@@ -1206,6 +1349,11 @@
 
         // Concept Dropdown change handler
         conceptSelect.addEventListener('change', (e) => {
+            if (e.target.value === '__load_json__') {
+                jsonFileInput.click();
+                conceptSelect.value = state.activeConcept;
+                return;
+            }
             state.activeConcept = e.target.value;
             updateConceptTooltip();
             applyConceptFilter();
@@ -1238,7 +1386,11 @@
                 correctVal,
                 correctText,
                 isCorrect,
-                explanation: keyInfo.explanation
+                explanation: keyInfo.explanation,
+                explanationImage: keyInfo.explanationImage,
+                explanationImageAlt: keyInfo.explanationImageAlt,
+                references: keyInfo.references,
+                referenceLabel: keyInfo.referenceLabel
             };
 
             // Style Fieldset
@@ -1272,11 +1424,33 @@
             const feedbackEl = fieldset.querySelector('.feedback');
             if (feedbackEl) {
                 feedbackEl.className = `feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`;
-                feedbackEl.innerHTML = renderFeedbackContent(isCorrect, correctVal, correctText, keyInfo.explanation);
+                feedbackEl.innerHTML = renderFeedbackContent(isCorrect, correctVal, correctText, keyInfo.explanation, keyInfo.explanationImage, keyInfo.explanationImageAlt, keyInfo.references, keyInfo.referenceLabel);
             }
 
             updateHUD();
         });
+
+        quizContent.addEventListener('click', (e) => {
+            const summary = e.target.closest('.feedback-summary');
+            if (!summary) return;
+            const feedback = summary.closest('.feedback');
+            const expanded = feedback.classList.toggle('is-expanded');
+            summary.setAttribute('aria-expanded', String(expanded));
+        });
+
+        quizContent.addEventListener('keydown', (e) => {
+            if (e.key !== 'Enter' && e.key !== ' ') return;
+            const summary = e.target.closest('.feedback-summary');
+            if (!summary) return;
+            e.preventDefault();
+            summary.click();
+        });
+
+        quizContent.addEventListener('error', (event) => {
+            if (event.target.matches('.explanation-image')) {
+                event.target.closest('.explanation-image-wrap')?.remove();
+            }
+        }, true);
 
         // Update Sticky HUD stats for active concept
         function updateHUD() {
@@ -1416,7 +1590,6 @@
 
         // File Input: Load any custom JSON file from computer
         jsonFileInput.addEventListener('change', (e) => {
-            closeMoreMenu();
             const file = e.target.files[0];
             if (!file) return;
 
@@ -1425,7 +1598,7 @@
                 try {
                     const parsed = JSON.parse(evt.target.result);
                     state.activeConcept = 'all';
-                    loadQuizData(parsed);
+                    loadQuizData(parsed, true);
                     showToast(`Loaded "${parsed.title || file.name}" successfully!`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 } catch (err) {
@@ -1449,18 +1622,40 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // App Initializer: Load from DEFAULT_QUIZ_DATA or fetch quiz_data.json
-        function initApp() {
-            if (window.DEFAULT_QUIZ_DATA) {
-                loadQuizData(window.DEFAULT_QUIZ_DATA);
-            } else {
-                fetch('quiz_data.json')
-                    .then(res => res.json())
-                    .then(data => loadQuizData(data))
-                    .catch(err => {
-                        console.warn('Could not fetch quiz_data.json, waiting for user file load:', err);
-                        document.title = 'Revision Quiz';
-                    });
+        async function fetchJson(path) {
+            const response = await fetch(path);
+            if (!response.ok) {
+                throw new Error(`Could not load ${path}: ${response.status}`);
+            }
+            return response.json();
+        }
+
+        async function loadQuizFromManifest() {
+            const manifest = await fetchJson('quiz-manifest.json');
+            if (!Array.isArray(manifest.sections)) {
+                throw new Error('Invalid quiz manifest: missing sections array.');
+            }
+
+            const sections = await Promise.all(manifest.sections.map(async ({ file }) => {
+                if (!file) throw new Error('Invalid quiz manifest: section file is missing.');
+                return fetchJson(file);
+            }));
+
+            return { ...manifest, sections };
+        }
+
+        // Prefer the separate JSON files when served over HTTP(S). Browsers block
+        // fetches from file://, so direct local opening uses the bundled fallback.
+        async function initApp() {
+            try {
+                loadQuizData(await loadQuizFromManifest());
+            } catch (err) {
+                console.warn('Could not load the quiz manifest; using bundled fallback:', err);
+                if (window.DEFAULT_QUIZ_DATA) {
+                    loadQuizData(window.DEFAULT_QUIZ_DATA);
+                } else {
+                    document.title = 'Revision Quiz';
+                }
             }
         }
 
