@@ -540,6 +540,21 @@
             font-weight: 700;
         }
 
+        .explanation-image-wrap {
+            margin-top: 10px;
+        }
+
+        .explanation-image {
+            display: block;
+            width: 100%;
+            max-width: 560px;
+            max-height: 360px;
+            object-fit: contain;
+            border: 1px solid currentColor;
+            border-radius: 7px;
+            background: #ffffff;
+        }
+
         /* Section E - Concise ERD */
         .erd-box {
             background: #ffffff;
@@ -840,9 +855,9 @@
         // State management
         const state = {
             quiz: null,
-            userAnswers: {},     // { questionId: { chosen: "A", isCorrect: true, correctVal: "B", explanation: "..." } }
+            userAnswers: {},     // { questionId: { chosen, isCorrect, correctVal, explanation, explanationImage } }
             activeConcept: "all", // "all" or section.id
-            keyMap: {}           // { questionId: { answer: "B", explanation: "...", sectionId: "..." } }
+            keyMap: {}           // { questionId: { answer, explanation, explanationImage, explanationImageAlt, sectionId } }
         };
 
         // DOM elements
@@ -904,6 +919,8 @@
                             state.keyMap[item.id] = {
                                 answer: item.answer,
                                 explanation: item.explanation || '',
+                                explanationImage: item.explanationImage || '',
+                                explanationImageAlt: item.explanationImageAlt || '',
                                 sectionId: sec.id
                             };
                         }
@@ -1090,19 +1107,48 @@
                     ${optionsHtml}
                 </div>
                 <div class="feedback ${existing ? (existing.isCorrect ? 'feedback-correct' : 'feedback-incorrect') : ''}" aria-live="polite">
-                    ${existing ? renderFeedbackContent(existing.isCorrect, existing.correctVal, existing.correctText, existing.explanation) : ''}
+                    ${existing ? renderFeedbackContent(existing.isCorrect, existing.correctVal, existing.correctText, existing.explanation, existing.explanationImage, existing.explanationImageAlt) : ''}
                 </div>
             `;
 
             return fs;
         }
 
-        function renderFeedbackContent(isCorrect, correctVal, correctText, explanation) {
-            if (isCorrect) {
-                return `<strong>Correct.</strong> ${explanation}`;
-            } else {
-                return `<strong>Incorrect.</strong> Correct answer: <strong>${correctVal}. ${correctText}</strong>. ${explanation}`;
+        function escapeHtml(value) {
+            return String(value).replace(/[&<>'"]/g, char => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            })[char]);
+        }
+
+        function getSafeExplanationImageSrc(source) {
+            if (typeof source !== 'string' || !source.trim()) return '';
+
+            try {
+                const url = new URL(source.trim(), document.baseURI);
+                return ['http:', 'https:', 'file:'].includes(url.protocol) ? url.href : '';
+            } catch {
+                return '';
             }
+        }
+
+        function renderExplanationImage(source, alt) {
+            const src = getSafeExplanationImageSrc(source);
+            if (!src) return '';
+
+            const imageAlt = alt || 'Explanation illustration';
+            return `<div class="explanation-image-wrap"><img class="explanation-image" src="${escapeHtml(src)}" alt="${escapeHtml(imageAlt)}" loading="lazy"></div>`;
+        }
+
+        function renderFeedbackContent(isCorrect, correctVal, correctText, explanation, explanationImage, explanationImageAlt) {
+            const message = isCorrect
+                ? `<strong>Correct.</strong> ${explanation}`
+                : `<strong>Incorrect.</strong> Correct answer: <strong>${correctVal}. ${correctText}</strong>. ${explanation}`;
+
+            return `${message}${renderExplanationImage(explanationImage, explanationImageAlt)}`;
         }
 
         // Render Practical Exercise (Section E)
@@ -1185,7 +1231,9 @@
                 correctVal,
                 correctText,
                 isCorrect,
-                explanation: keyInfo.explanation
+                explanation: keyInfo.explanation,
+                explanationImage: keyInfo.explanationImage,
+                explanationImageAlt: keyInfo.explanationImageAlt
             };
 
             // Style Fieldset
@@ -1219,11 +1267,17 @@
             const feedbackEl = fieldset.querySelector('.feedback');
             if (feedbackEl) {
                 feedbackEl.className = `feedback ${isCorrect ? 'feedback-correct' : 'feedback-incorrect'}`;
-                feedbackEl.innerHTML = renderFeedbackContent(isCorrect, correctVal, correctText, keyInfo.explanation);
+                feedbackEl.innerHTML = renderFeedbackContent(isCorrect, correctVal, correctText, keyInfo.explanation, keyInfo.explanationImage, keyInfo.explanationImageAlt);
             }
 
             updateHUD();
         });
+
+        quizContent.addEventListener('error', (event) => {
+            if (event.target.matches('.explanation-image')) {
+                event.target.closest('.explanation-image-wrap')?.remove();
+            }
+        }, true);
 
         // Update Sticky HUD stats for active concept
         function updateHUD() {
