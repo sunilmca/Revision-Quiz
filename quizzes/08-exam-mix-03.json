@@ -1,0 +1,331 @@
+{
+  "id": "sec-mix-03",
+  "code": "8",
+  "title": "Mix Quiz 03 — Normalisation and Oracle SQL Practical",
+  "description": "Applied practice in normalisation, keys, Oracle constraints, datatypes and row filtering.",
+  "items": [
+    {
+      "id": "mix03-q01",
+      "question": "Mary has two results for MT02: grade F in semester 1 and grade C in semester 3. Assume a student can have at most one result per subject per semester. Which composite key identifies each result?",
+      "options": [
+        {
+          "key": "A",
+          "text": "StudentID, SubjectCode"
+        },
+        {
+          "key": "B",
+          "text": "StudentID, SubjectCode, Semester"
+        },
+        {
+          "key": "C",
+          "text": "SubjectCode, Semester"
+        },
+        {
+          "key": "D",
+          "text": "StudentID, Semester"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The same student–subject pair can recur. Semester distinguishes attempts, while both IDs identify whose result and which subject.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W5&6_Normalization_Oct26, p. 4",
+          "file": "reference/Oracle APEX/W5&6_Normalization_Oct26.pdf",
+          "page": 4
+        }
+      ]
+    },
+    {
+      "id": "mix03-q02",
+      "question": "PERSONS has primary key PersonID and contains only P01. ORDERS has a foreign key PersonID referencing PERSONS. Which proposed non-NULL PersonID can be inserted into an otherwise valid order?",
+      "options": [
+        {
+          "key": "A",
+          "text": "P02"
+        },
+        {
+          "key": "B",
+          "text": "P03"
+        },
+        {
+          "key": "C",
+          "text": "P01"
+        },
+        {
+          "key": "D",
+          "text": "P04"
+        }
+      ],
+      "answer": "C",
+      "explanation": "A non-NULL foreign key must match an existing parent key; only P01 exists.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W7 SQL_intro Sep 2026, p. 7",
+          "file": "reference/Oracle APEX/W7 SQL_intro Sep 2026.pdf",
+          "page": 7
+        }
+      ]
+    },
+    {
+      "id": "mix03-q03",
+      "question": "Tweedy (PetID 519) received procedures 20 and 12 on 30 April 2021. A report stores one row per procedure performed. Why is (PetID, VisitDate) not a valid primary key for this report?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both rows share that pair"
+        },
+        {
+          "key": "B",
+          "text": "Both rows have different dates"
+        },
+        {
+          "key": "C",
+          "text": "Both rows have different pet IDs"
+        },
+        {
+          "key": "D",
+          "text": "The pair includes the procedure code"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The pet and date repeat even though the procedures differ, so the pair does not uniquely identify a row.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W5&6_Normalization_Oct26, p. 2",
+          "file": "reference/Oracle APEX/W5&6_Normalization_Oct26.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "mix03-q04",
+      "question": "PRODUCT contains B-100 (quantity 10), S-201 (300), N-122 (400) and B-101 (50). Which IDs remain after DELETE FROM product WHERE quantity > 280?",
+      "options": [
+        {
+          "key": "A",
+          "text": "S-201 and N-122"
+        },
+        {
+          "key": "B",
+          "text": "B-100 and S-201"
+        },
+        {
+          "key": "C",
+          "text": "N-122 and B-101"
+        },
+        {
+          "key": "D",
+          "text": "B-100 and B-101"
+        }
+      ],
+      "answer": "D",
+      "explanation": "DELETE removes the rows that satisfy the filter. Quantities 10 and 50 do not satisfy it, so their rows remain.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W7 SQL_intro Sep 2026, p. 6",
+          "file": "reference/Oracle APEX/W7 SQL_intro Sep 2026.pdf",
+          "page": 6
+        }
+      ]
+    },
+    {
+      "id": "mix03-q05",
+      "question": "COURSE(CID, CName, School, SCEXT) has primary key CID. Each course belongs to one school, and each school has one extension (SCEXT). Which decomposition preserves all facts and removes the transitive dependency?",
+      "options": [
+        {
+          "key": "A",
+          "text": "COURSE(CID, CName, SCEXT); SCHOOL(School)"
+        },
+        {
+          "key": "B",
+          "text": "COURSE(CID, CName, School); SCHOOL(School, SCEXT)"
+        },
+        {
+          "key": "C",
+          "text": "COURSE(CID, School, SCEXT); SCHOOL(School, CName)"
+        },
+        {
+          "key": "D",
+          "text": "COURSE(CID, CName); SCHOOL(School, SCEXT)"
+        }
+      ],
+      "answer": "B",
+      "explanation": "School determines SCEXT. Keeping School in COURSE preserves the link, while storing SCEXT in SCHOOL removes the indirect dependency from COURSE.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W5&6_Normalization_Oct26, p. 2",
+          "file": "reference/Oracle APEX/W5&6_Normalization_Oct26.pdf",
+          "page": 2
+        }
+      ]
+    },
+    {
+      "id": "mix03-q06",
+      "question": "In the PERSONS table, Age has CHECK (Age >= 0 AND Age <= 120) and NOT NULL. With all other columns valid, which Age is accepted?",
+      "options": [
+        {
+          "key": "A",
+          "text": "NULL"
+        },
+        {
+          "key": "B",
+          "text": "-1"
+        },
+        {
+          "key": "C",
+          "text": "120"
+        },
+        {
+          "key": "D",
+          "text": "121"
+        }
+      ],
+      "answer": "C",
+      "explanation": "120 meets the inclusive upper bound. NULL violates NOT NULL, and −1 and 121 are outside the allowed range.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W7 SQL_intro Sep 2026, p. 7",
+          "file": "reference/Oracle APEX/W7 SQL_intro Sep 2026.pdf",
+          "page": 7
+        }
+      ]
+    },
+    {
+      "id": "mix03-q07",
+      "question": "Each product has one price regardless of colour. Product 1 costs 15.99 and comes in red and green. Which design stores each colour separately without duplicating the product price?",
+      "options": [
+        {
+          "key": "A",
+          "text": "PRODUCT(ProductID, Price) and PRODUCT_COLOUR(ProductID, Colour)"
+        },
+        {
+          "key": "B",
+          "text": "PRODUCT(ProductID, ColourList, Price)"
+        },
+        {
+          "key": "C",
+          "text": "PRODUCT(ProductID, Colour1, Colour2, Price)"
+        },
+        {
+          "key": "D",
+          "text": "PRODUCT(ProductID, Colour, Price), one row per colour"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Store the price once per product and one colour per PRODUCT_COLOUR row. A list or numbered columns keep a repeating group; a flat row per colour repeats the price.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W5&6_Normalization_Oct26, p. 4",
+          "file": "reference/Oracle APEX/W5&6_Normalization_Oct26.pdf",
+          "page": 4
+        }
+      ]
+    },
+    {
+      "id": "mix03-q08",
+      "question": "POSTS has primary key PostID and CATEGORIES has primary key CategoryID. PostCategories(PostID, CategoryID) allows many categories per post and many posts per category, but no duplicate pair. Which constraints implement these rules?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A primary key on PostID and a foreign key on CategoryID only"
+        },
+        {
+          "key": "B",
+          "text": "Separate UNIQUE constraints on both columns plus both foreign keys"
+        },
+        {
+          "key": "C",
+          "text": "A composite primary key on both columns but no foreign keys"
+        },
+        {
+          "key": "D",
+          "text": "A composite primary key on both columns plus a foreign key from each column to its parent"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The composite key prevents repeated pairs without blocking either ID from appearing in other pairs. The two foreign keys ensure both parent rows exist.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W7 SQL_intro Sep 2026, p. 9",
+          "file": "reference/Oracle APEX/W7 SQL_intro Sep 2026.pdf",
+          "page": 9
+        }
+      ]
+    },
+    {
+      "id": "mix03-q09",
+      "question": "A FreshMart receipt has one cashier. Assume CashierID determines CashierName, and the same cashier can issue many receipts. Which design preserves the cashier link without repeating the cashier name on every receipt?",
+      "options": [
+        {
+          "key": "A",
+          "text": "RECEIPT(ReceiptNo, CashierName) only"
+        },
+        {
+          "key": "B",
+          "text": "RECEIPT(ReceiptNo, CashierID) and CASHIER(CashierID, CashierName)"
+        },
+        {
+          "key": "C",
+          "text": "RECEIPT(ReceiptNo, CashierID, CashierName) only"
+        },
+        {
+          "key": "D",
+          "text": "RECEIPT(ReceiptNo) and CASHIER(CashierID, CashierName) with no link"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Store the name once with its determinant, CashierID. Keeping CashierID in RECEIPT identifies who issued each receipt.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W5&6_Normalization_Oct26, p. 5",
+          "file": "reference/Oracle APEX/W5&6_Normalization_Oct26.pdf",
+          "page": 5
+        }
+      ]
+    },
+    {
+      "id": "mix03-q10",
+      "question": "The STUDENT practical requires DOB to store an actual date and CGPA to store a numeric value with one decimal place. Which Oracle column definitions meet those requirements and can store a CGPA of 3.2?",
+      "options": [
+        {
+          "key": "A",
+          "text": "DOB VARCHAR2(20), CGPA NUMBER(2,1)"
+        },
+        {
+          "key": "B",
+          "text": "DOB DATE, CGPA NUMBER(2,0)"
+        },
+        {
+          "key": "C",
+          "text": "DOB DATE, CGPA NUMBER(2,1)"
+        },
+        {
+          "key": "D",
+          "text": "DOB NUMBER(8), CGPA VARCHAR2(3)"
+        }
+      ],
+      "answer": "C",
+      "explanation": "DATE represents a date, and NUMBER(2,1) has two total digits with one after the decimal point, so it can store 3.2.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "W7 SQL_intro Sep 2026, p. 5",
+          "file": "reference/Oracle APEX/W7 SQL_intro Sep 2026.pdf",
+          "page": 5
+        }
+      ]
+    }
+  ],
+  "references": []
+}
+
+

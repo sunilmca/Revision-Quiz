@@ -10,6 +10,7 @@
     { "file": "quizzes/04-oracle-sql.json" },
     { "file": "quizzes/05-mini-library-erd.json" },
     { "file": "quizzes/06-exam-mix-01.json" },
-    { "file": "quizzes/07-exam-mix-02.json" }
+    { "file": "quizzes/07-exam-mix-02.json" },
+    { "file": "quizzes/08-exam-mix-03.json" }
   ]
 }

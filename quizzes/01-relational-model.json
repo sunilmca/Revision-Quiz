@@ -388,7 +388,7 @@
     },
     {
       "id": "q37",
-      "question": "NULL values: What can you conclude from the NULL in John’s Phone No. column?",
+      "question": "What can you conclude from the NULL in John’s Phone No. column?",
       "context": {
         "type": "table",
         "title": "Reference table for NULL values",
@@ -398,40 +398,16 @@
           "Phone No."
         ],
         "rows": [
-          [
-            "Tom",
-            "USA",
-            "20394568"
-          ],
-          [
-            "John",
-            "UAE",
-            "NULL"
-          ],
-          [
-            "Andy",
-            "NULL",
-            "65482313"
-          ]
+          ["Tom", "USA", "20394568"],
+          ["John", "UAE", "NULL"],
+          ["Andy", "NULL", "65482313"]
         ]
       },
       "options": [
-        {
-          "key": "A",
-          "text": "John’s phone number is zero."
-        },
-        {
-          "key": "B",
-          "text": "John has a phone number but chose not to share it."
-        },
-        {
-          "key": "C",
-          "text": "John does not have a phone number."
-        },
-        {
-          "key": "D",
-          "text": "No phone number is recorded for John, and the table does not tell us why."
-        }
+        {"key": "A", "text": "John’s phone number is zero."},
+        {"key": "B", "text": "John has a phone number but chose not to share it."},
+        {"key": "C", "text": "John does not have a phone number."},
+        {"key": "D", "text": "No phone number is recorded for John, and the table does not tell us why."}
       ],
       "answer": "D",
       "explanation": "NULL represents a missing value, not zero. John’s number could be unknown, deliberately withheld, or not applicable. For example, a number not yet entered and a number withheld for privacy can both appear as NULL.",
