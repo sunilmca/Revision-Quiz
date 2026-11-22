@@ -2017,7 +2017,7 @@ window.DEFAULT_QUIZ_DATA = {
       "brief": [
         "Draw a crow’s-foot ERD without answer choices. Include attributes, primary and foreign keys, relationship verbs, and minimum and maximum participation at both ends.",
         "Every member has a unique Member ID and may have zero or many loans. Each loan belongs to exactly one member. Every book title has a unique Book ID and one or more physical copies. Each copy has its own Copy ID and belongs to exactly one title. Every loan refers to one physical copy. A copy may be loaned many times over its lifetime. Assume a new copy may have no loan history. Record borrowed, due and return dates; return date is empty until the copy is returned.",
-        "Below the ERD, state the limits for active loans per physical copy and physical copies borrowed at the same time per member."
+        "Each physical copy may have at most one active loan at a time, and each member may borrow at most three physical copies at the same time. A loan is active while its return date is empty. Below your ERD, explain why returned loans do not count towards either limit, even though their records remain in the database."
       ],
       "solution": {
         "title": "Reveal model ERD",
