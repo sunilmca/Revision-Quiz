@@ -1,0 +1,660 @@
+{
+  "id": "sec-3",
+  "code": "3",
+  "title": "3. Database tables and normalization",
+  "description": "Insertion, update and deletion anomalies; 1NF, 2NF and 3NF using the lecture’s player-inventory example.",
+  "items": [
+    {
+      "id": "q16",
+      "question": "Alex moves to Sunway but only his Physics row is updated. What anomaly does this create?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Insertion anomaly"
+        },
+        {
+          "key": "B",
+          "text": "Deletion anomaly"
+        },
+        {
+          "key": "C",
+          "text": "Entity integrity violation"
+        },
+        {
+          "key": "D",
+          "text": "Update anomaly"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Alex’s move from Lumut to Sunway must be recorded in all three rows. Updating just one leaves conflicting addresses.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Combined student–subject table — excerpt from the practical",
+        "columns": [
+          "SID",
+          "SName",
+          "SAddress",
+          "SubjectOpted",
+          "CreditValue"
+        ],
+        "rows": [
+          [
+            "401",
+            "Adam",
+            "Ipoh",
+            "Computer",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Physics",
+            "4"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Maths",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Biology",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q17",
+      "question": "The only way to record a new subject and its credit value in this design is to record a student enrolment. What anomaly is this?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Insertion anomaly"
+        },
+        {
+          "key": "B",
+          "text": "Update anomaly"
+        },
+        {
+          "key": "C",
+          "text": "Deletion anomaly"
+        },
+        {
+          "key": "D",
+          "text": "Transitive dependency"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The practical’s combined table has no independent place to record a new subject and its credits before anyone enrols.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Combined student–subject table — excerpt from the practical",
+        "columns": [
+          "SID",
+          "SName",
+          "SAddress",
+          "SubjectOpted",
+          "CreditValue"
+        ],
+        "rows": [
+          [
+            "401",
+            "Adam",
+            "Ipoh",
+            "Computer",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Physics",
+            "4"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Maths",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Biology",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q18",
+      "question": "Adam is the only student taking Computer. Deleting his enrolment also deletes the only record of its credit value. What anomaly is this?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Insertion anomaly"
+        },
+        {
+          "key": "B",
+          "text": "Update anomaly"
+        },
+        {
+          "key": "C",
+          "text": "Deletion anomaly"
+        },
+        {
+          "key": "D",
+          "text": "Sorting problem"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Adam’s row was the only record of the Computer subject’s credit value. Deleting the enrolment deletes that fact too.",
+      "references": [
+        {
+          "label": "Anomalies practical, p. 2",
+          "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+          "page": 2
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Combined student–subject table — excerpt from the practical",
+        "columns": [
+          "SID",
+          "SName",
+          "SAddress",
+          "SubjectOpted",
+          "CreditValue"
+        ],
+        "rows": [
+          [
+            "401",
+            "Adam",
+            "Ipoh",
+            "Computer",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Physics",
+            "4"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Maths",
+            "3"
+          ],
+          [
+            "402",
+            "Alex",
+            "Lumut",
+            "Biology",
+            "4"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q19",
+      "question": "How does the lecture represent these inventory items in 1NF?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Store an item list in one cell"
+        },
+        {
+          "key": "B",
+          "text": "Use a separate row for each player–item pair"
+        },
+        {
+          "key": "C",
+          "text": "Add a numbered column for every item"
+        },
+        {
+          "key": "D",
+          "text": "Sort the values inside each cell"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The slide puts Adam91’s arrows and rings in separate rows, with a single item and quantity in each row.",
+      "references": [
+        {
+          "label": "Week 5 normalization, p. 17",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 17
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Before 1NF — repeating inventory items",
+        "content": "Adam91 has 2 arrows and 4 rings. Suppose both item–quantity pairs are listed together in one player record."
+      }
+    },
+    {
+      "id": "q20",
+      "question": "In the player inventory example, which attribute alone determines Player_rating?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Item"
+        },
+        {
+          "key": "B",
+          "text": "Quantity"
+        },
+        {
+          "key": "C",
+          "text": "Player_rating and Item"
+        },
+        {
+          "key": "D",
+          "text": "Player_Id"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Player_rating is determined by Player_Id alone, which is only one part of the composite key.",
+      "references": [
+        {
+          "label": "Week 5 normalization, p. 24",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 24
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player inventory excerpt — PK (Player_Id, Item)",
+        "columns": [
+          "Player_Id",
+          "Item",
+          "Quantity",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "arrow",
+            "2",
+            "Intermediate"
+          ],
+          [
+            "Adam91",
+            "ring",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Famini_hensem",
+            "arrow",
+            "5",
+            "Advanced"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q21",
+      "question": "Each row records a quantity for one player and one item. Which dependency uses the entire primary key to determine Quantity?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Player_Id → Quantity"
+        },
+        {
+          "key": "B",
+          "text": "Item → Quantity"
+        },
+        {
+          "key": "C",
+          "text": " (Player_Id, Item) → Quantity"
+        },
+        {
+          "key": "D",
+          "text": "Player_rating → Quantity"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Quantity depends on both the player and item: Adam91 has 2 arrows but 4 rings, and another player may have a different quantity of arrows.",
+      "references": [
+        {
+          "label": "Week 5 normalization, p. 24",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 24
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player inventory excerpt — PK (Player_Id, Item)",
+        "columns": [
+          "Player_Id",
+          "Item",
+          "Quantity",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "arrow",
+            "2",
+            "Intermediate"
+          ],
+          [
+            "Adam91",
+            "ring",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Famini_hensem",
+            "arrow",
+            "5",
+            "Advanced"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q22",
+      "question": "The inventory table has single values in its cells and primary key (Player_Id, Item). Player_rating depends only on Player_Id. What is its highest normal form?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1NF"
+        },
+        {
+          "key": "B",
+          "text": "2NF"
+        },
+        {
+          "key": "C",
+          "text": "3NF"
+        },
+        {
+          "key": "D",
+          "text": "0NF"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The table has separate, single-valued cells, but Player_rating depends on only part of the key. This prevents 2NF.",
+      "references": [
+        {
+          "label": "Week 5 normalization, p. 24",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 24
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player inventory excerpt — PK (Player_Id, Item)",
+        "columns": [
+          "Player_Id",
+          "Item",
+          "Quantity",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "arrow",
+            "2",
+            "Intermediate"
+          ],
+          [
+            "Adam91",
+            "ring",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Famini_hensem",
+            "arrow",
+            "5",
+            "Advanced"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q23",
+      "question": "Player_rating depends only on Player_Id, but Quantity depends on the entire key. Which design removes the partial dependency without losing either fact?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Player(Player_Id, Quantity) and Inventory(Item, Player_rating)"
+        },
+        {
+          "key": "B",
+          "text": "Player(Player_Id, Player_rating) and Inventory(Player_Id, Item, Quantity)"
+        },
+        {
+          "key": "C",
+          "text": "Player(Player_Id, Item, Player_rating) only"
+        },
+        {
+          "key": "D",
+          "text": "Inventory(Player_Id, Item, Quantity) only"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Player_rating moves to the Player table because it depends only on Player_Id. Quantity stays with the player–item pair.",
+      "references": [
+        {
+          "label": "Week 5 normalization, p. 25",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 25
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player inventory excerpt — PK (Player_Id, Item)",
+        "columns": [
+          "Player_Id",
+          "Item",
+          "Quantity",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "arrow",
+            "2",
+            "Intermediate"
+          ],
+          [
+            "Adam91",
+            "ring",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Famini_hensem",
+            "arrow",
+            "5",
+            "Advanced"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q24",
+      "question": "Player_Id determines Player_Skill_level, which determines Player_rating. What kind of dependency links Player_Id to Player_rating through Player_Skill_level?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Full dependency on a composite key"
+        },
+        {
+          "key": "B",
+          "text": "Repeating group"
+        },
+        {
+          "key": "C",
+          "text": "Partial dependency"
+        },
+        {
+          "key": "D",
+          "text": "Transitive dependency"
+        }
+      ],
+      "answer": "D",
+      "explanation": "Player_Id determines Player_Skill_level, which determines Player_rating. The rating therefore depends on Player_Id indirectly.",
+      "references": [
+        {
+          "label": "Week 5 normalization, p. 29",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 29
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player table before decomposition",
+        "columns": [
+          "Player_Id",
+          "Player_Skill_level",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Jinny1921",
+            "3",
+            "Beginner"
+          ],
+          [
+            "Famini_hensem",
+            "8",
+            "Advanced"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q25",
+      "question": "Each player has one skill level, and each skill level determines the rating. Which design removes that transitive dependency while retaining the link?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Player(Player_Id, Player_Skill_level) and Skill_Level(Player_Skill_level, Player_rating)"
+        },
+        {
+          "key": "B",
+          "text": "Player(Player_Id, Player_rating) only"
+        },
+        {
+          "key": "C",
+          "text": "Player(Player_Id) and Skill_Level(Player_Skill_level, Player_rating) with no link"
+        },
+        {
+          "key": "D",
+          "text": "Keep all three attributes together in Player"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The player keeps their skill level. The rating is stored with that skill level in a separate table.",
+      "references": [
+        {
+          "label": "Week 5 normalization, p. 30",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 30
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "table",
+        "title": "Player table before decomposition",
+        "columns": [
+          "Player_Id",
+          "Player_Skill_level",
+          "Player_rating"
+        ],
+        "rows": [
+          [
+            "Adam91",
+            "4",
+            "Intermediate"
+          ],
+          [
+            "Jinny1921",
+            "3",
+            "Beginner"
+          ],
+          [
+            "Famini_hensem",
+            "8",
+            "Advanced"
+          ]
+        ]
+      }
+    }
+  ],
+  "references": [
+    {
+      "label": "Anomalies practical, p. 2",
+      "file": "reference/Oracle APEX/W2 Practical Anomalies Sep26.pdf",
+      "page": 2
+    },
+    {
+      "label": "Week 5 normalization, p. 17",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 17
+    },
+    {
+      "label": "Week 5 normalization, p. 24",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 24
+    },
+    {
+      "label": "Week 5 normalization, p. 25",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 25
+    },
+    {
+      "label": "Week 5 normalization, p. 29",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 29
+    },
+    {
+      "label": "Week 5 normalization, p. 30",
+      "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+      "page": 30
+    }
+  ]
+}

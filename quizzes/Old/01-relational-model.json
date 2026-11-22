@@ -1,0 +1,499 @@
+{
+  "id": "sec-1",
+  "code": "1",
+  "title": "1. Relational database model",
+  "description": "Week 2: Data modelling, business rules, redundancy, relational databases, keys, NULL and relational set operators.",
+  "items": [
+    {
+      "id": "q1",
+      "question": "Before creating tables for a new database, why would the designer draw a data model?",
+      "options": [
+        {
+          "key": "A",
+          "text": "To replace the data itself"
+        },
+        {
+          "key": "B",
+          "text": "To provide a blueprint for the database"
+        },
+        {
+          "key": "C",
+          "text": "To enter records"
+        },
+        {
+          "key": "D",
+          "text": "To remove all relationships"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The model communicates the design before implementation, like an architect’s blueprint.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Data modelling, p. 5",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 5
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Which option is an attribute of Library Book in the table?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Library book"
+        },
+        {
+          "key": "B",
+          "text": "Customer"
+        },
+        {
+          "key": "C",
+          "text": "ISBN number"
+        },
+        {
+          "key": "D",
+          "text": "Loan"
+        }
+      ],
+      "answer": "C",
+      "explanation": "A library book is an entity; its ISBN describes it, just as its author and category do.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Entities and attributes, p. 7",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 7
+        }
+      ],
+      "context": {
+        "type": "table",
+        "title": "Library Book — illustrative rows using the slide’s attributes",
+        "columns": [
+          "ISBN number",
+          "Author",
+          "Category"
+        ],
+        "rows": [
+          [
+            "9780133970777",
+            "Elmasri and Navathe",
+            "Databases"
+          ],
+          [
+            "9780132350884",
+            "Robert C. Martin",
+            "Programming"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q3",
+      "question": "Each book can belong to several categories, and each category can contain several books. What relationship does the table represent?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Many-to-many"
+        },
+        {
+          "key": "B",
+          "text": "One-to-one"
+        },
+        {
+          "key": "C",
+          "text": "One-to-many"
+        },
+        {
+          "key": "D",
+          "text": "Many-to-one"
+        }
+      ],
+      "answer": "A",
+      "explanation": "B01 occurs in two categories, and Computing contains two books. A junction table records one pairing per row in this many-to-many relationship.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Relationships, p. 8",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 8
+        }
+      ],
+      "context": {
+        "type": "table",
+        "title": "Book–Category junction table — illustrative rows",
+        "columns": [
+          "Book ID",
+          "Category"
+        ],
+        "rows": [
+          [
+            "B01",
+            "Computing"
+          ],
+          [
+            "B01",
+            "Education"
+          ],
+          [
+            "B02",
+            "Computing"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "q4",
+      "question": "A business is defining rules for its customer invoices. Which proposed rule protects data integrity rather than changing how invoices are displayed?",
+      "options": [
+        {
+          "key": "A",
+          "text": "List invoices alphabetically"
+        },
+        {
+          "key": "B",
+          "text": "Show invoices in a larger font"
+        },
+        {
+          "key": "C",
+          "text": "Display the newest invoice first"
+        },
+        {
+          "key": "D",
+          "text": "Give each customer invoice a unique identifying number"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The uniqueness constraint prevents two invoices from receiving the same identifying number.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Constraints, p. 9",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 9
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "A travel agency records customers, bookings, agents and packages. Which booking restriction matches the lecture’s business rules?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A booking can be handled by only one agent."
+        },
+        {
+          "key": "B",
+          "text": "Every booking needs two agents."
+        },
+        {
+          "key": "C",
+          "text": "A booking can contain any number of packages."
+        },
+        {
+          "key": "D",
+          "text": "A customer must book twice per day."
+        }
+      ],
+      "answer": "A",
+      "explanation": "The slide limits each booking to one agent and one package. It also limits customers to one booking per day.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Travel agency business rules, p. 11",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 11
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "A designer wants to show the main entities and their broad relationships without deciding how the database will store them. Which model is appropriate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Physical data model"
+        },
+        {
+          "key": "B",
+          "text": "Conceptual data model"
+        },
+        {
+          "key": "C",
+          "text": "Logical data model"
+        },
+        {
+          "key": "D",
+          "text": "Database records"
+        }
+      ],
+      "answer": "B",
+      "explanation": "A conceptual model shows the entities and broad relationships without the detailed database structure.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Conceptual data model, p. 17",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 17
+        }
+      ]
+    },
+    {
+      "id": "q38",
+      "question": "Which model identifies key and non-key attributes without specifying a particular DBMS implementation?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Conceptual data model"
+        },
+        {
+          "key": "B",
+          "text": "Physical data model"
+        },
+        {
+          "key": "C",
+          "text": "Logical data model"
+        },
+        {
+          "key": "D",
+          "text": "Database records"
+        }
+      ],
+      "answer": "C",
+      "explanation": "A logical model adds attribute and key detail but does not depend on how a particular DBMS implements it.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Logical data model, p. 18",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 18
+        }
+      ]
+    },
+    {
+      "id": "q39",
+      "question": "In a physical data model, how are entity attributes represented?",
+      "options": [
+        {
+          "key": "A",
+          "text": "As relationships only"
+        },
+        {
+          "key": "B",
+          "text": "As complete rows"
+        },
+        {
+          "key": "C",
+          "text": "As separate databases"
+        },
+        {
+          "key": "D",
+          "text": "As table columns"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The slide maps entities to tables and their attributes to columns.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Physical data model, p. 19",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 19
+        }
+      ]
+    },
+    {
+      "id": "q40",
+      "question": "What is data redundancy in the lecture?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The same data appearing in multiple records or places"
+        },
+        {
+          "key": "B",
+          "text": "Data that has not yet been entered"
+        },
+        {
+          "key": "C",
+          "text": "A link between two tables"
+        },
+        {
+          "key": "D",
+          "text": "A distinct identifier for each record"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Repeated copies of the same fact are redundant. If one copy changes and another does not, the records can disagree.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Data redundancy, p. 20",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 20
+        }
+      ]
+    },
+    {
+      "id": "q41",
+      "question": "How does the lecture distinguish a relational database from a flat-file database?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It stores everything in one unlinked table."
+        },
+        {
+          "key": "B",
+          "text": "It groups data into entities stored in multiple linked tables."
+        },
+        {
+          "key": "C",
+          "text": "It stores only numerical data."
+        },
+        {
+          "key": "D",
+          "text": "It cannot store related entities."
+        }
+      ],
+      "answer": "B",
+      "explanation": "A relational database represents entities in separate tables and links those tables instead of keeping everything in one flat file.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Relational databases, p. 22",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 22
+        }
+      ]
+    },
+    {
+      "id": "q42",
+      "question": "What is the role of a primary key?",
+      "options": [
+        {
+          "key": "A",
+          "text": "To set the display order"
+        },
+        {
+          "key": "B",
+          "text": "To repeat a value in every row"
+        },
+        {
+          "key": "C",
+          "text": "To uniquely identify a record"
+        },
+        {
+          "key": "D",
+          "text": "To mark a missing value"
+        }
+      ],
+      "answer": "C",
+      "explanation": "A primary key identifies one record. Two records cannot share the same primary-key value.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Keys, p. 24",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 24
+        }
+      ]
+    },
+    {
+      "id": "q37",
+      "question": "NULL values: What can you conclude from the NULL in John’s Phone No. column?",
+      "context": {
+        "type": "table",
+        "title": "Reference table for NULL values",
+        "columns": [
+          "Name",
+          "Place",
+          "Phone No."
+        ],
+        "rows": [
+          [
+            "Tom",
+            "USA",
+            "20394568"
+          ],
+          [
+            "John",
+            "UAE",
+            "NULL"
+          ],
+          [
+            "Andy",
+            "NULL",
+            "65482313"
+          ]
+        ]
+      },
+      "options": [
+        {
+          "key": "A",
+          "text": "John’s phone number is zero."
+        },
+        {
+          "key": "B",
+          "text": "John has a phone number but chose not to share it."
+        },
+        {
+          "key": "C",
+          "text": "John does not have a phone number."
+        },
+        {
+          "key": "D",
+          "text": "No phone number is recorded for John, and the table does not tell us why."
+        }
+      ],
+      "answer": "D",
+      "explanation": "NULL represents a missing value, not zero. John’s number could be unknown, deliberately withheld, or not applicable. For example, a number not yet entered and a number withheld for privacy can both appear as NULL.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Importance of NULL Value, p. 27",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 27
+        }
+      ]
+    },
+    {
+      "id": "q44",
+      "question": "In the relational model, what do relational set operators manipulate?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Database passwords"
+        },
+        {
+          "key": "B",
+          "text": "File names"
+        },
+        {
+          "key": "C",
+          "text": "Display settings"
+        },
+        {
+          "key": "D",
+          "text": "Relations"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The lecture’s review question identifies relations as what relational set operators manipulate.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2: Relational set operators, p. 37",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 37
+        }
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "Week 2 lecture",
+      "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf"
+    }
+  ]
+}

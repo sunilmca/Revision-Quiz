@@ -90,59 +90,35 @@
       }
     },
     {
-      "id": "q3",
-      "question": "Each book can belong to several categories, and each category can contain several books. What relationship does the table represent?",
-      "options": [
-        {
-          "key": "A",
-          "text": "Many-to-many"
-        },
-        {
-          "key": "B",
-          "text": "One-to-one"
-        },
-        {
-          "key": "C",
-          "text": "One-to-many"
-        },
-        {
-          "key": "D",
-          "text": "Many-to-one"
-        }
-      ],
-      "answer": "A",
-      "explanation": "B01 occurs in two categories, and Computing contains two books. A junction table records one pairing per row in this many-to-many relationship.",
-      "referenceLabel": "Review source",
-      "references": [
-        {
-          "label": "Week 2: Relationships, p. 8",
-          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
-          "page": 8
-        }
-      ],
-      "context": {
-        "type": "table",
-        "title": "Book–Category junction table — illustrative rows",
-        "columns": [
-          "Book ID",
-          "Category"
-        ],
-        "rows": [
-          [
-            "B01",
-            "Computing"
-          ],
-          [
-            "B01",
-            "Education"
-          ],
-          [
-            "B02",
-            "Computing"
-          ]
-        ]
-      }
-    },
+  "id": "q3",
+  "question": "Using the business rules in the table, which option correctly classifies relationships 1, 2 and 3, in that order? Read each pair from the first entity to the second.",
+  "options": [
+    {"key": "A", "text": "One-to-many; one-to-one; many-to-many"},
+    {"key": "B", "text": "One-to-one; one-to-many; many-to-many"},
+    {"key": "C", "text": "One-to-one; many-to-many; one-to-many"},
+    {"key": "D", "text": "Many-to-many; one-to-many; one-to-one"}
+  ],
+  "answer": "B",
+  "explanation": "1. School–Headteacher is one-to-one: each school has one headteacher, and each headteacher leads one school. 2. School–Teacher is one-to-many: a school can have several teachers, but each teacher works at one school in this example. 3. Pupil–Lesson is many-to-many: a pupil can attend several lessons, and a lesson can have several pupils. A junction table records one pupil–lesson pairing per row.",
+  "referenceLabel": "Review source",
+  "references": [
+    {
+      "label": "Week 2: Data Model Basic Building Blocks — Relationships, p. 8",
+      "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+      "page": 8
+    }
+  ],
+  "context": {
+    "type": "table",
+    "title": "Relationship examples from the Week 2 slide",
+    "columns": ["Pair", "Entities", "Business rule"],
+    "rows": [
+      ["1", "School → Headteacher", "Each school has one headteacher, and each headteacher leads one school."],
+      ["2", "School → Teacher", "A school can have many teachers, and each teacher works at one school."],
+      ["3", "Pupil → Lesson", "A pupil can attend many lessons, and a lesson can have many pupils."]
+    ]
+  }
+},
     {
       "id": "q4",
       "question": "A business is defining rules for its customer invoices. Which proposed rule protects data integrity rather than changing how invoices are displayed?",

@@ -1,0 +1,338 @@
+{
+  "id": "sec-2",
+  "code": "2",
+  "title": "2. Entity relationship modelling and keys",
+  "description": "Attribute classifications (derived, composite, multivalued), primary and foreign keys, candidate keys, cardinality, and referential integrity.",
+  "items": [
+    {
+      "id": "q9",
+      "question": "Which term describes a unique identifier that was not chosen as the primary key?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Composite key"
+        },
+        {
+          "key": "B",
+          "text": "Foreign key"
+        },
+        {
+          "key": "C",
+          "text": "Primary key"
+        },
+        {
+          "key": "D",
+          "text": "Alternate key"
+        }
+      ],
+      "answer": "D",
+      "explanation": "An alternate key uniquely identifies a record but is not the chosen primary key. It can still be used to look up the record.",
+      "references": [
+        {
+          "label": "Week 3 ER modelling, p. 6",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 6
+        }
+      ],
+      "referenceLabel": "Review source"
+    },
+    {
+      "id": "q7",
+      "question": "An Address is broken into street name, postcode and city. What type of attribute is Address?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Simple"
+        },
+        {
+          "key": "B",
+          "text": "Derived"
+        },
+        {
+          "key": "C",
+          "text": "Composite"
+        },
+        {
+          "key": "D",
+          "text": "Multivalued"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The slide uses Address as a composite attribute because it breaks down into components such as street name, postcode and city.",
+      "references": [
+        {
+          "label": "Week 3 ER modelling, p. 9",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 9
+        }
+      ],
+      "referenceLabel": "Review source"
+    },
+    {
+      "id": "q8",
+      "question": "An employee’s pay is calculated from hours worked and wage information. What type of attribute is pay?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Derived"
+        },
+        {
+          "key": "B",
+          "text": "Composite identifier"
+        },
+        {
+          "key": "C",
+          "text": "Multivalued"
+        },
+        {
+          "key": "D",
+          "text": "Foreign key"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Pay is calculated from other attributes, such as hours worked and wage. That makes it derived.",
+      "references": [
+        {
+          "label": "Week 3 ER modelling, p. 9",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 9
+        }
+      ],
+      "referenceLabel": "Review source"
+    },
+    {
+      "id": "q10",
+      "question": "A bookstore user may have no orders or place several orders; every order has exactly one user. What are the allowed counts for orders per user and users per order, respectively?",
+      "options": [
+        {
+          "key": "A",
+          "text": "1; 0..many"
+        },
+        {
+          "key": "B",
+          "text": "0..many; 1"
+        },
+        {
+          "key": "C",
+          "text": "1..many; 0..1"
+        },
+        {
+          "key": "D",
+          "text": "0..1; 1..many"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The bookstore allows a user to place zero, one or many orders, but each order must be placed by exactly one user.",
+      "references": [
+        {
+          "label": "Week 3 bookstore practical, p. 3",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 3
+        }
+      ],
+      "referenceLabel": "Review source"
+    },
+    {
+      "id": "q15",
+      "question": "What do the circle and crow’s foot at the ORDERS end mean?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Many users per order"
+        },
+        {
+          "key": "B",
+          "text": "Zero or many orders per user"
+        },
+        {
+          "key": "C",
+          "text": "Exactly one order per user"
+        },
+        {
+          "key": "D",
+          "text": "An order can lack a user"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Read the symbols at the Orders end from the User side: the circle allows zero and the crow’s foot allows many.",
+      "references": [
+        {
+          "label": "Week 3 bookstore practical, p. 3",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 3
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Bookstore ERD excerpt (text notation)",
+        "content": "USER ||────o{ ORDERS"
+      }
+    },
+    {
+      "id": "q13",
+      "question": "Which two columns form the composite primary key in the bookstore example?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Order_ID and Quantity"
+        },
+        {
+          "key": "B",
+          "text": "Book_ID and Price"
+        },
+        {
+          "key": "C",
+          "text": "Order_ID and Price"
+        },
+        {
+          "key": "D",
+          "text": "Order_ID and Book_ID"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The bookstore rule requires the combination of Order_ID and Book_ID to be unique, not either column by itself.",
+      "references": [
+        {
+          "label": "Week 3 bookstore practical, p. 4",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 4
+        }
+      ],
+      "referenceLabel": "Review source",
+      "context": {
+        "type": "text",
+        "title": "Bookstore order-item details",
+        "content": "ORDER_ITEMS(Order_ID, Book_ID, Quantity, Price). Each row records one book on an order."
+      }
+    },
+    {
+      "id": "q11",
+      "question": "In the Mini Library, each book title has one or more copies. Which foreign key links each physical copy to its title?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Title.CopyID"
+        },
+        {
+          "key": "B",
+          "text": "Loan.BookID instead of CopyID"
+        },
+        {
+          "key": "C",
+          "text": "Copy.BookID"
+        },
+        {
+          "key": "D",
+          "text": "Member.BookID"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Each physical copy belongs to exactly one title. The copy therefore carries the book title’s BookID as its foreign key.",
+      "references": [
+        {
+          "label": "Week 4 ERD practical, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
+        }
+      ],
+      "referenceLabel": "Review source"
+    },
+    {
+      "id": "q14",
+      "question": "A library title may have multiple physical copies, each identified by its own Copy ID. What does one loan record track in the Mini Library rules?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A book title only"
+        },
+        {
+          "key": "B",
+          "text": "Several physical copies"
+        },
+        {
+          "key": "C",
+          "text": "Exactly one physical copy"
+        },
+        {
+          "key": "D",
+          "text": "A copy only after it is returned"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The practical says a loan refers to exactly one physical copy, not just its title.",
+      "references": [
+        {
+          "label": "Week 4 ERD practical, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
+        }
+      ],
+      "referenceLabel": "Review source"
+    },
+    {
+      "id": "q12",
+      "question": "In the Mini Café, an order can list several menu items and the same item can appear on different orders. The café records the quantity ordered for each item on each order. Where does that quantity belong?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Order–item bridge"
+        },
+        {
+          "key": "B",
+          "text": "Menu item"
+        },
+        {
+          "key": "C",
+          "text": "Customer"
+        },
+        {
+          "key": "D",
+          "text": "Menu category"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The practical records quantity for each menu item included in an order. It belongs to the order–menu item association, not to the menu item alone.",
+      "references": [
+        {
+          "label": "Week 4 ERD practical, p. 2",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 2
+        }
+      ],
+      "referenceLabel": "Review source"
+    }
+  ],
+  "references": [
+    {
+      "label": "Week 3 ER modelling, p. 6",
+      "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+      "page": 6
+    },
+    {
+      "label": "Week 3 ER modelling, p. 9",
+      "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+      "page": 9
+    },
+    {
+      "label": "Week 3 bookstore practical, p. 3",
+      "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+      "page": 3
+    },
+    {
+      "label": "Week 3 bookstore practical, p. 4",
+      "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+      "page": 4
+    },
+    {
+      "label": "Week 4 ERD practical, p. 1",
+      "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+      "page": 1
+    },
+    {
+      "label": "Week 4 ERD practical, p. 2",
+      "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+      "page": 2
+    }
+  ]
+}
