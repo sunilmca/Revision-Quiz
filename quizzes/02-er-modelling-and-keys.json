@@ -203,7 +203,7 @@
       "context": {
         "type": "text",
         "title": "Bookstore order-item details",
-        "content": "ORDER_ITEMS(Order_ID, Book_ID, Quantity, Price). Each row records one book on an order."
+        "content": "ORDER_ITEMS(Order_ID, Book_ID, Quantity, Price). Each row records one book on an order. A given book may appear at most once on a given order."
       }
     },
     {

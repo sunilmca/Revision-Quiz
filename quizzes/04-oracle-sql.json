@@ -415,7 +415,7 @@
     },
     {
       "id": "q28",
-      "question": "Which WHERE condition matches the product name SMALL WIDGET exactly, using the syntax shown on the slide?",
+      "question": "Which Oracle SQL WHERE condition matches the product name SMALL WIDGET exactly?",
       "options": [
         {
           "key": "A",

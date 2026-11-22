@@ -743,7 +743,7 @@ window.DEFAULT_QUIZ_DATA = {
           "context": {
             "type": "text",
             "title": "Bookstore order-item details",
-            "content": "ORDER_ITEMS(Order_ID, Book_ID, Quantity, Price). Each row records one book on an order."
+            "content": "ORDER_ITEMS(Order_ID, Book_ID, Quantity, Price). Each row records one book on an order. A given book may appear at most once on a given order."
           }
         },
         {
@@ -1923,7 +1923,7 @@ window.DEFAULT_QUIZ_DATA = {
         },
         {
           "id": "q28",
-          "question": "Which WHERE condition matches the product name SMALL WIDGET exactly, using the syntax shown on the slide?",
+          "question": "Which Oracle SQL WHERE condition matches the product name SMALL WIDGET exactly?",
           "options": [
             {
               "key": "A",
@@ -2052,33 +2052,33 @@ window.DEFAULT_QUIZ_DATA = {
       "description": "Mixed revision: relational rules, ER modelling and keys, normalisation, and SQL.",
       "items": [
         {
-          "question": "The Week 2 library permits at most five books on loan per member. A member currently has five and returns one. A different book has available copies. What does the borrowing limit permit?",
+          "question": "The Mini Library's LOAN table keeps both current and returned loans. A loan is active when ReturnDate is NULL. The library limits how many physical copies each member can have on loan at the same time. Which LOAN rows should count towards the limit for a particular member?",
           "options": [
             {
               "key": "A",
-              "text": "No new loan until all books are returned"
+              "text": "Rows for that member with ReturnDate IS NULL"
             },
             {
               "key": "B",
-              "text": "One new loan before reaching the limit again"
+              "text": "All rows for that member, regardless of ReturnDate"
             },
             {
               "key": "C",
-              "text": "Two new loans"
+              "text": "Rows for any member with ReturnDate IS NULL"
             },
             {
               "key": "D",
-              "text": "No loan because the limit counts returned books"
+              "text": "All LOAN rows, regardless of member or ReturnDate"
             }
           ],
-          "answer": "B",
-          "explanation": "Four books remain on loan after the return. One more is allowed because the limit applies to books borrowed at the same time.",
+          "answer": "A",
+          "explanation": "The limit applies only to the particular member's current loans. Filtering by member excludes other members' loans, and ReturnDate IS NULL excludes loans that have already been returned.",
           "referenceLabel": "Review source",
           "references": [
             {
-              "label": "Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer, p. 13",
-              "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
-              "page": 13
+              "label": "Week 4 Practical ERD pt2 Oxt26, p. 1",
+              "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+              "page": 1
             }
           ],
           "id": "mix01-q01"
@@ -2605,36 +2605,46 @@ window.DEFAULT_QUIZ_DATA = {
           "id": "mix02-q07"
         },
         {
-          "question": "Given STUDENT_ENROLL on the left and SPORT on the right, a sport has no matching student. In a RIGHT JOIN on sportNO, what appears for the student name on that sport’s result row?",
+          "question": "Using the input rows and query shown, which result row set is returned?",
           "options": [
             {
               "key": "A",
-              "text": "The sport name"
+              "text": "(101, Aisha, swimming) only"
             },
             {
               "key": "B",
-              "text": "An empty row is not returned"
+              "text": "(101, Aisha, swimming) and (102, Ben, badminton)"
             },
             {
               "key": "C",
-              "text": "NULL"
+              "text": "(102, Ben, badminton) only"
             },
             {
               "key": "D",
-              "text": "The previous student name"
+              "text": "(101, Aisha, swimming) and (103, Chen, NULL)"
             }
           ],
-          "answer": "C",
-          "explanation": "The right-side sport row is preserved; the unmatched student columns are NULL.",
+          "answer": "A",
+          "explanation": "The INNER JOIN first keeps only rows whose sportNO matches a SPORT row, so Chen is excluded. The WHERE condition then keeps only the swimming match, so Ben's badminton row is excluded.",
           "referenceLabel": "Review source",
           "references": [
             {
-              "label": "Week 7 - SQL Joins and Data Filtering 11Nov26, p. 11",
+              "label": "Week 7 SQL inner join, p. 9",
               "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
-              "page": 11
+              "page": 9
+            },
+            {
+              "label": "Week 7 SQL row filtering, p. 14",
+              "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+              "page": 14
             }
           ],
-          "id": "mix02-q08"
+          "id": "mix02-q08",
+          "context": {
+            "type": "text",
+            "title": "Student sport query input and SQL",
+            "content": "student_enroll(SID, SNAME, sportNO): (101, Aisha, 1); (102, Ben, 2); (103, Chen, NULL). sport(sportNO, sportNAME): (1, swimming); (2, badminton). Query: SELECT se.SID, se.SNAME, sp.sportNAME FROM student_enroll se INNER JOIN sport sp ON se.sportNO = sp.sportNO WHERE sp.sportNAME = 'swimming';"
+          }
         },
         {
           "question": "The Week 4 process converts a table from 1NF to 2NF. A non-key attribute depends on just one column of a two-column primary key. What should happen to that attribute?",
@@ -2669,27 +2679,27 @@ window.DEFAULT_QUIZ_DATA = {
           "id": "mix02-q09"
         },
         {
-          "question": "In the Mini Library, every title must have one or more physical copies. A BOOK_TITLE row has no associated BOOK_COPY rows. Does this satisfy the rule?",
+          "question": "In the Mini Library, each title has one or more physical copies, and each physical copy belongs to exactly one title. Which pair of crow’s-foot multiplicities represents these rules, in this order: copies per title; titles per copy?",
           "options": [
             {
               "key": "A",
-              "text": "No; each title must have at least one physical copy"
+              "text": "1..*; 1..1"
             },
             {
               "key": "B",
-              "text": "Yes; only the maximum number of copies matters"
+              "text": "0..*; 1..1"
             },
             {
               "key": "C",
-              "text": "Yes; copies are required only after the first loan"
+              "text": "1..*; 0..1"
             },
             {
               "key": "D",
-              "text": "No; every title must have exactly two copies"
+              "text": "1..1; 1..*"
             }
           ],
           "answer": "A",
-          "explanation": "BR4 sets the minimum at one copy and allows multiple copies per title.",
+          "explanation": "A title must be related to one or more copies, so copies per title is 1..*. Each physical copy belongs to exactly one title, so titles per copy is 1..1.",
           "referenceLabel": "Review source",
           "references": [
             {
