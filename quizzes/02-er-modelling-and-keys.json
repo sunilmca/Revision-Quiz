@@ -207,132 +207,53 @@
       }
     },
     {
-      "id": "q11",
-      "question": "In the Mini Library, each book title has one or more copies. Which foreign key links each physical copy to its title?",
-      "options": [
-        {
-          "key": "A",
-          "text": "Title.CopyID"
-        },
-        {
-          "key": "B",
-          "text": "Loan.BookID instead of CopyID"
-        },
-        {
-          "key": "C",
-          "text": "Copy.BookID"
-        },
-        {
-          "key": "D",
-          "text": "Member.BookID"
-        }
-      ],
-      "answer": "C",
-      "explanation": "Each physical copy belongs to exactly one title. The copy therefore carries the book title’s BookID as its foreign key.",
-      "references": [
-        {
-          "label": "Week 4 ERD practical, p. 1",
-          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
-          "page": 1
-        }
-      ],
-      "referenceLabel": "Review source"
-    },
-    {
-      "id": "q14",
-      "question": "A library title may have multiple physical copies, each identified by its own Copy ID. What does one loan record track in the Mini Library rules?",
-      "options": [
-        {
-          "key": "A",
-          "text": "A book title only"
-        },
-        {
-          "key": "B",
-          "text": "Several physical copies"
-        },
-        {
-          "key": "C",
-          "text": "Exactly one physical copy"
-        },
-        {
-          "key": "D",
-          "text": "A copy only after it is returned"
-        }
-      ],
-      "answer": "C",
-      "explanation": "The practical says a loan refers to exactly one physical copy, not just its title.",
-      "references": [
-        {
-          "label": "Week 4 ERD practical, p. 1",
-          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
-          "page": 1
-        }
-      ],
-      "referenceLabel": "Review source"
-    },
-    {
-      "id": "q12",
-      "question": "In the Mini Café, an order can list several menu items and the same item can appear on different orders. The café records the quantity ordered for each item on each order. Where does that quantity belong?",
-      "options": [
-        {
-          "key": "A",
-          "text": "Order–item bridge"
-        },
-        {
-          "key": "B",
-          "text": "Menu item"
-        },
-        {
-          "key": "C",
-          "text": "Customer"
-        },
-        {
-          "key": "D",
-          "text": "Menu category"
-        }
-      ],
-      "answer": "A",
-      "explanation": "The practical records quantity for each menu item included in an order. It belongs to the order–menu item association, not to the menu item alone.",
-      "references": [
-        {
-          "label": "Week 4 ERD practical, p. 2",
-          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
-          "page": 2
-        }
-      ],
-      "referenceLabel": "Review source"
-    }
+  "id": "q11",
+  "question": "The library has one record for a book title and two physical copies of that title. Which foreign key should be added so that each copy points to its book title?",
+  "context": {
+    "type": "table",
+    "title": "Mini Library — book titles and physical copies",
+    "columns": ["Table", "What one row represents", "Primary key", "Business rule"],
+    "rows": [
+      ["BOOK_TITLE", "One book title", "BookID", "Each title has one or more physical copies."],
+      ["BOOK_COPY", "One physical copy that can be borrowed", "CopyID", "Each copy belongs to exactly one book title."]
+    ]
+  },
+  "options": [
+    {"key": "A", "text": "BOOK_TITLE.CopyID references BOOK_COPY.CopyID"},
+    {"key": "B", "text": "BOOK_COPY.BookID references BOOK_TITLE.BookID"},
+    {"key": "C", "text": "LOAN.BookID references BOOK_TITLE.BookID"},
+    {"key": "D", "text": "BOOK_COPY.CopyID references BOOK_TITLE.BookID"}
   ],
+  "answer": "B",
+  "explanation": "BOOK_TITLE is the one side and BOOK_COPY is the many side: one title can have several copies, but each copy belongs to exactly one title. So BOOK_COPY.BookID is the foreign key that references BOOK_TITLE.BookID. Each copy has its own CopyID as its primary key. For example, two copies of the same title have different CopyID values but share the same BookID.",
+  "referenceLabel": "Review source",
   "references": [
     {
-      "label": "Week 3 ER modelling, p. 6",
-      "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
-      "page": 6
-    },
-    {
-      "label": "Week 3 ER modelling, p. 9",
-      "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
-      "page": 9
-    },
-    {
-      "label": "Week 3 bookstore practical, p. 3",
-      "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
-      "page": 3
-    },
-    {
-      "label": "Week 3 bookstore practical, p. 4",
-      "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
-      "page": 4
-    },
-    {
-      "label": "Week 4 ERD practical, p. 1",
+      "label": "Week 4 ERD practical: Mini Library, business rules BR3–BR5, p. 1",
       "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
       "page": 1
-    },
+    }
+  ]
+},
     {
-      "label": "Week 4 ERD practical, p. 2",
+  "id": "q12",
+  "question": "In the Mini Café, an order can contain several menu items, and the same menu item can appear on different orders. The café records how many units of each item were ordered on each order. In which table should the Quantity attribute be stored?",
+  "options": [
+    {"key": "A", "text": "Order–item junction table"},
+    {"key": "B", "text": "Menu item table"},
+    {"key": "C", "text": "Order table"},
+    {"key": "D", "text": "Menu category table"}
+  ],
+  "answer": "A",
+  "explanation": "Quantity describes a particular menu item on a particular order, so it belongs in the Order–item junction table, which links orders to menu items. For example, one order may include two coffees and another may include one coffee. The menu item is the same, but the quantity differs by order. Storing Quantity in the Order table would not tell you how many units of each item were ordered.",
+  "referenceLabel": "Review source",
+  "references": [
+    {
+      "label": "Week 4 ERD practical: Mini Café Ordering System, p. 2",
       "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
       "page": 2
     }
+  ]
+}
   ]
 }
