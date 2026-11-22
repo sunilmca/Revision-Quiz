@@ -118,7 +118,7 @@
       ["3", "Pupil → Lesson", "A pupil can attend many lessons, and a lesson can have many pupils."]
     ]
   }
-},
+ },
     {
       "id": "q4",
       "question": "A business is defining rules for its customer invoices. Which proposed rule protects data integrity rather than changing how invoices are displayed?",
@@ -152,37 +152,48 @@
       ]
     },
     {
-      "id": "q5",
-      "question": "A travel agency records customers, bookings, agents and packages. Which booking restriction matches the lecture’s business rules?",
-      "options": [
-        {
-          "key": "A",
-          "text": "A booking can be handled by only one agent."
-        },
-        {
-          "key": "B",
-          "text": "Every booking needs two agents."
-        },
-        {
-          "key": "C",
-          "text": "A booking can contain any number of packages."
-        },
-        {
-          "key": "D",
-          "text": "A customer must book twice per day."
-        }
-      ],
-      "answer": "A",
-      "explanation": "The slide limits each booking to one agent and one package. It also limits customers to one booking per day.",
-      "referenceLabel": "Review source",
-      "references": [
-        {
-          "label": "Week 2: Travel agency business rules, p. 11",
-          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
-          "page": 11
-        }
-      ]
+  "id": "q5",
+  "question": "A customer has not made any bookings today. Using the rules above, which proposed booking can the travel agency accept?",
+  "options": [
+    {
+      "key": "A",
+      "text": "One booking with one agent, one travel package and one payment transaction"
     },
+    {
+      "key": "B",
+      "text": "One booking with two agents, one travel package and one payment transaction"
+    },
+    {
+      "key": "C",
+      "text": "One booking with one agent, two travel packages and one payment transaction"
+    },
+    {
+      "key": "D",
+      "text": "One booking with one agent, one travel package and two payment transactions"
+    }
+  ],
+  "answer": "A",
+  "explanation": "A satisfies all four rules shown. The customer has not booked today, so this would be their first booking of the day. The booking has only one agent, one package and one payment transaction. B breaks the agent rule, C breaks the package rule, and D breaks the payment rule. The daily limit applies to the number of bookings per customer, not to the number of packages or payments in a booking.",
+  "referenceLabel": "Review source",
+  "references": [
+    {
+      "label": "Week 2: Travel agency case scenario — Business rules, p. 11",
+      "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+      "page": 11
+    }
+  ],
+  "context": {
+    "type": "table",
+    "title": "Travel agency — rules for this question",
+    "columns": ["What is checked", "Business rule"],
+    "rows": [
+      ["Bookings per customer", "A customer can make at most one booking per day."],
+      ["Agent handling a booking", "A booking can be handled by only one agent."],
+      ["Package in a booking", "Each booking must have exactly one package."],
+      ["Payment for a booking", "Each booking must have exactly one associated payment transaction."]
+    ]
+  }
+  },
     {
       "id": "q6",
       "question": "A designer wants to show the main entities and their broad relationships without deciding how the database will store them. Which model is appropriate?",
