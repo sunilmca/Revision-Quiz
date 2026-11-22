@@ -6,7 +6,7 @@
   "items": [
     {
       "id": "q29",
-      "question": "Which ON condition does the slide use to match student alias se to sport alias sp?",
+      "question": "Which ON condition matches each student to the sport with the same sportNO, using se for student_enroll and sp for sport?",
       "options": [
         {
           "key": "A",
@@ -63,7 +63,7 @@
         }
       ],
       "answer": "C",
-      "explanation": "The displayed inner join result contains eight rows. Students without a matching sport are not included.",
+      "explanation": "The join returns one row per matched student: 2 for swimming, 3 for badminton and 3 for esport, for 8 rows. The two NULL sport numbers do not match, and sports with no students add no rows.",
       "references": [
         {
           "label": "Week 7 SQL, p. 9",
@@ -76,9 +76,9 @@
         "type": "table",
         "title": "Student assignments summarised from the Week 7 example",
         "columns": [
-          "Student sportNO",
+          "sportNO",
           "Sport name",
-          "Students"
+          "Student count"
         ],
         "rows": [
           [
@@ -154,9 +154,9 @@
         "type": "table",
         "title": "Student assignments summarised from the Week 7 example",
         "columns": [
-          "Student sportNO",
+          "sportNO",
           "Sport name",
-          "Students"
+          "Student count"
         ],
         "rows": [
           [
@@ -232,9 +232,9 @@
         "type": "table",
         "title": "Student assignments summarised from the Week 7 example",
         "columns": [
-          "Student sportNO",
+          "sportNO",
           "Sport name",
-          "Students"
+          "Student count"
         ],
         "rows": [
           [

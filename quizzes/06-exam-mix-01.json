@@ -1,0 +1,331 @@
+{
+  "id": "sec-mix-01",
+  "code": "6",
+  "title": "Exam Mix 01 — Core Concepts",
+  "description": "Mixed revision: relational rules, ER modelling and keys, normalisation, and SQL.",
+  "items": [
+    {
+      "question": "The Week 2 library permits at most five books on loan per member. A member currently has five and returns one. A different book has available copies. What does the borrowing limit permit?",
+      "options": [
+        {
+          "key": "A",
+          "text": "No new loan until all books are returned"
+        },
+        {
+          "key": "B",
+          "text": "One new loan before reaching the limit again"
+        },
+        {
+          "key": "C",
+          "text": "Two new loans"
+        },
+        {
+          "key": "D",
+          "text": "No loan because the limit counts returned books"
+        }
+      ],
+      "answer": "B",
+      "explanation": "Four books remain on loan after the return. One more is allowed because the limit applies to books borrowed at the same time.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer, p. 13",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 13
+        }
+      ],
+      "id": "mix01-q01"
+    },
+    {
+      "question": "In the bookstore ERD, each order item refers to one order and one book. Which pair of references belongs in ORDER_ITEMS?",
+      "options": [
+        {
+          "key": "A",
+          "text": "User_ID and Author_ID"
+        },
+        {
+          "key": "B",
+          "text": "Book_ID and Author_ID"
+        },
+        {
+          "key": "C",
+          "text": "Order_ID and Book_ID"
+        },
+        {
+          "key": "D",
+          "text": "Order_ID and User_ID"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The two references connect the order item to the order it belongs to and the book it records.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "WEEK 3 ERD Sep26, p. 3",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 3
+        }
+      ],
+      "id": "mix01-q02"
+    },
+    {
+      "question": "SPORT contains sport numbers 1 and 2. STUDENT_ENROLL contains (SID 10, sportNO 1) and (SID 11, sportNO NULL). What does a FULL OUTER JOIN on sportNO return?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Only the match for sport 1"
+        },
+        {
+          "key": "B",
+          "text": "The match and SID 11 only"
+        },
+        {
+          "key": "C",
+          "text": "The match and sport 2 only"
+        },
+        {
+          "key": "D",
+          "text": "The match, SID 11 without a sport, and sport 2 without a student"
+        }
+      ],
+      "answer": "D",
+      "explanation": "A full outer join includes the match and both unmatched rows, filling missing columns with NULL.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 7 - SQL Joins and Data Filtering 11Nov26, p. 12",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 12
+        }
+      ],
+      "id": "mix01-q03"
+    },
+    {
+      "question": "The Week 4 example records Biology 2 only in Susan Johnson’s student row. Which design lets the school delete Susan’s record without losing Biology 2?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Store classes separately and link students to classes"
+        },
+        {
+          "key": "B",
+          "text": "Sort the combined table by class"
+        },
+        {
+          "key": "C",
+          "text": "Rename the class before deleting Susan"
+        },
+        {
+          "key": "D",
+          "text": "Store the class twice in Susan’s row"
+        }
+      ],
+      "answer": "A",
+      "explanation": "Keeping classes independently means removing a student does not remove the only record of the class.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 4 - Normalization of Database Table 21 Oct 26, p. 11",
+          "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf",
+          "page": 11
+        }
+      ],
+      "id": "mix01-q04"
+    },
+    {
+      "question": "A travel booking already has a payment transaction. The agency requires exactly one associated payment transaction per booking. Which action violates this rule?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Keeping the existing payment"
+        },
+        {
+          "key": "B",
+          "text": "Adding a second payment while keeping the first"
+        },
+        {
+          "key": "C",
+          "text": "Looking up the linked payment"
+        },
+        {
+          "key": "D",
+          "text": "Correcting a detail on the existing payment"
+        }
+      ],
+      "answer": "B",
+      "explanation": "A second associated transaction would give the booking two payments.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer, p. 11",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 11
+        }
+      ],
+      "id": "mix01-q05"
+    },
+    {
+      "question": "A child entity cannot exist without its parent, and its primary key includes the parent’s key. How does the Week 3 lecture classify the child?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Strong entity"
+        },
+        {
+          "key": "B",
+          "text": "Derived attribute"
+        },
+        {
+          "key": "C",
+          "text": "Weak entity"
+        },
+        {
+          "key": "D",
+          "text": "Alternate key"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The weak entity is existence-dependent and its key is partly or wholly derived from its parent.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 3 - Entity Relationship Modelling 14 Oct 2026, p. 17",
+          "file": "reference/Oracle APEX/Week 3 - Entity Relationship Modelling 14 Oct 2026.pdf",
+          "page": 17
+        }
+      ],
+      "id": "mix01-q06"
+    },
+    {
+      "question": "A 1NF inventory table has primary key (Player_Id, Item) and only one non-key attribute, Quantity. Quantity requires both key columns. Which conclusion follows?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Quantity is a repeating group"
+        },
+        {
+          "key": "B",
+          "text": "Item alone is the primary key"
+        },
+        {
+          "key": "C",
+          "text": "Quantity has a partial dependency"
+        },
+        {
+          "key": "D",
+          "text": "The table meets the 2NF requirement"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The non-key attribute depends on the entire key, so there is no partial dependency.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 5 - Normalization of Database Table  28 Oct 26, p. 25",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 25
+        }
+      ],
+      "id": "mix01-q07"
+    },
+    {
+      "question": "In FROM club c, what does c mean in WHERE c.clubname = 'pool'?",
+      "options": [
+        {
+          "key": "A",
+          "text": "An alias for the club table"
+        },
+        {
+          "key": "B",
+          "text": "A new database table"
+        },
+        {
+          "key": "C",
+          "text": "An alias for the literal pool"
+        },
+        {
+          "key": "D",
+          "text": "A second filter condition"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The alias c is a short name for club within the query and qualifies clubname.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 7 - SQL Joins and Data Filtering 11Nov26, p. 5",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 5
+        }
+      ],
+      "id": "mix01-q08"
+    },
+    {
+      "question": "The Mini Library allows each physical copy to have only one active loan at a time. Copy C01 is on loan, and its ReturnDate is empty because it has not been returned. Can another member borrow that same physical copy now?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Yes, because the borrower is different"
+        },
+        {
+          "key": "B",
+          "text": "No, because C01 already has an active loan"
+        },
+        {
+          "key": "C",
+          "text": "Yes, because the title may have other copies"
+        },
+        {
+          "key": "D",
+          "text": "No, because a physical copy can only be borrowed once"
+        }
+      ],
+      "answer": "B",
+      "explanation": "C01 has not been returned, so its loan is still active. The limit applies to the physical copy, regardless of who wants to borrow it. Another copy of the same title might be available, but C01 cannot be lent again until it is returned.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 4 Practical ERD pt2 Oxt26, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
+        }
+      ],
+      "id": "mix01-q09"
+    },
+    {
+      "question": "A design is already in 2NF. A non-key column B determines another non-key column C, and the primary key A determines B. What change follows the 3NF conversion shown in the lecture?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Repeat C in more rows"
+        },
+        {
+          "key": "B",
+          "text": "Make A and C a repeating group"
+        },
+        {
+          "key": "C",
+          "text": "Store C with its determinant B in a separate table and retain B as the link"
+        },
+        {
+          "key": "D",
+          "text": "Remove B and C without preserving their values"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The dependency A → B → C is indirect. Moving C with B keeps the fact with its determinant.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 4 - Normalization of Database Table 21 Oct 26, p. 33",
+          "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf",
+          "page": 33
+        }
+      ],
+      "id": "mix01-q10"
+    }
+  ],
+  "references": []
+}
+
+

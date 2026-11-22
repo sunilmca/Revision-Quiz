@@ -153,7 +153,7 @@
     },
     {
   "id": "q5",
-  "question": "A customer has not made any bookings today. Using the rules above, which proposed booking can the travel agency accept?",
+  "question": "A customer has not made any bookings today. Using the rules in the table, which proposed booking can the travel agency accept?",
   "options": [
     {
       "key": "A",

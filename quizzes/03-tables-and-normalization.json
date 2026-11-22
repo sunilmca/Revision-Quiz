@@ -530,7 +530,7 @@
         }
       ],
       "answer": "D",
-      "explanation": "Player_Id determines Player_Skill_level, which determines Player_rating. The rating therefore depends on Player_Id indirectly.",
+      "explanation": "Player_Id determines the numeric skill level, and that level determines the rating label. The rating therefore depends on Player_Id indirectly. Beginner can correspond to more than one numeric skill level; the reverse dependency is not assumed.",
       "references": [
         {
           "label": "Week 5 normalization, p. 29",
@@ -541,7 +541,7 @@
       "referenceLabel": "Review source",
       "context": {
         "type": "table",
-        "title": "Player table before decomposition",
+        "title": "Player example — numeric skill levels and rating labels",
         "columns": [
           "Player_Id",
           "Player_Skill_level",
@@ -562,6 +562,11 @@
             "Famini_hensem",
             "8",
             "Advanced"
+          ],
+          [
+            "mai11",
+            "1",
+            "Beginner"
           ]
         ]
       }
@@ -599,7 +604,7 @@
       "referenceLabel": "Review source",
       "context": {
         "type": "table",
-        "title": "Player table before decomposition",
+        "title": "Player example — numeric skill levels and rating labels",
         "columns": [
           "Player_Id",
           "Player_Skill_level",
@@ -620,6 +625,11 @@
             "Famini_hensem",
             "8",
             "Advanced"
+          ],
+          [
+            "mai11",
+            "1",
+            "Beginner"
           ]
         ]
       }

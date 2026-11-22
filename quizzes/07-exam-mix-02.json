@@ -1,0 +1,330 @@
+
+{
+  "id": "sec-mix-02",
+  "code": "7",
+  "title": "Exam Mix 02 — Applied Practice",
+  "description": "Mixed revision: relational rules, ER modelling and keys, normalisation, and SQL.",
+  "items": [
+    {
+      "question": "A university tracks attendance separately for each student in each course. A student can enrol in several courses, and a course can have many students. The database stores one ENROLMENT row for each student–course pair. The university stores one attendance percentage per student per course. Which table should store AttendancePercentage?",
+      "options": [
+        {
+          "key": "A",
+          "text": "STUDENT"
+        },
+        {
+          "key": "B",
+          "text": "COURSE"
+        },
+        {
+          "key": "C",
+          "text": "DEPARTMENT"
+        },
+        {
+          "key": "D",
+          "text": "ENROLMENT"
+        }
+      ],
+      "answer": "D",
+      "explanation": "AttendancePercentage belongs in ENROLMENT because it describes one student in one course. A student can have different attendance percentages in different courses, and students in the same course can have different percentages. Neither STUDENT nor COURSE identifies the student–course pair.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer, p. 15",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 15
+        }
+      ],
+      "id": "mix02-q01"
+    },
+    {
+      "question": "A bookstore user has already reviewed a book. The REVIEWS primary key is (User_ID, Book_ID). What prevents that user from adding a second review for the same book?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The same key pair would be repeated"
+        },
+        {
+          "key": "B",
+          "text": "The user ID can never appear in another review"
+        },
+        {
+          "key": "C",
+          "text": "The book ID can never appear in another review"
+        },
+        {
+          "key": "D",
+          "text": "All reviews must have the same date"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The pair must be unique. Either ID may appear again with a different partner.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "WEEK 3 ERD Sep26, p. 4",
+          "file": "reference/Oracle APEX/WEEK 3 ERD Sep26.pdf",
+          "page": 4
+        }
+      ],
+      "id": "mix02-q02"
+    },
+    {
+      "question": "STUDENT_ENROLL has SID 21 with sportNO 1 and SID 34 with sportNO NULL. SPORT has (1, swimming). With students on the left, what sport name accompanies SID 34 after LEFT JOIN on sportNO?",
+      "options": [
+        {
+          "key": "A",
+          "text": "swimming"
+        },
+        {
+          "key": "B",
+          "text": "NULL"
+        },
+        {
+          "key": "C",
+          "text": "The string 34"
+        },
+        {
+          "key": "D",
+          "text": "SID 34 is omitted"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The left row is retained, but there is no matching sport row to supply a name.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 7 - SQL Joins and Data Filtering 11Nov26, p. 10",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 10
+        }
+      ],
+      "id": "mix02-q03"
+    },
+    {
+      "question": "Biology 1 appears in several records in a combined student–class table. The school renames it, but one occurrence is missed. Which symptom shows the update anomaly?",
+      "options": [
+        {
+          "key": "A",
+          "text": "A new class cannot be inserted"
+        },
+        {
+          "key": "B",
+          "text": "Deleting a student removes the class"
+        },
+        {
+          "key": "C",
+          "text": "The same class now has inconsistent names"
+        },
+        {
+          "key": "D",
+          "text": "The table is sorted by student"
+        }
+      ],
+      "answer": "C",
+      "explanation": "Only some copies of the same fact were changed, leaving two names for Biology 1.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 4 - Normalization of Database Table 21 Oct 26, p. 10",
+          "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf",
+          "page": 10
+        }
+      ],
+      "id": "mix02-q04"
+    },
+    {
+      "question": "The Mini Café buys the same ingredient from different suppliers at different prices. Which record should hold the supplier-specific price?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Ingredient alone"
+        },
+        {
+          "key": "B",
+          "text": "Supplier alone"
+        },
+        {
+          "key": "C",
+          "text": "Menu category"
+        },
+        {
+          "key": "D",
+          "text": "The supplier–ingredient association"
+        }
+      ],
+      "answer": "D",
+      "explanation": "The price belongs to the arrangement between a specific supplier and a specific ingredient.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 4 Practical ERD pt2 Oxt26, p. 2",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 2
+        }
+      ],
+      "id": "mix02-q05"
+    },
+    {
+      "question": "Each travel agency review must link to exactly one customer and exactly one booking. Which proposed review can be saved?",
+      "options": [
+        {
+          "key": "A",
+          "text": "One customer and one booking"
+        },
+        {
+          "key": "B",
+          "text": "One customer and several bookings"
+        },
+        {
+          "key": "C",
+          "text": "Several customers and one booking"
+        },
+        {
+          "key": "D",
+          "text": "One booking and no customer"
+        }
+      ],
+      "answer": "A",
+      "explanation": "The case specifies one customer and one booking for each review.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer, p. 11",
+          "file": "reference/Oracle APEX/Week 2 - Data Model & Relational Database Model 7 Oct 2026 StuVer.pdf",
+          "page": 11
+        }
+      ],
+      "id": "mix02-q06"
+    },
+    {
+      "question": "A numeric height column contains the entry “between 168 and 171”. In the lecture’s 1NF height example, what is wrong with that entry?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It repeats a primary key"
+        },
+        {
+          "key": "B",
+          "text": "It is a text range rather than a single numeric height"
+        },
+        {
+          "key": "C",
+          "text": "It should be sorted first"
+        },
+        {
+          "key": "D",
+          "text": "It creates a foreign-key relationship"
+        }
+      ],
+      "answer": "B",
+      "explanation": "The numeric column is for individual numeric heights, not a textual range.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 5 - Normalization of Database Table  28 Oct 26, p. 11",
+          "file": "reference/Oracle APEX/Week 5 - Normalization of Database Table  28 Oct 26.pdf",
+          "page": 11
+        }
+      ],
+      "id": "mix02-q07"
+    },
+    {
+      "question": "Given STUDENT_ENROLL on the left and SPORT on the right, a sport has no matching student. In a RIGHT JOIN on sportNO, what appears for the student name on that sport’s result row?",
+      "options": [
+        {
+          "key": "A",
+          "text": "The sport name"
+        },
+        {
+          "key": "B",
+          "text": "An empty row is not returned"
+        },
+        {
+          "key": "C",
+          "text": "NULL"
+        },
+        {
+          "key": "D",
+          "text": "The previous student name"
+        }
+      ],
+      "answer": "C",
+      "explanation": "The right-side sport row is preserved; the unmatched student columns are NULL.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 7 - SQL Joins and Data Filtering 11Nov26, p. 11",
+          "file": "reference/Oracle APEX/Week 7 - SQL Joins and Data Filtering 11Nov26.pdf",
+          "page": 11
+        }
+      ],
+      "id": "mix02-q08"
+    },
+    {
+      "question": "The Week 4 process converts a table from 1NF to 2NF. A non-key attribute depends on just one column of a two-column primary key. What should happen to that attribute?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Leave it because all cells are atomic"
+        },
+        {
+          "key": "B",
+          "text": "Remove the key that really determines it"
+        },
+        {
+          "key": "C",
+          "text": "Duplicate it in every matching row"
+        },
+        {
+          "key": "D",
+          "text": "Move it to a table keyed by the column that determines it"
+        }
+      ],
+      "answer": "D",
+      "explanation": "2NF removes partial dependencies by separating the attribute with the part of the key that determines it.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 4 - Normalization of Database Table 21 Oct 26, p. 30",
+          "file": "reference/Oracle APEX/Week 4 - Normalization of Database Table 21 Oct 26.pdf",
+          "page": 30
+        }
+      ],
+      "id": "mix02-q09"
+    },
+    {
+      "question": "In the Mini Library, every title must have one or more physical copies. A BOOK_TITLE row has no associated BOOK_COPY rows. Does this satisfy the rule?",
+      "options": [
+        {
+          "key": "A",
+          "text": "No; each title must have at least one physical copy"
+        },
+        {
+          "key": "B",
+          "text": "Yes; only the maximum number of copies matters"
+        },
+        {
+          "key": "C",
+          "text": "Yes; copies are required only after the first loan"
+        },
+        {
+          "key": "D",
+          "text": "No; every title must have exactly two copies"
+        }
+      ],
+      "answer": "A",
+      "explanation": "BR4 sets the minimum at one copy and allows multiple copies per title.",
+      "referenceLabel": "Review source",
+      "references": [
+        {
+          "label": "Week 4 Practical ERD pt2 Oxt26, p. 1",
+          "file": "reference/Oracle APEX/Week 4 Practical ERD pt2 Oxt26.pdf",
+          "page": 1
+        }
+      ],
+      "id": "mix02-q10"
+    }
+  ],
+  "references": []
+}
